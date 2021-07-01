@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:miaudote/features/login/domain/entities/login.dart';
 
 class LoginModel extends Equatable {
   final String username;
@@ -19,5 +20,13 @@ class LoginModel extends Equatable {
         password: 'password',
       };
 
-  
+  factory LoginModel.fromEntity(Login entity) => LoginModel(
+    username: entity.username,
+    password: entity.password,
+  );
+
+  Login toEntity() => Login(
+    username: username,
+    password: password,
+  );
 }

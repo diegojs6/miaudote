@@ -1,4 +1,6 @@
 part of 'login_bloc.dart';
-abstract class LoginEvent extends Equatable {
-  const LoginEvent();
+
+@freezed
+class LoginEvent with _$LoginEvent {
+  const factory LoginEvent.load({required String username, required String password}) = Load;
 }
