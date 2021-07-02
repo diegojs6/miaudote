@@ -5,7 +5,7 @@ import 'package:http_interceptor/http_interceptor.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 abstract class IHttpClient {
-  Future<Response> get(String? endpoint, {Map<String, String>? headers});
+  Future<Response> get(String? endpoint, {Map<String, dynamic>? headers});
   Future<Response> post(String? endpoint, String body,
       {Map<String, String>? headers});
   Future<Response> patch(String? endpoint, String body,
@@ -43,7 +43,7 @@ class HttpClient extends IHttpClient implements InterceptorContract {
   }
 
    @override
-  Future<Response> get(String? endpoint, {Map<String, String>? headers}) async {
+  Future<Response> get(String? endpoint, {Map<String, dynamic>? headers}) async {
    final response = await _client.get(
      endpoint!.toUri(),
      headers: {

@@ -26,6 +26,9 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
           'username': username,
           'password': password,
         }),
+        headers: {
+          'X-Parse-Revocable-Session': 1
+        }
       );
 
       switch (response.statusCode) {
