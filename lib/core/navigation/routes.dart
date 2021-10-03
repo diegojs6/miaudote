@@ -6,7 +6,7 @@ class AppRouter {
     switch (settings.name) {
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
+          builder: (_) => const Scaffold(
             body: SafeArea(
               child: Center(
                 child: Text('Erro!'),
