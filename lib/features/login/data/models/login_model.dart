@@ -5,7 +5,7 @@ class LoginModel extends Equatable {
   final String username;
   final String password;
 
-  LoginModel({required this.username, required this.password});
+  const LoginModel({required this.username, required this.password});
 
   @override
   List<Object> get props => [username, password];
@@ -15,18 +15,18 @@ class LoginModel extends Equatable {
         password: json['password'],
       );
 
-  Map<String, dynamic> toJson(LoginModel loginModel) => {
+  Map<String, dynamic> toJson() => {
         username: 'username',
         password: 'password',
       };
 
   factory LoginModel.fromEntity(Login entity) => LoginModel(
-    username: entity.username,
-    password: entity.password,
-  );
+        username: entity.username,
+        password: entity.password,
+      );
 
   Login toEntity() => Login(
-    username: username,
-    password: password,
-  );
+        username: username,
+        password: password,
+      );
 }

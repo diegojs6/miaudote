@@ -2,21 +2,19 @@ import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/login.dart';
 
-enum LoginStatus {
-  loading, ready, error
-}
+enum LoginStatus { loading, ready, error }
 
 class LoginState extends Equatable {
   final LoginStatus status;
   final Login? getLogin;
   final String? messageError;
 
-  LoginState._(this.status, this.getLogin, this.messageError);
+  const LoginState._(this.status, this.getLogin, this.messageError);
 
-    @override
+  @override
   List<Object?> get props => [status, getLogin, messageError];
 
-  LoginState.initial() : this._(LoginStatus.loading, null, null);
+  const LoginState.initial() : this._(LoginStatus.loading, null, null);
 
   LoginState loading() => LoginState._(LoginStatus.loading, getLogin, messageError);
 

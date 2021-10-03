@@ -8,7 +8,7 @@ import 'package:miaudote/core/errors/exceptions.dart';
 import 'package:miaudote/features/login/data/models/login_model.dart';
 
 abstract class ILoginRemoteDataSource {
-  Future<LoginModel> getLogin({required String username,required String password});
+  Future<LoginModel> getLogin({required String username, required String password});
 }
 
 class LoginRemoteDataSource implements ILoginRemoteDataSource {
@@ -32,10 +32,10 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
         case 200:
           return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
         default:
-          throw ServerException();
+          throw const ServerException();
       }
     } else {
-      throw NetworkException();
+      throw const NetworkException();
     }
   }
 }
