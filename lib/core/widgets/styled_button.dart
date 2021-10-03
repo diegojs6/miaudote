@@ -26,7 +26,7 @@ class StyledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 56,
       width: wrapContentWidth
           ? null
@@ -37,8 +37,8 @@ class StyledButton extends StatelessWidget {
         onPressed: _buttonAction() as void Function()?,
         child: Text(text!),
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
           side: BorderSide(color: outlineColor),
           primary: textColor,
           backgroundColor: _buttonAction() != null ? backgroundColor : AppColors.lightest,

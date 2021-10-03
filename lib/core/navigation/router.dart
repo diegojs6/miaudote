@@ -16,14 +16,14 @@ class AppRouter {
         return CupertinoPageRoute(
           builder: (_) => BlocProvider.value(
             value: _loginBloc,
-            child: LoginScreen(),
+            child: const LoginScreen(),
           ),
         );
-        case Routes.homePage:
-          return MaterialPageRoute(builder: (_) => HomeScreen());
+      case Routes.homePage:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
+          builder: (_) => const Scaffold(
             body: SafeArea(
               child: Center(
                 child: Text('Erro!'),

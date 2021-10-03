@@ -17,7 +17,7 @@ class UrlCreator implements IUrlCreator {
     required String endpoint,
     Map<String, dynamic>? queryParameters,
     List<String>? pathSegments,
-   String scheme = 'https',
+    String scheme = 'https',
     String? hostKey,
     int? port,
   }) {
@@ -25,8 +25,8 @@ class UrlCreator implements IUrlCreator {
       scheme: scheme,
       host: _urlKey,
       port: port,
-      pathSegments: [...endpoint.split('/'), ...(pathSegments??[])],
-      queryParameters: queryParameters != null ? queryParameters : null
+      pathSegments: [...endpoint.split('/'), ...(pathSegments ?? [])],
+      queryParameters: queryParameters,
     ).toString();
   }
 }

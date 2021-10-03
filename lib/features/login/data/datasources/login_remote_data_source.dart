@@ -34,12 +34,12 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
           return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
         case 404:
         case 101:
-          throw InvalidInputException();
+          throw const InvalidInputException();
         default:
-          throw ServerException();
+          throw const ServerException();
       }
     } else {
-      throw NetworkException();
+      throw const NetworkException();
     }
   }
 
@@ -53,7 +53,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
           return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
         case 404:
         case 101:
-          throw InvalidInputException();
+          throw const InvalidInputException();
         default:
           throw const ServerException();
       }

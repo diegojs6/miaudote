@@ -65,8 +65,7 @@ class StyledTextFormField extends StatelessWidget {
     this.enableSuggestions = true,
     this.autofocus = false,
     this.autofillHints,
-    this.contentPadding =
-        const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+    this.contentPadding = const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
     this.maxLength,
     this.decimalNumbers = 0,
     this.fillColor,
@@ -76,7 +75,7 @@ class StyledTextFormField extends StatelessWidget {
     this.focusedBorderColor,
     this.errorBorderColor,
     this.textColor,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +103,7 @@ class StyledTextFormField extends StatelessWidget {
         floatingLabelBehavior: floatingLabelBehavior,
         labelText: labelText,
         fillColor: fillColor,
-        errorStyle: TextStyle(color: Colors.red),
+        errorStyle: const TextStyle(color: Colors.red),
         filled: true,
         hintStyle: hintStyle,
         alignLabelWithHint: true,
@@ -116,33 +115,24 @@ class StyledTextFormField extends StatelessWidget {
           color: colorLabel,
         ),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(
-              color: disableBorderColor != null
-                  ? disableBorderColor!
-                  : Colors.transparent),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: disableBorderColor != null ? disableBorderColor! : Colors.transparent),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(
-              color: enableBorderColor != null
-                  ? enableBorderColor!
-                  : Colors.transparent),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: enableBorderColor != null ? enableBorderColor! : Colors.transparent),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(
-              color: focusedBorderColor != null
-                  ? focusedBorderColor!
-                  : Colors.transparent),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: focusedBorderColor != null ? focusedBorderColor! : Colors.transparent),
         ),
         errorBorder: borderError
-            ? OutlineInputBorder(
+            ? const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
                 borderSide: BorderSide(color: Colors.red),
               )
             : null,
-        focusedErrorBorder: OutlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
           borderSide: BorderSide(color: Colors.red),
         ),
@@ -168,9 +158,7 @@ class StyledTextFormField extends StatelessWidget {
       maxLines: maxLines,
       maxLength: maxLength,
       onFieldSubmitted: onFieldSubmitted,
-      buildCounter: (context,
-              {required currentLength, maxLength, required isFocused}) =>
-          null,
+      buildCounter: (context, {required currentLength, maxLength, required isFocused}) => null,
     );
   }
 }

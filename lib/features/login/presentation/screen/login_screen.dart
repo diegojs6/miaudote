@@ -12,14 +12,15 @@ import 'package:miaudote/features/login/presentation/bloc/login_bloc.dart';
 import 'package:miaudote/features/login/presentation/bloc/login_state.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var _usernameController = TextEditingController();
+  final _usernameController = TextEditingController();
 
-  var _passwordController = TextEditingController();
+  final _passwordController = TextEditingController();
   late LoginBloc _loginBloc;
   FocusNode myFocusNode = FocusNode();
 
@@ -73,12 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: const EdgeInsets.only(top: 30),
                 child: Text(
                   AppStrings.loginHeaderApp,
                   style: GoogleFonts.lobster(
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 1),
+              const SizedBox(height: 1),
               Text(
                 AppStrings.appTitle,
                 style: GoogleFonts.lobster(
@@ -99,41 +100,40 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: AppColors.darkest,
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               StyledTextFormField(
                 fillColor: Colors.transparent,
                 controller: _usernameController,
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   MdiIcons.email,
                   color: AppColors.neutralGrey,
                 ),
                 labelText: AppStrings.hintEmail,
                 colorLabel: AppColors.neutralGrey,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               StyledTextFormField(
                 fillColor: Colors.transparent,
                 controller: _passwordController,
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   MdiIcons.lock,
                   color: AppColors.neutralGrey,
                 ),
                 labelText: AppStrings.hintPassword,
                 colorLabel: AppColors.neutralGrey,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               StyledButton(
                 text: AppStrings.loginTextButton,
                 backgroundColor: AppColors.primaryBlue,
                 usesInfinityWidth: true,
                 action: () async {
-                  _loginBloc
-                    ..add(
-                      LoginEvent.load(
-                        username: _usernameController.text,
-                        password: _passwordController.text,
-                      ),
-                    );
+                  _loginBloc.add(
+                    LoginEvent.load(
+                      username: _usernameController.text,
+                      password: _passwordController.text,
+                    ),
+                  );
                   if (state.getLogin?.username != null) {
                     _usernameController.clear();
                     _passwordController.clear();

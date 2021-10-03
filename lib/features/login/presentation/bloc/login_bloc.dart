@@ -14,7 +14,7 @@ part 'login_event.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final GetLogin getLogin;
 
-  LoginBloc(this.getLogin) : super(LoginState.initial());
+  LoginBloc(this.getLogin) : super(const LoginState.initial());
 
   @override
   Stream<LoginState> mapEventToState(

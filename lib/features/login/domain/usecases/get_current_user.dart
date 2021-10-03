@@ -4,7 +4,7 @@ import '../../../../core/errors/failures.dart';
 import '../entities/login.dart';
 import '../repositories/i_login_repository.dart';
 
-class GetCurrentUser{
+class GetCurrentUser {
   final ILoginRepository repository;
 
   GetCurrentUser(this.repository);

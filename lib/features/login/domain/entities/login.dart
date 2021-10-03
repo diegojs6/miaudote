@@ -5,7 +5,7 @@ class Login extends Equatable {
   final String? email;
   final String? sessionToken;
 
-  Login({this.username, this.email, this.sessionToken});
+  const Login({this.username, this.email, this.sessionToken});
 
   @override
   List<Object?> get props => [username, email, sessionToken];

@@ -12,10 +12,11 @@ void main() async {
   await di.init();
   EquatableConfig.stringify = true;
 
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
   @override
   _AppState createState() => _AppState();
 }

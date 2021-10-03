@@ -16,7 +16,7 @@ class StyledSnackbar {
       color: AppColors.boxShadowColor1.withOpacity(0.16),
       blurRadius: 7,
       spreadRadius: 0,
-      offset: Offset(0, 3),
+      offset: const Offset(0, 3),
     )
   ];
 
@@ -33,12 +33,12 @@ class StyledSnackbar {
           showFlushbar(
             context: context,
             flushbar: Flushbar(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               borderRadius: BorderRadius.circular(8),
               flushbarPosition: FlushbarPosition.TOP,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.alertOutline, color: AppColors.error),
+              icon: const Icon(MdiIcons.alertOutline, color: AppColors.error),
               duration: Duration(seconds: durationSeconds),
               boxShadows: boxShadow,
               messageText: Text(
@@ -69,17 +69,17 @@ class StyledSnackbar {
           showFlushbar(
             context: context,
             flushbar: Flushbar(
-              margin: EdgeInsets.all(8),
-               borderRadius: BorderRadius.circular(8),
+              margin: const EdgeInsets.all(8),
+              borderRadius: BorderRadius.circular(8),
               flushbarPosition: FlushbarPosition.TOP,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.checkCircleOutline, color: AppColors.sucess),
+              icon: const Icon(MdiIcons.checkCircleOutline, color: AppColors.sucess),
               boxShadows: boxShadow,
               duration: Duration(seconds: durationSeconds),
               messageText: Text(
                 message,
-                style:  GoogleFonts.lato(
+                style: GoogleFonts.lato(
                   fontWeight: FontWeight.w700,
                   color: AppColors.sucess,
                 ),
@@ -105,20 +105,17 @@ class StyledSnackbar {
           showFlushbar(
             context: context,
             flushbar: Flushbar(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               borderRadius: BorderRadius.circular(8),
               flushbarPosition: FlushbarPosition.TOP,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.loading, color: AppColors.error),
+              icon: const Icon(MdiIcons.loading, color: AppColors.error),
               duration: Duration(seconds: durationSeconds),
               boxShadows: boxShadow,
               messageText: Text(
                 message,
-                style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.neutralDarkest
-                ),
+                style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: AppColors.neutralDarkest),
               ),
             ),
           ),
@@ -141,20 +138,20 @@ class StyledSnackbar {
           showFlushbar(
             context: context,
             flushbar: Flushbar(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               borderRadius: BorderRadius.circular(8),
               flushbarPosition: FlushbarPosition.TOP,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.checkCircleOutline, color: AppColors.neutralDarkest,),
+              icon: const Icon(
+                MdiIcons.checkCircleOutline,
+                color: AppColors.neutralDarkest,
+              ),
               duration: Duration(seconds: durationSeconds),
               boxShadows: boxShadow,
               messageText: Text(
                 message,
-                style:  GoogleFonts.lato(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.neutralDarkest
-                ),
+                style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: AppColors.neutralDarkest),
               ),
             ),
           ),
@@ -170,5 +167,4 @@ class StyledSnackbar {
           ),
         );
   }
-
 }

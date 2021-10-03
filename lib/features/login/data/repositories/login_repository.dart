@@ -17,11 +17,11 @@ class LoginRepository implements ILoginRepository {
       final entity = response.toEntity();
       return Right(entity);
     } on NetworkException {
-      return Left(NetworkFailure());
+      return const Left(NetworkFailure());
     } on ServerException {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     } on InvalidInputException {
-      return Left(InvalidInputFailure());
+      return const Left(InvalidInputFailure());
     }
   }
 
@@ -32,9 +32,9 @@ class LoginRepository implements ILoginRepository {
       final entity = response.toEntity();
       return Right(entity);
     } on NetworkException {
-      return Left(NetworkFailure());
+      return const Left(NetworkFailure());
     } on ServerException {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
   }
 }

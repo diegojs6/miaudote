@@ -6,7 +6,7 @@ class LoginModel extends Equatable {
   final String? email;
   final String? sessionToken;
 
-  LoginModel({this.username, this.email, this.sessionToken});
+  const LoginModel({this.username, this.email, this.sessionToken});
 
   @override
   List<Object?> get props => [username, email, sessionToken];
@@ -17,8 +17,7 @@ class LoginModel extends Equatable {
         sessionToken: json['sessionToken'],
       );
 
-  Map<String, dynamic> toJson(LoginModel loginModel) =>
-      {username!: 'username', email!: 'email', sessionToken!: 'sessionToken'};
+  Map<String, dynamic> toJson() => {username!: 'username', email!: 'email', sessionToken!: 'sessionToken'};
 
   factory LoginModel.fromEntity(Login entity) => LoginModel(
         username: entity.username,
