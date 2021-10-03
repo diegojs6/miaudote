@@ -24,7 +24,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield state.loading();
       var fold = await getLogin(username, password);
       yield await fold.fold(
-        (failure) => state.error(_mapLoginFailureToString(failure)),
+        (failure) {
+          if (username.isEmpty || password.isEmpty) {
+            return state.error(AppStrings.loginErrorInvalidInput);
+          }
+          return state.error(_mapLoginFailureToString(failure));
+        },
         (login) => state.ready(login),
       );
     });
@@ -34,6 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     return failure.maybeWhen(
       networkFailure: () => AppStrings.loginErrorNetwork,
       serverFailure: () => AppStrings.loginErrorServer,
+      invalidInputFailure: () => AppStrings.loginErrorInvalidInput,
       orElse: () => AppStrings.loginError,
     );
   }
