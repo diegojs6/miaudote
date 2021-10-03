@@ -3,7 +3,7 @@ abstract class IUrlCreator {
     required String endpoint,
     Map<String, dynamic>? queryParameters,
     List<String>? pathSegments,
-    String? scheme,
+    String scheme,
     String? hostKey,
     int? port,
   });
@@ -17,7 +17,7 @@ class UrlCreator implements IUrlCreator {
     required String endpoint,
     Map<String, dynamic>? queryParameters,
     List<String>? pathSegments,
-    String? scheme,
+   String scheme = 'https',
     String? hostKey,
     int? port,
   }) {

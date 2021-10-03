@@ -17,9 +17,24 @@ class LoginRepository implements ILoginRepository {
       final entity = response.toEntity();
       return Right(entity);
     } on NetworkException {
-      return const Left(NetworkFailure());
+      return Left(NetworkFailure());
     } on ServerException {
-      return const Left(ServerFailure());
+      return Left(ServerFailure());
+    } on InvalidInputException {
+      return Left(InvalidInputFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Login>> getCurrentUser(String sessionToken) async {
+    try {
+      final response = await remoteDataSource.getToken(sessionToken: sessionToken);
+      final entity = response.toEntity();
+      return Right(entity);
+    } on NetworkException {
+      return Left(NetworkFailure());
+    } on ServerException {
+      return Left(ServerFailure());
     }
   }
 }

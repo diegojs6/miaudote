@@ -4,4 +4,5 @@ import 'package:miaudote/features/login/domain/entities/login.dart';
 
 abstract class ILoginRepository {
   Future<Either<Failure, Login>> getLogin(String username, String password);
+   Future<Either<Failure, Login>> getCurrentUser(String sessionToken);
 }

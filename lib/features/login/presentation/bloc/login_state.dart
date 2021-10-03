@@ -18,7 +18,7 @@ class LoginState extends Equatable {
 
   LoginState loading() => LoginState._(LoginStatus.loading, getLogin, messageError);
 
-  LoginState ready(Login login) => LoginState._(LoginStatus.loading, login, messageError);
+  LoginState ready(Login login) => LoginState._(LoginStatus.ready, login, messageError);
 
-  LoginState error(String? msgError) => LoginState._(LoginStatus.loading, getLogin, msgError);
+  LoginState error(String? msgError) => LoginState._(LoginStatus.error, getLogin, msgError);
 }
