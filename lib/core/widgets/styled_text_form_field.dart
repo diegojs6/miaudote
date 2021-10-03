@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:miaudote/core/utils/decimal_text_input_formatter.dart';
 
 class StyledTextFormField extends StatelessWidget {
@@ -19,7 +20,7 @@ class StyledTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final String? hintText;
   final int maxLines;
-  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final ValueChanged<String>? onFieldSubmitted;
   final TextStyle? hintStyle;
   final bool borderError;
@@ -40,7 +41,7 @@ class StyledTextFormField extends StatelessWidget {
 
   const StyledTextFormField({
     Key? key,
-    required this.labelText,
+    this.labelText,
     this.validator,
     this.mask,
     this.keyboardType = TextInputType.text,
@@ -56,7 +57,7 @@ class StyledTextFormField extends StatelessWidget {
     this.focusNode,
     this.hintText,
     this.maxLines = 1,
-    this.suffixIcon,
+    this.prefixIcon,
     this.onFieldSubmitted,
     this.hintStyle,
     this.borderError = true,
@@ -108,10 +109,10 @@ class StyledTextFormField extends StatelessWidget {
         hintStyle: hintStyle,
         alignLabelWithHint: true,
         hintText: hintText,
-        suffixIcon: suffixIcon,
-        labelStyle: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.normal,
+        prefixIcon: prefixIcon,
+        labelStyle: GoogleFonts.poppins(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
           color: colorLabel,
         ),
         disabledBorder: OutlineInputBorder(
