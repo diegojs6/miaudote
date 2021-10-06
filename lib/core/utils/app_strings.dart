@@ -4,6 +4,13 @@ class AppStrings {
   static const hintEmail = 'Email';
   static const hintPassword = 'Senha';
 
+  //! Navigation Strings
+  static const dog = 'Cachorros';
+  static const cat = 'Gatos';
+  static const morePets = '+ Pets';
+  static const ong = 'Ong';
+  static const account = 'Conta';
+
   //! Login Strings
   static const loginErrorNetwork = 'Você esta sem conexão';
   static const loginErrorServer = 'Erro ao conectar com servidor';

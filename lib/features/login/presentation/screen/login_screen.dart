@@ -62,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
     switch (state.status) {
       case LoginStatus.loading:
       case LoginStatus.error:
+      case LoginStatus.ready:
         return _loginLoading(state);
 
       default:
@@ -134,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text,
                       ),
                     );
-                  if (state.getLogin?.username != null) {
+                  if (state.getLogin?.username != null && state.status == LoginStatus.ready) {
                     _usernameController.clear();
                     _passwordController.clear();
                     await Navigator.of(context).pushNamed(Routes.homePage);
