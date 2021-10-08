@@ -27,6 +27,10 @@ class _$CustomExceptionTearOff {
   InvalidInputException invalidInputException() {
     return const InvalidInputException();
   }
+
+  AccountAsUsedException accountAsUsedException() {
+    return const AccountAsUsedException();
+  }
 }
 
 /// @nodoc
@@ -39,6 +43,7 @@ mixin _$CustomException {
     required TResult Function() serverException,
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +51,7 @@ mixin _$CustomException {
     TResult Function()? serverException,
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$CustomException {
     required TResult Function(NetworkException value) networkException,
     required TResult Function(InvalidInputException value)
         invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +70,7 @@ mixin _$CustomException {
     TResult Function(ServerException value)? serverException,
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +136,7 @@ class _$ServerException extends ServerException {
     required TResult Function() serverException,
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
   }) {
     return serverException();
   }
@@ -137,6 +147,7 @@ class _$ServerException extends ServerException {
     TResult Function()? serverException,
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (serverException != null) {
@@ -152,6 +163,8 @@ class _$ServerException extends ServerException {
     required TResult Function(NetworkException value) networkException,
     required TResult Function(InvalidInputException value)
         invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
   }) {
     return serverException(this);
   }
@@ -162,6 +175,7 @@ class _$ServerException extends ServerException {
     TResult Function(ServerException value)? serverException,
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (serverException != null) {
@@ -219,6 +233,7 @@ class _$NetworkException extends NetworkException {
     required TResult Function() serverException,
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
   }) {
     return networkException();
   }
@@ -229,6 +244,7 @@ class _$NetworkException extends NetworkException {
     TResult Function()? serverException,
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (networkException != null) {
@@ -244,6 +260,8 @@ class _$NetworkException extends NetworkException {
     required TResult Function(NetworkException value) networkException,
     required TResult Function(InvalidInputException value)
         invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
   }) {
     return networkException(this);
   }
@@ -254,6 +272,7 @@ class _$NetworkException extends NetworkException {
     TResult Function(ServerException value)? serverException,
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (networkException != null) {
@@ -311,6 +330,7 @@ class _$InvalidInputException extends InvalidInputException {
     required TResult Function() serverException,
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
   }) {
     return invalidInputException();
   }
@@ -321,6 +341,7 @@ class _$InvalidInputException extends InvalidInputException {
     TResult Function()? serverException,
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (invalidInputException != null) {
@@ -336,6 +357,8 @@ class _$InvalidInputException extends InvalidInputException {
     required TResult Function(NetworkException value) networkException,
     required TResult Function(InvalidInputException value)
         invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
   }) {
     return invalidInputException(this);
   }
@@ -346,6 +369,7 @@ class _$InvalidInputException extends InvalidInputException {
     TResult Function(ServerException value)? serverException,
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
     required TResult orElse(),
   }) {
     if (invalidInputException != null) {
@@ -358,4 +382,101 @@ class _$InvalidInputException extends InvalidInputException {
 abstract class InvalidInputException extends CustomException {
   const factory InvalidInputException() = _$InvalidInputException;
   const InvalidInputException._() : super._();
+}
+
+/// @nodoc
+abstract class $AccountAsUsedExceptionCopyWith<$Res> {
+  factory $AccountAsUsedExceptionCopyWith(AccountAsUsedException value,
+          $Res Function(AccountAsUsedException) then) =
+      _$AccountAsUsedExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AccountAsUsedExceptionCopyWithImpl<$Res>
+    extends _$CustomExceptionCopyWithImpl<$Res>
+    implements $AccountAsUsedExceptionCopyWith<$Res> {
+  _$AccountAsUsedExceptionCopyWithImpl(AccountAsUsedException _value,
+      $Res Function(AccountAsUsedException) _then)
+      : super(_value, (v) => _then(v as AccountAsUsedException));
+
+  @override
+  AccountAsUsedException get _value => super._value as AccountAsUsedException;
+}
+
+/// @nodoc
+
+class _$AccountAsUsedException extends AccountAsUsedException {
+  const _$AccountAsUsedException() : super._();
+
+  @override
+  String toString() {
+    return 'CustomException.accountAsUsedException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AccountAsUsedException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverException,
+    required TResult Function() networkException,
+    required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
+  }) {
+    return accountAsUsedException();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverException,
+    TResult Function()? networkException,
+    TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
+    required TResult orElse(),
+  }) {
+    if (accountAsUsedException != null) {
+      return accountAsUsedException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerException value) serverException,
+    required TResult Function(NetworkException value) networkException,
+    required TResult Function(InvalidInputException value)
+        invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
+  }) {
+    return accountAsUsedException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerException value)? serverException,
+    TResult Function(NetworkException value)? networkException,
+    TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    required TResult orElse(),
+  }) {
+    if (accountAsUsedException != null) {
+      return accountAsUsedException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountAsUsedException extends CustomException {
+  const factory AccountAsUsedException() = _$AccountAsUsedException;
+  const AccountAsUsedException._() : super._();
 }

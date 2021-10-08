@@ -1,12 +1,24 @@
 import 'dart:convert';
 
-import 'package:miaudote/core/api/api_interceptor.dart';
-import 'package:miaudote/core/api/url_creator.dart';
-import 'package:miaudote/core/device/network_info.dart';
-import 'package:miaudote/features/register/data/models/register_model.dart';
+import '../../../../core/api/api_interceptor.dart';
+import '../../../../core/api/endpoints.dart';
+import '../../../../core/api/url_creator.dart';
+import '../../../../core/device/network_info.dart';
+import '../../../../core/errors/exceptions.dart';
+import '../models/register_model.dart';
 
 abstract class IRegisterRemoteDataSource {
-  Future<RegisterModel> getRegister();
+  Future<RegisterModel> userRegister({
+    required String username,
+    String? email,
+    String? address,
+    String? fullName,
+    String? lat,
+    String? long,
+    num? contact,
+    String? birthDate,
+    required String password,
+  });
 }
 
 class RegisterRemoteDataSource implements IRegisterRemoteDataSource {
@@ -17,14 +29,41 @@ class RegisterRemoteDataSource implements IRegisterRemoteDataSource {
   RegisterRemoteDataSource(this.client, this.networkInfo, this.urlCreator);
 
   @override
-  Future<RegisterModel> getRegister() async {
-   final isConnected = await networkInfo.isConnected;
-   if (isConnected) {
-     final response = await client.get(urlCreator.create(endpoint: Endpoint.getDog));
-     switch (response.statusCode) {
-       case 200:
-       return RegisterModel.fromjson(jsonDecode(utf8.decode(response.bodyBytes)));
-     }
-   }
+  Future<RegisterModel> userRegister({
+    required String username,
+    String? email,
+    String? address,
+    String? fullName,
+    String? lat,
+    String? long,
+    num? contact,
+    String? birthDate,
+    required String password,
+  }) async {
+    final isConnected = await networkInfo.isConnected;
+    if (isConnected) {
+      var body = {
+        'username': username,
+        'email': email,
+        'address': address,
+        'fullName': fullName,
+        'lat': lat,
+        'long': long,
+        'contact': contact,
+        'birthDate': birthDate,
+        'password': password,
+      };
+      final response = await client.post(urlCreator.create(endpoint: Endpoints.register), jsonEncode(body));
+      switch (response.statusCode) {
+        case 200:
+          return RegisterModel.fromjson(jsonDecode(utf8.decode(response.bodyBytes)));
+        case 208:
+          throw AccountAsUsedException();
+        default:
+          throw ServerException();
+      }
+    } else {
+      throw NetworkException();
+    }
   }
 }

@@ -8,4 +8,5 @@ class CustomException with _$CustomException implements Exception {
   const factory CustomException.serverException() = ServerException;
   const factory CustomException.networkException() = NetworkException;
   const factory CustomException.invalidInputException() = InvalidInputException;
+  const factory CustomException.accountAsUsedException() = AccountAsUsedException;
 }

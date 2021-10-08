@@ -27,6 +27,10 @@ class _$FailureTearOff {
   InvalidInputFailure invalidInputFailure() {
     return const InvalidInputFailure();
   }
+
+  AccountAsUsedFailure accountAsUsedFailure() {
+    return const AccountAsUsedFailure();
+  }
 }
 
 /// @nodoc
@@ -39,6 +43,7 @@ mixin _$Failure {
     required TResult Function() serverFailure,
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +51,7 @@ mixin _$Failure {
     TResult Function()? serverFailure,
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +60,7 @@ mixin _$Failure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$Failure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,6 +131,7 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function() serverFailure,
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
   }) {
     return serverFailure();
   }
@@ -133,6 +142,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function()? serverFailure,
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -147,6 +157,7 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
   }) {
     return serverFailure(this);
   }
@@ -157,6 +168,7 @@ class _$ServerFailure extends ServerFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -213,6 +225,7 @@ class _$NetworkFailure extends NetworkFailure {
     required TResult Function() serverFailure,
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
   }) {
     return networkFailure();
   }
@@ -223,6 +236,7 @@ class _$NetworkFailure extends NetworkFailure {
     TResult Function()? serverFailure,
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -237,6 +251,7 @@ class _$NetworkFailure extends NetworkFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
   }) {
     return networkFailure(this);
   }
@@ -247,6 +262,7 @@ class _$NetworkFailure extends NetworkFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -304,6 +320,7 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     required TResult Function() serverFailure,
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
   }) {
     return invalidInputFailure();
   }
@@ -314,6 +331,7 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     TResult Function()? serverFailure,
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (invalidInputFailure != null) {
@@ -328,6 +346,7 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
   }) {
     return invalidInputFailure(this);
   }
@@ -338,6 +357,7 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
     required TResult orElse(),
   }) {
     if (invalidInputFailure != null) {
@@ -350,4 +370,99 @@ class _$InvalidInputFailure extends InvalidInputFailure {
 abstract class InvalidInputFailure extends Failure {
   const factory InvalidInputFailure() = _$InvalidInputFailure;
   const InvalidInputFailure._() : super._();
+}
+
+/// @nodoc
+abstract class $AccountAsUsedFailureCopyWith<$Res> {
+  factory $AccountAsUsedFailureCopyWith(AccountAsUsedFailure value,
+          $Res Function(AccountAsUsedFailure) then) =
+      _$AccountAsUsedFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AccountAsUsedFailureCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res>
+    implements $AccountAsUsedFailureCopyWith<$Res> {
+  _$AccountAsUsedFailureCopyWithImpl(
+      AccountAsUsedFailure _value, $Res Function(AccountAsUsedFailure) _then)
+      : super(_value, (v) => _then(v as AccountAsUsedFailure));
+
+  @override
+  AccountAsUsedFailure get _value => super._value as AccountAsUsedFailure;
+}
+
+/// @nodoc
+
+class _$AccountAsUsedFailure extends AccountAsUsedFailure {
+  const _$AccountAsUsedFailure() : super._();
+
+  @override
+  String toString() {
+    return 'Failure.accountAsUsedFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AccountAsUsedFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverFailure,
+    required TResult Function() networkFailure,
+    required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
+  }) {
+    return accountAsUsedFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? networkFailure,
+    TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
+    required TResult orElse(),
+  }) {
+    if (accountAsUsedFailure != null) {
+      return accountAsUsedFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(NetworkFailure value) networkFailure,
+    required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+  }) {
+    return accountAsUsedFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    required TResult orElse(),
+  }) {
+    if (accountAsUsedFailure != null) {
+      return accountAsUsedFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountAsUsedFailure extends Failure {
+  const factory AccountAsUsedFailure() = _$AccountAsUsedFailure;
+  const AccountAsUsedFailure._() : super._();
 }
