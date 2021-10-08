@@ -1,4 +1,16 @@
 part of 'register_bloc.dart';
-abstract class RegisterEvent extends Equatable {
-  const RegisterEvent();
+
+@freezed
+class RegisterEvent with _$RegisterEvent {
+  const factory RegisterEvent.load({
+    required String username,
+    String? email,
+    String? address,
+    String? fullName,
+    String? lat,
+    String? long,
+    num? contact,
+    String? birthDate,
+    required String password,
+  }) = _Load;
 }
