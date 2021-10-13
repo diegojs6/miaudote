@@ -1,16 +1,16 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:miaudote/features/login/data/datasources/login_remote_data_source.dart';
-import 'package:miaudote/features/login/data/repositories/login_repository.dart';
-import 'package:miaudote/features/login/domain/repositories/i_login_repository.dart';
-import 'package:miaudote/features/login/domain/usecases/get_login.dart';
-import 'package:miaudote/features/login/presentation/bloc/login_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 import 'core/api/api_interceptor.dart';
 import 'core/api/url_creator.dart';
 import 'core/device/network_info.dart';
+import 'features/login/data/datasources/login_remote_data_source.dart';
+import 'features/login/data/repositories/login_repository.dart';
+import 'features/login/domain/repositories/i_login_repository.dart';
+import 'features/login/domain/usecases/get_login.dart';
+import 'features/login/presentation/bloc/login_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -41,8 +41,7 @@ Future<void> init() async {
   sl.registerLazySingleton<ILoginRepository>(() => LoginRepository(sl()));
 
   //*Data Source
-  sl.registerLazySingleton<ILoginRemoteDataSource>(
-      () => LoginRemoteDataSource(sl(), sl(), sl()));
+  sl.registerLazySingleton<ILoginRemoteDataSource>(() => LoginRemoteDataSource(sl(), sl(), sl()));
 
   await sl.allReady();
 }
