@@ -37,10 +37,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   String _mapLoginFailureToString(Failure failure) {
     return failure.maybeWhen(
-      networkFailure: () => AppStrings.loginErrorNetwork,
-      serverFailure: () => AppStrings.loginErrorServer,
+      networkFailure: () => AppStrings.genericErrorNetwork,
+      serverFailure: () => AppStrings.genericErrorServer,
       invalidInputFailure: () => AppStrings.loginErrorInvalidInput,
-      orElse: () => AppStrings.loginError,
+      orElse: () => AppStrings.genericError,
     );
   }
 }
