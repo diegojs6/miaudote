@@ -19,8 +19,10 @@ class AppRouter {
             child: LoginScreen(),
           ),
         );
-        case Routes.homePage:
-          return MaterialPageRoute(builder: (_) => HomeScreen());
+      case Routes.homePage:
+        return MaterialPageRoute(
+          builder: (_) => HomeScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

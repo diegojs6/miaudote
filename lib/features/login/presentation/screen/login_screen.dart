@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/navigation/routes.dart';
-import 'package:miaudote/core/utils/app_colors.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
-import 'package:miaudote/core/widgets/styled_button.dart';
-import 'package:miaudote/core/widgets/styled_snackbar.dart';
-import 'package:miaudote/core/widgets/styled_text_form_field.dart';
-import 'package:miaudote/features/login/presentation/bloc/login_bloc.dart';
-import 'package:miaudote/features/login/presentation/bloc/login_state.dart';
+
+import '../../../../core/navigation/routes.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/styled_button.dart';
+import '../../../../core/widgets/styled_snackbar.dart';
+import '../../../../core/widgets/styled_text_form_field.dart';
+import '../bloc/login_bloc.dart';
+import '../bloc/login_state.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -62,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
     switch (state.status) {
       case LoginStatus.loading:
       case LoginStatus.error:
+      case LoginStatus.ready:
         return _loginLoading(state);
 
       default:
@@ -134,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         password: _passwordController.text,
                       ),
                     );
-                  if (state.getLogin?.username != null) {
+                  if (state.status == LoginStatus.ready) {
                     _usernameController.clear();
                     _passwordController.clear();
                     await Navigator.of(context).pushNamed(Routes.homePage);

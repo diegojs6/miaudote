@@ -7,6 +7,13 @@ class AppStrings {
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
 
+  //! Navigation Strings
+  static const dog = 'Cachorros';
+  static const cat = 'Gatos';
+  static const morePets = '+ Pets';
+  static const ong = 'Ong';
+  static const account = 'Conta';
+
   //! Login Strings
   static const loginErrorInvalidInput = 'Usuario ou senha invalidos\n Tente Novamente!';
   static const loginHeaderApp = 'Bem vindo ao';
