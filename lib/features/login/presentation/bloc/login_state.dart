@@ -1,24 +1,10 @@
-import 'package:equatable/equatable.dart';
+part of 'login_bloc.dart';
 
-import '../../domain/entities/login.dart';
-
-enum LoginStatus { loading, ready, error }
-
-class LoginState extends Equatable {
-  final LoginStatus status;
-  final Login? getLogin;
-  final String? messageError;
-
-  LoginState._(this.status, this.getLogin, this.messageError);
-
-  @override
-  List<Object?> get props => [status, getLogin, messageError];
-
-  LoginState.initial() : this._(LoginStatus.loading, null, null);
-
-  LoginState loading() => LoginState._(LoginStatus.loading, getLogin, messageError);
-
-  LoginState ready(Login login) => LoginState._(LoginStatus.ready, login, messageError);
-
-  LoginState error(String? msgError) => LoginState._(LoginStatus.error, getLogin, msgError);
+@freezed
+class LoginState with _$LoginState {
+  const LoginState._();
+  const factory LoginState.initial() = _Initial;
+  const factory LoginState.loading() = _Loading;
+  const factory LoginState.completed({Login? user}) = _Completed;
+  const factory LoginState.loginError({String? message}) = _LoginError;
 }

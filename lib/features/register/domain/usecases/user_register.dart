@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
+import '../../../login/domain/entities/login.dart';
 
 import '../../../../core/errors/failures.dart';
-import '../entities/register.dart';
 import '../repositories/i_register_repository.dart';
 
 class UserRegister {
-  final IRegisterReposity reposity;
+  final IRegisterReposity repository;
 
-  UserRegister(this.reposity);
+  UserRegister(this.repository);
 
-  Future<Either<Failure, Register>> call({
+  Future<Either<Failure, Login>> call({
     required String username,
     String? email,
     String? address,
@@ -20,7 +20,7 @@ class UserRegister {
     String? birthDate,
     required String password,
   }) async {
-    return await reposity.userRegister(
+    return await repository.userRegister(
         username: username,
         email: email,
         address: address,

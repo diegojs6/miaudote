@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failures.dart';
-import '../entities/register.dart';
+import '../../../login/domain/entities/login.dart';
 
 abstract class IRegisterReposity {
-  Future<Either<Failure, Register>> userRegister({
+  Future<Either<Failure, Login>> userRegister({
     required String username,
     String? email,
     String? address,

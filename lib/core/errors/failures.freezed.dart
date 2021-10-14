@@ -31,6 +31,14 @@ class _$FailureTearOff {
   AccountAsUsedFailure accountAsUsedFailure() {
     return const AccountAsUsedFailure();
   }
+
+  ConflictFailure conflictFailure() {
+    return const ConflictFailure();
+  }
+
+  CacheFailure cacheException() {
+    return const CacheFailure();
+  }
 }
 
 /// @nodoc
@@ -44,6 +52,8 @@ mixin _$Failure {
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
     required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +62,8 @@ mixin _$Failure {
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
     TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +73,8 @@ mixin _$Failure {
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
     required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +83,8 @@ mixin _$Failure {
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
     TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,6 +148,8 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
     required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
   }) {
     return serverFailure();
   }
@@ -143,6 +161,8 @@ class _$ServerFailure extends ServerFailure {
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
     TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -158,6 +178,8 @@ class _$ServerFailure extends ServerFailure {
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
     required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
   }) {
     return serverFailure(this);
   }
@@ -169,6 +191,8 @@ class _$ServerFailure extends ServerFailure {
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
     TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -226,6 +250,8 @@ class _$NetworkFailure extends NetworkFailure {
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
     required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
   }) {
     return networkFailure();
   }
@@ -237,6 +263,8 @@ class _$NetworkFailure extends NetworkFailure {
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
     TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -252,6 +280,8 @@ class _$NetworkFailure extends NetworkFailure {
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
     required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
   }) {
     return networkFailure(this);
   }
@@ -263,6 +293,8 @@ class _$NetworkFailure extends NetworkFailure {
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
     TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -321,6 +353,8 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
     required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
   }) {
     return invalidInputFailure();
   }
@@ -332,6 +366,8 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
     TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (invalidInputFailure != null) {
@@ -347,6 +383,8 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
     required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
   }) {
     return invalidInputFailure(this);
   }
@@ -358,6 +396,8 @@ class _$InvalidInputFailure extends InvalidInputFailure {
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
     TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
     required TResult orElse(),
   }) {
     if (invalidInputFailure != null) {
@@ -416,6 +456,8 @@ class _$AccountAsUsedFailure extends AccountAsUsedFailure {
     required TResult Function() networkFailure,
     required TResult Function() invalidInputFailure,
     required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
   }) {
     return accountAsUsedFailure();
   }
@@ -427,6 +469,8 @@ class _$AccountAsUsedFailure extends AccountAsUsedFailure {
     TResult Function()? networkFailure,
     TResult Function()? invalidInputFailure,
     TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (accountAsUsedFailure != null) {
@@ -442,6 +486,8 @@ class _$AccountAsUsedFailure extends AccountAsUsedFailure {
     required TResult Function(NetworkFailure value) networkFailure,
     required TResult Function(InvalidInputFailure value) invalidInputFailure,
     required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
   }) {
     return accountAsUsedFailure(this);
   }
@@ -453,6 +499,8 @@ class _$AccountAsUsedFailure extends AccountAsUsedFailure {
     TResult Function(NetworkFailure value)? networkFailure,
     TResult Function(InvalidInputFailure value)? invalidInputFailure,
     TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
     required TResult orElse(),
   }) {
     if (accountAsUsedFailure != null) {
@@ -465,4 +513,208 @@ class _$AccountAsUsedFailure extends AccountAsUsedFailure {
 abstract class AccountAsUsedFailure extends Failure {
   const factory AccountAsUsedFailure() = _$AccountAsUsedFailure;
   const AccountAsUsedFailure._() : super._();
+}
+
+/// @nodoc
+abstract class $ConflictFailureCopyWith<$Res> {
+  factory $ConflictFailureCopyWith(
+          ConflictFailure value, $Res Function(ConflictFailure) then) =
+      _$ConflictFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ConflictFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
+    implements $ConflictFailureCopyWith<$Res> {
+  _$ConflictFailureCopyWithImpl(
+      ConflictFailure _value, $Res Function(ConflictFailure) _then)
+      : super(_value, (v) => _then(v as ConflictFailure));
+
+  @override
+  ConflictFailure get _value => super._value as ConflictFailure;
+}
+
+/// @nodoc
+
+class _$ConflictFailure extends ConflictFailure {
+  const _$ConflictFailure() : super._();
+
+  @override
+  String toString() {
+    return 'Failure.conflictFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ConflictFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverFailure,
+    required TResult Function() networkFailure,
+    required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
+  }) {
+    return conflictFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? networkFailure,
+    TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
+    required TResult orElse(),
+  }) {
+    if (conflictFailure != null) {
+      return conflictFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(NetworkFailure value) networkFailure,
+    required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
+  }) {
+    return conflictFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
+    required TResult orElse(),
+  }) {
+    if (conflictFailure != null) {
+      return conflictFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConflictFailure extends Failure {
+  const factory ConflictFailure() = _$ConflictFailure;
+  const ConflictFailure._() : super._();
+}
+
+/// @nodoc
+abstract class $CacheFailureCopyWith<$Res> {
+  factory $CacheFailureCopyWith(
+          CacheFailure value, $Res Function(CacheFailure) then) =
+      _$CacheFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CacheFailureCopyWithImpl<$Res> extends _$FailureCopyWithImpl<$Res>
+    implements $CacheFailureCopyWith<$Res> {
+  _$CacheFailureCopyWithImpl(
+      CacheFailure _value, $Res Function(CacheFailure) _then)
+      : super(_value, (v) => _then(v as CacheFailure));
+
+  @override
+  CacheFailure get _value => super._value as CacheFailure;
+}
+
+/// @nodoc
+
+class _$CacheFailure extends CacheFailure {
+  const _$CacheFailure() : super._();
+
+  @override
+  String toString() {
+    return 'Failure.cacheException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is CacheFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverFailure,
+    required TResult Function() networkFailure,
+    required TResult Function() invalidInputFailure,
+    required TResult Function() accountAsUsedFailure,
+    required TResult Function() conflictFailure,
+    required TResult Function() cacheException,
+  }) {
+    return cacheException();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? networkFailure,
+    TResult Function()? invalidInputFailure,
+    TResult Function()? accountAsUsedFailure,
+    TResult Function()? conflictFailure,
+    TResult Function()? cacheException,
+    required TResult orElse(),
+  }) {
+    if (cacheException != null) {
+      return cacheException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(NetworkFailure value) networkFailure,
+    required TResult Function(InvalidInputFailure value) invalidInputFailure,
+    required TResult Function(AccountAsUsedFailure value) accountAsUsedFailure,
+    required TResult Function(ConflictFailure value) conflictFailure,
+    required TResult Function(CacheFailure value) cacheException,
+  }) {
+    return cacheException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(InvalidInputFailure value)? invalidInputFailure,
+    TResult Function(AccountAsUsedFailure value)? accountAsUsedFailure,
+    TResult Function(ConflictFailure value)? conflictFailure,
+    TResult Function(CacheFailure value)? cacheException,
+    required TResult orElse(),
+  }) {
+    if (cacheException != null) {
+      return cacheException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CacheFailure extends Failure {
+  const factory CacheFailure() = _$CacheFailure;
+  const CacheFailure._() : super._();
 }

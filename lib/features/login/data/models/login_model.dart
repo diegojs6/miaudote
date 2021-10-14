@@ -4,34 +4,30 @@ import 'package:miaudote/features/login/domain/entities/login.dart';
 class LoginModel extends Equatable {
   final String? username;
   final String? email;
-  final String? sessionToken;
+  final String? objectId;
 
-  LoginModel({this.username, this.email, this.sessionToken});
+  LoginModel({this.username, this.email, this.objectId});
 
   @override
-  List<Object?> get props => [username, email, sessionToken];
+  List<Object?> get props => [username, email, objectId];
 
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         username: json['username'],
         email: json['email'],
-        sessionToken: json['sessionToken'],
+        objectId: json['objectId'],
       );
 
-  Map<String, dynamic> toJson(LoginModel loginModel) => {
-        username!: 'username',
-        email!: 'email',
-        sessionToken!: 'sessionToken'
-      };
+  Map<String, dynamic> toJson(LoginModel loginModel) => {username!: 'username', email!: 'email', objectId!: 'objectId'};
 
   factory LoginModel.fromEntity(Login entity) => LoginModel(
-    username: entity.username,
-    email: entity.email,
-    sessionToken: entity.sessionToken,
-  );
+        username: entity.username,
+        email: entity.email,
+        objectId: entity.objectId,
+      );
 
   Login toEntity() => Login(
-    username: username,
-    email: email,
-    sessionToken: sessionToken,
-  );
+        username: username,
+        email: email,
+        objectId: objectId,
+      );
 }

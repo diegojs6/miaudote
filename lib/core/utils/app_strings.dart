@@ -14,9 +14,12 @@ class AppStrings {
   static const ong = 'Ong';
   static const account = 'Conta';
 
-  //! Login Strings
+  //! Login && Register Strings
   static const loginErrorInvalidInput = 'Usuario ou senha invalidos\n Tente Novamente!';
   static const loginHeaderApp = 'Bem vindo ao';
   static const loginTextButton = 'Login';
+  static const loginTextButtonLoading = 'Verificando';
+  static const registerTextButtonRegistering = 'Criando conta';
+  static const registerTextButtonRegister = 'OK';
   static const loginSucess = 'Seja bem vindo!';
 }

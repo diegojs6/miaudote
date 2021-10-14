@@ -1,9 +1,10 @@
-import 'package:miaudote/core/errors/exceptions.dart';
-import 'package:miaudote/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:miaudote/features/register/data/datasources/register_remote_data_source.dart';
-import 'package:miaudote/features/register/domain/entities/register.dart';
-import 'package:miaudote/features/register/domain/repositories/i_register_repository.dart';
+
+import '../../../../core/errors/exceptions.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../login/domain/entities/login.dart';
+import '../../domain/repositories/i_register_repository.dart';
+import '../datasources/register_remote_data_source.dart';
 
 class RegisterRepository implements IRegisterReposity {
   final IRegisterRemoteDataSource remoteDataSource;
@@ -11,7 +12,7 @@ class RegisterRepository implements IRegisterReposity {
   RegisterRepository(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, Register>> userRegister({
+  Future<Either<Failure, Login>> userRegister({
     required String username,
     String? email,
     String? address,

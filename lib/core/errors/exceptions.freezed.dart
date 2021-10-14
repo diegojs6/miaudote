@@ -31,6 +31,14 @@ class _$CustomExceptionTearOff {
   AccountAsUsedException accountAsUsedException() {
     return const AccountAsUsedException();
   }
+
+  ConflictException conflictException() {
+    return const ConflictException();
+  }
+
+  CacheException cacheException() {
+    return const CacheException();
+  }
 }
 
 /// @nodoc
@@ -44,6 +52,8 @@ mixin _$CustomException {
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
     required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +62,8 @@ mixin _$CustomException {
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
     TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +75,8 @@ mixin _$CustomException {
         invalidInputException,
     required TResult Function(AccountAsUsedException value)
         accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +85,8 @@ mixin _$CustomException {
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
     TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,6 +153,8 @@ class _$ServerException extends ServerException {
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
     required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
   }) {
     return serverException();
   }
@@ -148,6 +166,8 @@ class _$ServerException extends ServerException {
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
     TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (serverException != null) {
@@ -165,6 +185,8 @@ class _$ServerException extends ServerException {
         invalidInputException,
     required TResult Function(AccountAsUsedException value)
         accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
   }) {
     return serverException(this);
   }
@@ -176,6 +198,8 @@ class _$ServerException extends ServerException {
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
     TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
     required TResult orElse(),
   }) {
     if (serverException != null) {
@@ -234,6 +258,8 @@ class _$NetworkException extends NetworkException {
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
     required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
   }) {
     return networkException();
   }
@@ -245,6 +271,8 @@ class _$NetworkException extends NetworkException {
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
     TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (networkException != null) {
@@ -262,6 +290,8 @@ class _$NetworkException extends NetworkException {
         invalidInputException,
     required TResult Function(AccountAsUsedException value)
         accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
   }) {
     return networkException(this);
   }
@@ -273,6 +303,8 @@ class _$NetworkException extends NetworkException {
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
     TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
     required TResult orElse(),
   }) {
     if (networkException != null) {
@@ -331,6 +363,8 @@ class _$InvalidInputException extends InvalidInputException {
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
     required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
   }) {
     return invalidInputException();
   }
@@ -342,6 +376,8 @@ class _$InvalidInputException extends InvalidInputException {
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
     TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (invalidInputException != null) {
@@ -359,6 +395,8 @@ class _$InvalidInputException extends InvalidInputException {
         invalidInputException,
     required TResult Function(AccountAsUsedException value)
         accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
   }) {
     return invalidInputException(this);
   }
@@ -370,6 +408,8 @@ class _$InvalidInputException extends InvalidInputException {
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
     TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
     required TResult orElse(),
   }) {
     if (invalidInputException != null) {
@@ -428,6 +468,8 @@ class _$AccountAsUsedException extends AccountAsUsedException {
     required TResult Function() networkException,
     required TResult Function() invalidInputException,
     required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
   }) {
     return accountAsUsedException();
   }
@@ -439,6 +481,8 @@ class _$AccountAsUsedException extends AccountAsUsedException {
     TResult Function()? networkException,
     TResult Function()? invalidInputException,
     TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
     required TResult orElse(),
   }) {
     if (accountAsUsedException != null) {
@@ -456,6 +500,8 @@ class _$AccountAsUsedException extends AccountAsUsedException {
         invalidInputException,
     required TResult Function(AccountAsUsedException value)
         accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
   }) {
     return accountAsUsedException(this);
   }
@@ -467,6 +513,8 @@ class _$AccountAsUsedException extends AccountAsUsedException {
     TResult Function(NetworkException value)? networkException,
     TResult Function(InvalidInputException value)? invalidInputException,
     TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
     required TResult orElse(),
   }) {
     if (accountAsUsedException != null) {
@@ -479,4 +527,214 @@ class _$AccountAsUsedException extends AccountAsUsedException {
 abstract class AccountAsUsedException extends CustomException {
   const factory AccountAsUsedException() = _$AccountAsUsedException;
   const AccountAsUsedException._() : super._();
+}
+
+/// @nodoc
+abstract class $ConflictExceptionCopyWith<$Res> {
+  factory $ConflictExceptionCopyWith(
+          ConflictException value, $Res Function(ConflictException) then) =
+      _$ConflictExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ConflictExceptionCopyWithImpl<$Res>
+    extends _$CustomExceptionCopyWithImpl<$Res>
+    implements $ConflictExceptionCopyWith<$Res> {
+  _$ConflictExceptionCopyWithImpl(
+      ConflictException _value, $Res Function(ConflictException) _then)
+      : super(_value, (v) => _then(v as ConflictException));
+
+  @override
+  ConflictException get _value => super._value as ConflictException;
+}
+
+/// @nodoc
+
+class _$ConflictException extends ConflictException {
+  const _$ConflictException() : super._();
+
+  @override
+  String toString() {
+    return 'CustomException.conflictException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ConflictException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverException,
+    required TResult Function() networkException,
+    required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
+  }) {
+    return conflictException();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverException,
+    TResult Function()? networkException,
+    TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
+    required TResult orElse(),
+  }) {
+    if (conflictException != null) {
+      return conflictException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerException value) serverException,
+    required TResult Function(NetworkException value) networkException,
+    required TResult Function(InvalidInputException value)
+        invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
+  }) {
+    return conflictException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerException value)? serverException,
+    TResult Function(NetworkException value)? networkException,
+    TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
+    required TResult orElse(),
+  }) {
+    if (conflictException != null) {
+      return conflictException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConflictException extends CustomException {
+  const factory ConflictException() = _$ConflictException;
+  const ConflictException._() : super._();
+}
+
+/// @nodoc
+abstract class $CacheExceptionCopyWith<$Res> {
+  factory $CacheExceptionCopyWith(
+          CacheException value, $Res Function(CacheException) then) =
+      _$CacheExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CacheExceptionCopyWithImpl<$Res>
+    extends _$CustomExceptionCopyWithImpl<$Res>
+    implements $CacheExceptionCopyWith<$Res> {
+  _$CacheExceptionCopyWithImpl(
+      CacheException _value, $Res Function(CacheException) _then)
+      : super(_value, (v) => _then(v as CacheException));
+
+  @override
+  CacheException get _value => super._value as CacheException;
+}
+
+/// @nodoc
+
+class _$CacheException extends CacheException {
+  const _$CacheException() : super._();
+
+  @override
+  String toString() {
+    return 'CustomException.cacheException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is CacheException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverException,
+    required TResult Function() networkException,
+    required TResult Function() invalidInputException,
+    required TResult Function() accountAsUsedException,
+    required TResult Function() conflictException,
+    required TResult Function() cacheException,
+  }) {
+    return cacheException();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverException,
+    TResult Function()? networkException,
+    TResult Function()? invalidInputException,
+    TResult Function()? accountAsUsedException,
+    TResult Function()? conflictException,
+    TResult Function()? cacheException,
+    required TResult orElse(),
+  }) {
+    if (cacheException != null) {
+      return cacheException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerException value) serverException,
+    required TResult Function(NetworkException value) networkException,
+    required TResult Function(InvalidInputException value)
+        invalidInputException,
+    required TResult Function(AccountAsUsedException value)
+        accountAsUsedException,
+    required TResult Function(ConflictException value) conflictException,
+    required TResult Function(CacheException value) cacheException,
+  }) {
+    return cacheException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerException value)? serverException,
+    TResult Function(NetworkException value)? networkException,
+    TResult Function(InvalidInputException value)? invalidInputException,
+    TResult Function(AccountAsUsedException value)? accountAsUsedException,
+    TResult Function(ConflictException value)? conflictException,
+    TResult Function(CacheException value)? cacheException,
+    required TResult orElse(),
+  }) {
+    if (cacheException != null) {
+      return cacheException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CacheException extends CustomException {
+  const factory CacheException() = _$CacheException;
+  const CacheException._() : super._();
 }

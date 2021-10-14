@@ -9,7 +9,7 @@ import 'package:miaudote/features/login/data/models/login_model.dart';
 
 abstract class ILoginRemoteDataSource {
   Future<LoginModel> getLogin({required String username, required String password});
-  Future<LoginModel> getToken({required String sessionToken});
+  Future<String> getToken({String? sessionToken});
 }
 
 class LoginRemoteDataSource implements ILoginRemoteDataSource {
@@ -44,13 +44,13 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
   }
 
   @override
-  Future<LoginModel> getToken({required String sessionToken}) async {
+  Future<String> getToken({String? sessionToken}) async {
     if (await networkInfo.isConnected) {
       final response = await client
           .get(urlCreator.create(endpoint: Endpoints.getCurrentUser), headers: {'X-Parse-Session-Token': sessionToken});
       switch (response.statusCode) {
         case 200:
-          return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+          return jsonDecode(utf8.decode(response.bodyBytes));
         case 404:
         case 101:
           throw InvalidInputException();

@@ -5,10 +5,10 @@ import '../../../../core/api/endpoints.dart';
 import '../../../../core/api/url_creator.dart';
 import '../../../../core/device/network_info.dart';
 import '../../../../core/errors/exceptions.dart';
-import '../models/register_model.dart';
+import '../../../login/data/models/login_model.dart';
 
 abstract class IRegisterRemoteDataSource {
-  Future<RegisterModel> userRegister({
+  Future<LoginModel> userRegister({
     required String username,
     String? email,
     String? address,
@@ -29,7 +29,7 @@ class RegisterRemoteDataSource implements IRegisterRemoteDataSource {
   RegisterRemoteDataSource(this.client, this.networkInfo, this.urlCreator);
 
   @override
-  Future<RegisterModel> userRegister({
+  Future<LoginModel> userRegister({
     required String username,
     String? email,
     String? address,
@@ -56,7 +56,7 @@ class RegisterRemoteDataSource implements IRegisterRemoteDataSource {
       final response = await client.post(urlCreator.create(endpoint: Endpoints.register), jsonEncode(body));
       switch (response.statusCode) {
         case 200:
-          return RegisterModel.fromjson(jsonDecode(utf8.decode(response.bodyBytes)));
+          return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
         case 208:
           throw AccountAsUsedException();
         default:
