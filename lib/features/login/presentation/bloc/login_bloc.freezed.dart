@@ -27,7 +27,7 @@ class _$LoginEventTearOff {
     );
   }
 
-  _LoginComplete loginComplete({required Login user}) {
+  _LoginComplete loginComplete({required Customer user}) {
     return _LoginComplete(
       user: user,
     );
@@ -45,7 +45,7 @@ class _$LoginEventTearOff {
 
   _Register register(
       {required String username,
-      String? email,
+      required String? email,
       String? address,
       String? fullName,
       String? lat,
@@ -76,7 +76,7 @@ mixin _$LoginEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -96,7 +96,7 @@ mixin _$LoginEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -191,7 +191,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -214,7 +214,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -348,7 +348,7 @@ class _$Load implements Load {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -371,7 +371,7 @@ class _$Load implements Load {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -439,7 +439,7 @@ abstract class _$LoginCompleteCopyWith<$Res> {
   factory _$LoginCompleteCopyWith(
           _LoginComplete value, $Res Function(_LoginComplete) then) =
       __$LoginCompleteCopyWithImpl<$Res>;
-  $Res call({Login user});
+  $Res call({Customer user});
 }
 
 /// @nodoc
@@ -460,7 +460,7 @@ class __$LoginCompleteCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Login,
+              as Customer,
     ));
   }
 }
@@ -471,7 +471,7 @@ class _$_LoginComplete implements _LoginComplete {
   const _$_LoginComplete({required this.user});
 
   @override
-  final Login user;
+  final Customer user;
 
   @override
   String toString() {
@@ -500,7 +500,7 @@ class _$_LoginComplete implements _LoginComplete {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -523,7 +523,7 @@ class _$_LoginComplete implements _LoginComplete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -577,9 +577,9 @@ class _$_LoginComplete implements _LoginComplete {
 }
 
 abstract class _LoginComplete implements LoginEvent {
-  const factory _LoginComplete({required Login user}) = _$_LoginComplete;
+  const factory _LoginComplete({required Customer user}) = _$_LoginComplete;
 
-  Login get user => throw _privateConstructorUsedError;
+  Customer get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoginCompleteCopyWith<_LoginComplete> get copyWith =>
       throw _privateConstructorUsedError;
@@ -624,7 +624,7 @@ class _$_Logout implements _Logout {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -647,7 +647,7 @@ class _$_Logout implements _Logout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -768,7 +768,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -791,7 +791,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -935,7 +935,7 @@ class __$RegisterCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 class _$_Register implements _Register {
   const _$_Register(
       {required this.username,
-      this.email,
+      required this.email,
       this.address,
       this.fullName,
       this.lat,
@@ -1021,7 +1021,7 @@ class _$_Register implements _Register {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String username, String password) load,
-    required TResult Function(Login user) loginComplete,
+    required TResult Function(Customer user) loginComplete,
     required TResult Function() logout,
     required TResult Function(String message) error,
     required TResult Function(
@@ -1045,7 +1045,7 @@ class _$_Register implements _Register {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password)? load,
-    TResult Function(Login user)? loginComplete,
+    TResult Function(Customer user)? loginComplete,
     TResult Function()? logout,
     TResult Function(String message)? error,
     TResult Function(
@@ -1102,7 +1102,7 @@ class _$_Register implements _Register {
 abstract class _Register implements LoginEvent {
   const factory _Register(
       {required String username,
-      String? email,
+      required String? email,
       String? address,
       String? fullName,
       String? lat,
@@ -1137,9 +1137,9 @@ class _$LoginStateTearOff {
     return const _Loading();
   }
 
-  _Completed completed({Login? user}) {
+  _Completed completed({Customer? customer}) {
     return _Completed(
-      user: user,
+      customer: customer,
     );
   }
 
@@ -1159,7 +1159,7 @@ mixin _$LoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Login? user) completed,
+    required TResult Function(Customer? customer) completed,
     required TResult Function(String? message) loginError,
   }) =>
       throw _privateConstructorUsedError;
@@ -1167,7 +1167,7 @@ mixin _$LoginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Login? user)? completed,
+    TResult Function(Customer? customer)? completed,
     TResult Function(String? message)? loginError,
     required TResult orElse(),
   }) =>
@@ -1246,7 +1246,7 @@ class _$_Initial extends _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Login? user) completed,
+    required TResult Function(Customer? customer) completed,
     required TResult Function(String? message) loginError,
   }) {
     return initial();
@@ -1257,7 +1257,7 @@ class _$_Initial extends _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Login? user)? completed,
+    TResult Function(Customer? customer)? completed,
     TResult Function(String? message)? loginError,
     required TResult orElse(),
   }) {
@@ -1338,7 +1338,7 @@ class _$_Loading extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Login? user) completed,
+    required TResult Function(Customer? customer) completed,
     required TResult Function(String? message) loginError,
   }) {
     return loading();
@@ -1349,7 +1349,7 @@ class _$_Loading extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Login? user)? completed,
+    TResult Function(Customer? customer)? completed,
     TResult Function(String? message)? loginError,
     required TResult orElse(),
   }) {
@@ -1396,7 +1396,7 @@ abstract class _$CompletedCopyWith<$Res> {
   factory _$CompletedCopyWith(
           _Completed value, $Res Function(_Completed) then) =
       __$CompletedCopyWithImpl<$Res>;
-  $Res call({Login? user});
+  $Res call({Customer? customer});
 }
 
 /// @nodoc
@@ -1410,13 +1410,13 @@ class __$CompletedCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? user = freezed,
+    Object? customer = freezed,
   }) {
     return _then(_Completed(
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as Login?,
+      customer: customer == freezed
+          ? _value.customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as Customer?,
     ));
   }
 }
@@ -1424,27 +1424,28 @@ class __$CompletedCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Completed extends _Completed {
-  const _$_Completed({this.user}) : super._();
+  const _$_Completed({this.customer}) : super._();
 
   @override
-  final Login? user;
+  final Customer? customer;
 
   @override
   String toString() {
-    return 'LoginState.completed(user: $user)';
+    return 'LoginState.completed(customer: $customer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Completed &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+            (identical(other.customer, customer) ||
+                const DeepCollectionEquality()
+                    .equals(other.customer, customer)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(customer);
 
   @JsonKey(ignore: true)
   @override
@@ -1456,10 +1457,10 @@ class _$_Completed extends _Completed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Login? user) completed,
+    required TResult Function(Customer? customer) completed,
     required TResult Function(String? message) loginError,
   }) {
-    return completed(user);
+    return completed(customer);
   }
 
   @override
@@ -1467,12 +1468,12 @@ class _$_Completed extends _Completed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Login? user)? completed,
+    TResult Function(Customer? customer)? completed,
     TResult Function(String? message)? loginError,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(user);
+      return completed(customer);
     }
     return orElse();
   }
@@ -1505,10 +1506,10 @@ class _$_Completed extends _Completed {
 }
 
 abstract class _Completed extends LoginState {
-  const factory _Completed({Login? user}) = _$_Completed;
+  const factory _Completed({Customer? customer}) = _$_Completed;
   const _Completed._() : super._();
 
-  Login? get user => throw _privateConstructorUsedError;
+  Customer? get customer => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$CompletedCopyWith<_Completed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1580,7 +1581,7 @@ class _$_LoginError extends _LoginError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Login? user) completed,
+    required TResult Function(Customer? customer) completed,
     required TResult Function(String? message) loginError,
   }) {
     return loginError(message);
@@ -1591,7 +1592,7 @@ class _$_LoginError extends _LoginError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Login? user)? completed,
+    TResult Function(Customer? customer)? completed,
     TResult Function(String? message)? loginError,
     required TResult orElse(),
   }) {

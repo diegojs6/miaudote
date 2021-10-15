@@ -2,10 +2,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:miaudote/features/register/data/datasources/register_remote_data_source.dart';
-import 'package:miaudote/features/register/data/repositories/register_repository.dart';
-import 'package:miaudote/features/register/domain/repositories/i_register_repository.dart';
-import 'package:miaudote/features/register/domain/usecases/user_register.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,6 +25,7 @@ import 'features/login/domain/usecases/get_current_user.dart';
 import 'features/login/domain/usecases/get_login.dart';
 import 'features/login/domain/usecases/get_refresh_token.dart';
 import 'features/login/domain/usecases/get_sign_out.dart';
+import 'features/login/domain/usecases/user_register.dart';
 import 'features/login/presentation/bloc/login_bloc.dart';
 
 final sl = GetIt.instance;
@@ -53,14 +50,6 @@ Future<void> init() async {
   final sharedPrefs = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPrefs);
 
-  //! Register
-
-  sl.registerLazySingleton<IRegisterRemoteDataSource>(() => RegisterRemoteDataSource(sl(), sl(), sl()));
-
-  sl.registerLazySingleton<IRegisterReposity>(() => RegisterRepository(sl()));
-
-  sl.registerLazySingleton(() => UserRegister(sl()));
-
   //! Feature login
   //* Bloc
   sl.registerLazySingleton(() => LoginBloc(
@@ -77,6 +66,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetRefreshToken(sl()));
   sl.registerLazySingleton(() => SignOut(sl()));
   sl.registerLazySingleton(() => GetAuthInfo(sl()));
+  sl.registerLazySingleton(() => UserRegister(sl()));
 
   //* Repository
   sl.registerLazySingleton<ILoginRepository>(() => LoginRepository(sl(), sl()));

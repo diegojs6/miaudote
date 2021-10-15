@@ -1,4 +1,4 @@
-import '../entities/login.dart';
+import '../../../customer/domain/entities/customer.dart';
 import '../repositories/i_login_repository.dart';
 
 class GetAuthInfo {
@@ -6,7 +6,8 @@ class GetAuthInfo {
 
   GetAuthInfo(this.repository);
 
-  Future<Login?> call() async {
+  Future<Customer?> call() async {
+    print(repository.getAuthInfo().toString());
     return await repository.getAuthInfo();
   }
 }

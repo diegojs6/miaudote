@@ -5,7 +5,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/styled_button.dart';
 import '../../../../core/widgets/styled_text_form_field.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
-import '../../../login/presentation/bloc/login_bloc.dart';
+import '../bloc/login_bloc.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

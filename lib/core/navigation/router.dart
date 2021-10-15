@@ -7,7 +7,7 @@ import '../../features/home/presentation/screen/home_screen.dart';
 import '../../features/home/presentation/screen/splash_screen.dart';
 import '../../features/login/presentation/bloc/login_bloc.dart';
 import '../../features/login/presentation/screen/login_screen.dart';
-import '../../features/register/presentation/screens/register_screen.dart';
+import '../../features/login/presentation/screen/register_screen.dart';
 import '../../injection_container.dart';
 import 'routes.dart';
 

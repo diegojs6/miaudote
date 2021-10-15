@@ -11,6 +11,7 @@ class Customer extends Equatable {
   final num? contact;
   final String? birthDate;
   final String? objectId;
+  final String? sessionToken;
 
   Customer({
     this.username,
@@ -23,10 +24,11 @@ class Customer extends Equatable {
     this.contact,
     this.birthDate,
     this.objectId,
+    this.sessionToken,
   });
 
   @override
   List<Object?> get props {
-    return [username, email, emailVerified, address, fullName, lat, long, contact, birthDate, objectId];
+    return [username, email, emailVerified, address, fullName, lat, long, contact, birthDate, objectId, sessionToken];
   }
 }

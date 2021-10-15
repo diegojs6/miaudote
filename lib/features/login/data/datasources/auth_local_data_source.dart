@@ -1,13 +1,12 @@
 import 'dart:convert';
 
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../customer/data/models/customer_model.dart';
 import '../auth_api_consts.dart';
-import '../models/login_model.dart';
 
 abstract class IAuthLocalDataSource {
-  Future<LoginModel?> getAuthInfo();
+  Future<CustomerModel?> getAuthInfo();
   Future<String?> getToken();
   Future<String?> getRefreshToken();
   Future<void> clearAuthData();
@@ -25,25 +24,27 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
   }
 
   @override
-  Future<LoginModel?> getAuthInfo() async {
+  Future<CustomerModel?> getAuthInfo() async {
     var data = preferences.getString(AuthApiConsts.authDataKey);
-    return data != null ? LoginModel.fromJson(JwtDecoder.decode(json.decode(data)['token'])) : null;
+    Map<String, dynamic> map = jsonDecode(data ?? '');
+    return data != null ? CustomerModel.fromJson(map) : null;
   }
 
   @override
   Future<String?> getToken() async {
     var data = preferences.getString(AuthApiConsts.authDataKey);
-    return data != null ? json.decode(data)['token'] : null;
+    return data != null ? json.decode(data)['sessionToken'] : null;
   }
 
   @override
   Future<String?> getRefreshToken() async {
     var data = preferences.getString(AuthApiConsts.authDataKey);
-    return data != null ? json.decode(data)['refreshToken'] : null;
+    return data != null ? json.decode(data)['sessionToken'] : null;
   }
 
   @override
   Future<void> setAuthData(String authData) async {
     await preferences.setString(AuthApiConsts.authDataKey, authData);
   }
+  //TODO: nao esta setando um authData, verificar se unificar tudo no mesmo model de login e register
 }

@@ -33,6 +33,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) : super(_Initial());
 
   @override
+  void onTransition(Transition<AuthEvent, AuthState> transition) {
+    print('Transition from ${transition.currentState} to ${transition.nextState}');
+    super.onTransition(transition);
+  }
+
+  @override
+  void onEvent(AuthEvent event) {
+    print(event);
+    super.onEvent(event);
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    print(error);
+    super.onError(error, stackTrace);
+  }
+
+  @override
+  Future<void> close() async {
+    print('Login bloc closed');
+    super.close();
+  }
+
+  @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
   ) async* {

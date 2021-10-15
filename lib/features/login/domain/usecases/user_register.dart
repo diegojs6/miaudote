@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
-import '../../../login/domain/entities/login.dart';
 
 import '../../../../core/errors/failures.dart';
-import '../repositories/i_register_repository.dart';
+import '../../../customer/domain/entities/customer.dart';
+import '../repositories/i_login_repository.dart';
 
 class UserRegister {
-  final IRegisterReposity repository;
+  final ILoginRepository repository;
 
   UserRegister(this.repository);
 
-  Future<Either<Failure, Login>> call({
+  Future<Either<Failure, Customer>> call({
     required String username,
     String? email,
     String? address,

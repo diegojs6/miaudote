@@ -18,6 +18,7 @@ CustomerModel _$CustomerModelFromJson(Map<String, dynamic> json) {
     contact: json['contact'] as num?,
     birthDate: json['birthDate'] as String?,
     objectId: json['objectId'] as String?,
+    sessionToken: json['sessionToken'] as String?,
   );
 }
 
@@ -33,4 +34,5 @@ Map<String, dynamic> _$CustomerModelToJson(CustomerModel instance) =>
       'contact': instance.contact,
       'birthDate': instance.birthDate,
       'objectId': instance.objectId,
+      'sessionToken': instance.sessionToken,
     };

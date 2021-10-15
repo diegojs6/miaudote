@@ -2,15 +2,15 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:miaudote/features/register/domain/usecases/user_register.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
-import '../../domain/entities/login.dart';
+import '../../../customer/domain/entities/customer.dart';
 import '../../domain/usecases/get_auth_info.dart';
 import '../../domain/usecases/get_login.dart';
 import '../../domain/usecases/get_sign_out.dart';
+import '../../domain/usecases/user_register.dart';
 
 part 'login_bloc.freezed.dart';
 part 'login_event.dart';
@@ -45,12 +45,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           },
           (login) {
             authBloc.add(AuthEvent.loggedIn());
-            return LoginState.completed(user: login);
+            return LoginState.completed(customer: login);
           },
         );
       },
       loginComplete: (authInfo) async* {
-        yield LoginState.completed(user: authInfo);
+        yield LoginState.completed(customer: authInfo);
         authBloc.add(const AuthEvent.loggedIn());
       },
       logout: () async* {
@@ -89,7 +89,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           (failure) => LoginState.loginError(message: _mapLoginFailureToString(failure)),
           (register) {
             authBloc.add(const AuthEvent.loggedIn());
-            return LoginState.completed(user: register);
+            return LoginState.completed(customer: register);
           },
         );
         yield nextState;

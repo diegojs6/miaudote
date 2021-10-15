@@ -17,10 +17,23 @@ class CustomerModel extends Equatable {
   final num? contact;
   final String? birthDate;
   final String? objectId;
+  final String? sessionToken;
 
   @override
   List<Object?> get props {
-    return [username, email, emailVerified, address, fullName, lat, long, contact, birthDate, objectId];
+    return [
+      username,
+      email,
+      emailVerified,
+      address,
+      fullName,
+      lat,
+      long,
+      contact,
+      birthDate,
+      objectId,
+      sessionToken,
+    ];
   }
 
   CustomerModel({
@@ -34,6 +47,7 @@ class CustomerModel extends Equatable {
     this.contact,
     this.birthDate,
     this.objectId,
+    this.sessionToken,
   });
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) => _$CustomerModelFromJson(json);
@@ -49,6 +63,8 @@ class CustomerModel extends Equatable {
         long: entity.long,
         contact: entity.contact,
         birthDate: entity.birthDate,
+        sessionToken: entity.sessionToken,
+        objectId: entity.objectId,
       );
 
   Customer toEntity() => Customer(
@@ -61,5 +77,7 @@ class CustomerModel extends Equatable {
         long: long,
         contact: contact,
         birthDate: birthDate,
+        sessionToken: sessionToken,
+        objectId: objectId,
       );
 }
