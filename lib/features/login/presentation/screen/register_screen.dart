@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           StyledTextFormField(
                             hintText: AppStrings.hintUsername,
                             controller: _usernameController,
-                            prefixIcon: Icon(MdiIcons.account),
+                            prefixIcon: Icon(MdiIcons.accountOutline),
                             validator: (value) =>
                                 value!.isEmpty ? AppStrings.registerErrorUsernameEmpty : validateUsername(value),
                           ),
@@ -85,7 +85,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           StyledTextFormField(
                             hintText: AppStrings.hintEmail,
                             controller: _emailController,
-                            prefixIcon: Icon(MdiIcons.email),
+                            prefixIcon: Icon(MdiIcons.emailOutline),
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) =>
                                 value!.isEmpty ? AppStrings.registerErrorEmailEmpty : validateEmail(value),
@@ -94,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           StyledTextFormField(
                             hintText: AppStrings.hintPassword,
                             controller: _passwordController,
-                            prefixIcon: Icon(MdiIcons.lock),
+                            prefixIcon: Icon(MdiIcons.lockOutline),
                             validator: (value) => value!.isEmpty && _passwordController.text.length < 6
                                 ? AppStrings.registerErrorPasswordEmpty
                                 : validatePassword(value),

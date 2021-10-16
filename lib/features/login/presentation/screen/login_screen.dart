@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       fillColor: Colors.transparent,
                       controller: _usernameController,
                       prefixIcon: Icon(
-                        MdiIcons.email,
+                        MdiIcons.emailOutline,
                         color: AppColors.neutralGrey,
                       ),
                       labelText: AppStrings.hintEmail,
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       fillColor: Colors.transparent,
                       controller: _passwordController,
                       prefixIcon: Icon(
-                        MdiIcons.lock,
+                        MdiIcons.lockOutline,
                         color: AppColors.neutralGrey,
                       ),
                       labelText: AppStrings.hintPassword,
