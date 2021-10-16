@@ -46,5 +46,4 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
   Future<void> setAuthData(String authData) async {
     await preferences.setString(AuthApiConsts.authDataKey, authData);
   }
-  //TODO: nao esta setando um authData, verificar se unificar tudo no mesmo model de login e register
 }
