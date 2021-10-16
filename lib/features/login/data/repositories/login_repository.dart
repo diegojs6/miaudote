@@ -20,8 +20,8 @@ class LoginRepository implements ILoginRepository {
   Future<Either<Failure, Customer>> getLogin(String username, String password) async {
     try {
       final response = await remoteDataSource.getLogin(username: username, password: password);
-      final entity = response.toEntity();
-      return Right(entity);
+      await localDataSource.setAuthData(response);
+      return Right(CustomerModel.fromJson((json.decode(response) as Map<String, dynamic>)).toEntity());
     } on NetworkException {
       return Left(NetworkFailure());
     } on ServerException {
@@ -95,7 +95,7 @@ class LoginRepository implements ILoginRepository {
         password: password,
       );
       await localDataSource.setAuthData(response);
-      return Right(CustomerModel.fromJson((json.decode(response) as Map)['sessionToken']).toEntity());
+      return Right(CustomerModel.fromJson((json.decode(response) as Map<String, dynamic>)).toEntity());
     } on ServerException {
       return Left(NetworkFailure());
     } on NetworkException {

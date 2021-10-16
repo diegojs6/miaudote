@@ -26,7 +26,8 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
   @override
   Future<CustomerModel?> getAuthInfo() async {
     var data = preferences.getString(AuthApiConsts.authDataKey);
-    Map<String, dynamic> map = jsonDecode(data ?? '');
+
+    Map<String, dynamic> map = data != null ? jsonDecode(data) : {};
     return data != null ? CustomerModel.fromJson(map) : null;
   }
 

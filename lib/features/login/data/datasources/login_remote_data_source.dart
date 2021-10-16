@@ -5,10 +5,9 @@ import 'package:miaudote/core/api/endpoints.dart';
 import 'package:miaudote/core/api/url_creator.dart';
 import 'package:miaudote/core/device/network_info.dart';
 import 'package:miaudote/core/errors/exceptions.dart';
-import 'package:miaudote/features/customer/data/models/customer_model.dart';
 
 abstract class ILoginRemoteDataSource {
-  Future<CustomerModel> getLogin({required String username, required String password});
+  Future<String> getLogin({required String username, required String password});
   Future<String> getToken({String? sessionToken});
   Future<String> userRegister({
     required String username,
@@ -31,7 +30,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
   LoginRemoteDataSource(this.client, this.networkInfo, this.urlCreator);
 
   @override
-  Future<CustomerModel> getLogin({required String username, required String password}) async {
+  Future<String> getLogin({required String username, required String password}) async {
     if (await networkInfo.isConnected) {
       final response = await client.get(
           urlCreator.create(endpoint: Endpoints.login, queryParameters: {
@@ -42,7 +41,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
 
       switch (response.statusCode) {
         case 200:
-          return CustomerModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+          return utf8.decode(response.bodyBytes);
         case 404:
         case 101:
           throw InvalidInputException();
