@@ -97,22 +97,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       fillColor: Colors.transparent,
                       controller: _usernameController,
                       prefixIcon: Icon(
-                        MdiIcons.email,
+                        MdiIcons.emailOutline,
                         color: AppColors.neutralGrey,
                       ),
                       labelText: AppStrings.hintEmail,
                       colorLabel: AppColors.neutralGrey,
+                      validator: (value) => value!.isEmpty ? AppStrings.registerErrorEmailEmpty : validateEmail(value),
                     ),
                     SizedBox(height: 8),
                     StyledTextFormField(
                       fillColor: Colors.transparent,
                       controller: _passwordController,
                       prefixIcon: Icon(
-                        MdiIcons.lock,
+                        MdiIcons.lockOutline,
                         color: AppColors.neutralGrey,
                       ),
                       labelText: AppStrings.hintPassword,
                       colorLabel: AppColors.neutralGrey,
+                      validator: (value) => value!.isEmpty && _passwordController.text.length < 6
+                          ? AppStrings.registerErrorPasswordEmpty
+                          : validatePassword(value),
                     ),
                     SizedBox(height: 8),
                     StyledButton(
@@ -132,7 +136,62 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                         }
                       },
-                    )
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 1,
+                          width: MediaQuery.of(context).size.width / 2.7,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.neutralGrey,
+                          ),
+                        ),
+                        Text(
+                          AppStrings.registerOr,
+                          style: GoogleFonts.poppins(color: AppColors.neutralGrey),
+                        ),
+                        Container(
+                          height: 1,
+                          width: MediaQuery.of(context).size.width / 2.7,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.neutralGrey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Center(
+                      child: GestureDetector(
+                        child: Text(
+                          AppStrings.loginForgotPassword,
+                          style: GoogleFonts.poppins(color: AppColors.primaryBlue),
+                        ),
+                        onTap: () {},
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppStrings.loginToRegister,
+                          style: GoogleFonts.poppins(color: AppColors.neutralGrey),
+                        ),
+                        SizedBox(width: 5),
+                        GestureDetector(
+                          child: Text(
+                            AppStrings.loginToRegisterEnter,
+                            style: GoogleFonts.poppins(color: AppColors.primaryBlue),
+                          ),
+                          onTap: () => Navigator.of(context).pushReplacementNamed(Routes.registerScreen),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 24),
                   ],
                 ),
               ),
@@ -141,5 +200,25 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       ),
     );
+  }
+
+  String? validateEmail(String value) {
+    String pattern = r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return AppStrings.registerErrorEmailInvalid;
+    else
+      return null;
+  }
+
+  String? validatePassword(String value) {
+    String pattern = r"(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return AppStrings.registerErrorPasswordInvalid;
+    else
+      return null;
   }
 }
