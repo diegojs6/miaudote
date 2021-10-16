@@ -9,6 +9,7 @@ class AppColors {
   static const sucess = Color(0xFF138647);
   static const neutralDarkest = Color(0xFF2F334B);
   static const purpleDarkest = Color(0xFF171232);
+  static const lightGrey = Color(0xFFF2F3FB);
 
   //! BoxShadows
   static const boxShadowColor1 = Color(0xFF494B5B);

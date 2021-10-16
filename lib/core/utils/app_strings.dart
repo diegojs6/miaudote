@@ -6,6 +6,7 @@ class AppStrings {
   static const genericErrorNetwork = 'Você esta sem conexão';
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
+  static const appSearch = 'Pesquise aqui';
 
   //! Navigation Strings
   static const dog = 'Cachorros';
