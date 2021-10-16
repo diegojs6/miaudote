@@ -30,6 +30,9 @@ dependencies:
   material_design_icons_flutter: ^5.0.5955-rc.1
   another_flushbar: ^1.10.24
   bottom_bar: ^1.2.4
+  flutter_secure_storage: ^4.2.0
+  shared_preferences: ^2.0.6
+  jwt_decoder: ^2.0.1
 
 
 dev_dependencies:
