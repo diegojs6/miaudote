@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
-import 'package:miaudote/core/widgets/styled_snackbar.dart';
+
 import '../../../../core/navigation/routes.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/styled_button.dart';
+import '../../../../core/widgets/styled_snackbar.dart';
 import '../../../../core/widgets/styled_text_form_field.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../bloc/login_bloc.dart';

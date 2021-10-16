@@ -29,7 +29,7 @@ class AppStrings {
   static const registerErrorEmailInvalid = 'Por favor, insira um endereço de email valido';
   static const registerErrorUsernameInvalid = 'Por favor insira um nome valido';
   static const registerErrorPasswordInvalid =
-      'Por favor insira uma senha que contenha ao menos:\n - Uma letra maiuscula e uma minuscula e um digito\n - Minimo de 6 caracteres';
+      'Por favor insira uma senha que deve conter ao menos:\n - Uma letra maiuscula e uma minuscula e um digito\n - Minimo de 6 digitos';
   static const registerErrorEmailEmpty = 'Insira um Email';
   static const registerErrorUsernameEmpty = 'Insira um nome';
   static const registerErrorPasswordEmpty = 'Insira uma senha';
@@ -41,4 +41,8 @@ class AppStrings {
   static const registerTermsPart3 = ' e a ';
   static const registerTermsPart4 = 'Política de Privacidade';
   static const registerErrorTerms = 'Aceite os termos de serviço e a política de privacidade';
+  static const loginErrorPasswordInvalid = 'A senha deve conter 6 digitos no minimo';
+  static const loginToRegister = 'Não tem conta?';
+  static const loginToRegisterEnter = 'Registre-se';
+  static const loginForgotPassword = 'Esqueceu sua senha?';
 }
