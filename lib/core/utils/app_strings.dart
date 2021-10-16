@@ -3,7 +3,7 @@ class AppStrings {
   static const appTitle = 'Mi-Au-Dote!';
   static const hintEmail = 'Email';
   static const hintPassword = 'Senha';
-  static const hintUsername = 'Nome completo';
+  static const hintUsername = 'Nome de usuario';
   static const genericErrorNetwork = 'Você esta sem conexão';
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
@@ -17,7 +17,7 @@ class AppStrings {
   static const account = 'Conta';
 
   //! Login && Register Strings
-  static const loginErrorInvalidInput = 'Usuario ou senha invalidos\n Tente Novamente!';
+  static const loginErrorInvalidInput = 'Nome de usuario ou senha invalidos\n Tente Novamente!';
   static const loginHeaderApp = 'Bem vindo ao';
   static const loginTextButton = 'Login';
   static const loginTextButtonLoading = 'Verificando';

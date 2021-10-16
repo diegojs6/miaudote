@@ -96,6 +96,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
         'contact': contact,
         'birthDate': birthDate,
         'password': password,
+        'type': 'customer'
       };
       final response = await client.post(urlCreator.create(endpoint: Endpoints.register), jsonEncode(body));
       switch (response.statusCode) {
