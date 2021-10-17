@@ -2,6 +2,11 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:miaudote/features/ong/data/datasources/ong_remote_data_source.dart';
+import 'package:miaudote/features/ong/data/repositories/ong_repository.dart';
+import 'package:miaudote/features/ong/domain/repositories/i_ong_repository.dart';
+import 'package:miaudote/features/ong/domain/usecases/get_ongs.dart';
+import 'package:miaudote/features/ong/presentation/bloc/ong_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -98,6 +103,19 @@ Future<void> init() async {
   //* Data source
   sl.registerLazySingleton<ICustomerRemoteDataSource>(() => CustomerRemoteDataSource(sl(), sl()));
   sl.registerLazySingleton<ICustomerLocalDataSource>(() => CustomerLocalDataSource(sl()));
+
+  //! Ong
+  //* Bloc
+  sl.registerLazySingleton(() => OngBloc(sl()));
+
+  //* Use case
+  sl.registerLazySingleton(() => GetOngs(sl()));
+
+  //* Repository
+  sl.registerLazySingleton<IOngRepository>(() => OngRepository(sl()));
+
+  //* Data source
+  sl.registerLazySingleton<IOngRemoteDataSource>(() => OngRemoteDataSource(sl(), sl(), sl()));
 
   await sl.allReady();
 }

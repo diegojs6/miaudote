@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:miaudote/features/ong/presentation/bloc/ong_bloc.dart';
 
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../features/home/presentation/screen/home_screen.dart';
@@ -14,6 +15,7 @@ import 'routes.dart';
 class AppRouter {
   final _loginBloc = sl<LoginBloc>();
   final _authBloc = sl<AuthBloc>();
+  final _ongBLoc = sl<OngBloc>();
 
   Route generateRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -36,7 +38,12 @@ class AppRouter {
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => HomeScreen(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: _ongBLoc..add(OngEvent.load())),
+            ],
+            child: HomeScreen(),
+          ),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(

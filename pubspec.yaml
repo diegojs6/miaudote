@@ -53,3 +53,14 @@ flutter:
     - family: Gluten
       fonts:
         - asset: fonts/Gluten-VariableFont_wght.ttf
+        - asset: fonts/Gluten-Medium.ttf
+          weight: 300
+        - asset: fonts/Gluten-Black.ttf
+        - asset: fonts/Gluten-Regular.ttf
+        - asset: fonts/Gluten-SemiBold.ttf
+          weight: 400
+        - asset: fonts/Gluten-Bold.ttf
+          weight: 700
+        - asset: fonts/Gluten-ExtraBold.ttf
+          weight: 900
+       
