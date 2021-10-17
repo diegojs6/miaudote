@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:miaudote/core/utils/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class StyledAnimalsCard extends StatelessWidget {
   final VoidCallback onTap;
@@ -28,12 +28,14 @@ class StyledAnimalsCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.fromLTRB(16, 16, 10, 16),
+        width: 280,
+        padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: AppColors.lightGrey,
+          color: AppColors.dogCardGrey,
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
@@ -55,9 +57,7 @@ class StyledAnimalsCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Text(
                   animalAge,
                   style: TextStyle(
@@ -67,9 +67,7 @@ class StyledAnimalsCard extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -82,6 +80,7 @@ class StyledAnimalsCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
+                    SizedBox(width: 13),
                     Icon(
                       gender ? MdiIcons.genderMale : MdiIcons.genderFemale,
                       size: 24,
@@ -90,18 +89,18 @@ class StyledAnimalsCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              width: 20,
-            ),
             Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 12,
+              ),
               height: 129,
               width: 137,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Image.network(
-                imgUrl,
-                fit: BoxFit.fill,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(imgUrl),
+                ),
+                borderRadius: BorderRadius.circular(16),
               ),
             ),
           ],

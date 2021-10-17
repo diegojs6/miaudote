@@ -28,7 +28,8 @@ class _DogScreenState extends State<DogScreen> {
               animalAge: '12',
               animalSex: 'male',
               gender: false,
-              imgUrl: 'https://comparaplano.com.br/wp-content/uploads/2019/09/dog-tv.png',
+              imgUrl:
+                  'https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg',
             )
           ],
         ),
