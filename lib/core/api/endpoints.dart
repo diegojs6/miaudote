@@ -3,4 +3,5 @@ class Endpoints {
   static const getCurrentUser = 'users/me';
   static const getDog = 'classes/dog';
   static const register = 'users';
+  static const ong = 'classes/ong';
 }

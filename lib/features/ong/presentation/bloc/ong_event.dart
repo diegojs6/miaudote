@@ -1,4 +1,6 @@
 part of 'ong_bloc.dart';
-abstract class OngEvent extends Equatable {
-  const OngEvent();
+
+@freezed
+class OngEvent with _$OngEvent {
+  factory OngEvent.load() = _Load;
 }

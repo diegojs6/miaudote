@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../ong/presentation/screens/ong_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,74 +16,76 @@ class _HomeScreenState extends State<HomeScreen> {
   final _pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        children: [
-          Container(color: Colors.blue),
-          Container(color: Colors.red),
-          Container(color: Colors.greenAccent.shade700),
-          Container(color: Colors.orange),
-          Container(color: AppColors.purpleDarkest),
-        ],
-        onPageChanged: (index) {
-          setState(() => _currentPage = index);
-        },
-      ),
-      bottomNavigationBar: BottomBar(
-        selectedIndex: _currentPage,
-        onTap: (int index) {
-          _pageController.jumpToPage(index);
-          setState(() => _currentPage = index);
-        },
-        textStyle: TextStyle(fontFamily: 'Gluten'),
-        items: <BottomBarItem>[
-          BottomBarItem(
-            icon: Icon(MdiIcons.dog),
-            title: Text(
-              AppStrings.dog,
-              style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+    return SafeArea(
+      child: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          children: [
+            Container(color: Colors.blue),
+            Container(color: Colors.red),
+            OngScreen(),
+            Container(color: Colors.orange),
+            Container(color: AppColors.purpleDarkest),
+          ],
+          onPageChanged: (index) {
+            setState(() => _currentPage = index);
+          },
+        ),
+        bottomNavigationBar: BottomBar(
+          selectedIndex: _currentPage,
+          onTap: (int index) {
+            _pageController.jumpToPage(index);
+            setState(() => _currentPage = index);
+          },
+          textStyle: TextStyle(fontFamily: 'Gluten'),
+          items: <BottomBarItem>[
+            BottomBarItem(
+              icon: Icon(MdiIcons.dog),
+              title: Text(
+                AppStrings.dog,
+                style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+              ),
+              activeColor: AppColors.purpleDarkest,
+              inactiveColor: AppColors.purpleDarkest,
             ),
-            activeColor: AppColors.purpleDarkest,
-            inactiveColor: AppColors.purpleDarkest,
-          ),
-          BottomBarItem(
-            icon: Icon(MdiIcons.cat),
-            title: Text(
-              AppStrings.cat,
-              style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+            BottomBarItem(
+              icon: Icon(MdiIcons.cat),
+              title: Text(
+                AppStrings.cat,
+                style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+              ),
+              activeColor: AppColors.purpleDarkest,
+              inactiveColor: AppColors.purpleDarkest,
             ),
-            activeColor: AppColors.purpleDarkest,
-            inactiveColor: AppColors.purpleDarkest,
-          ),
-          BottomBarItem(
-            icon: Icon(MdiIcons.magnify),
-            title: Text(
-              AppStrings.morePets,
-              style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+            BottomBarItem(
+              icon: Icon(MdiIcons.magnify),
+              title: Text(
+                AppStrings.morePets,
+                style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+              ),
+              activeColor: AppColors.purpleDarkest,
+              inactiveColor: AppColors.purpleDarkest,
             ),
-            activeColor: AppColors.purpleDarkest,
-            inactiveColor: AppColors.purpleDarkest,
-          ),
-          BottomBarItem(
-            icon: Icon(MdiIcons.handHeart),
-            title: Text(
-              AppStrings.ong,
-              style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+            BottomBarItem(
+              icon: Icon(MdiIcons.handHeart),
+              title: Text(
+                AppStrings.ong,
+                style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+              ),
+              activeColor: AppColors.purpleDarkest,
+              inactiveColor: AppColors.purpleDarkest,
             ),
-            activeColor: AppColors.purpleDarkest,
-            inactiveColor: AppColors.purpleDarkest,
-          ),
-          BottomBarItem(
-            icon: Icon(MdiIcons.account),
-            title: Text(
-              AppStrings.account,
-              style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+            BottomBarItem(
+              icon: Icon(MdiIcons.account),
+              title: Text(
+                AppStrings.account,
+                style: TextStyle(fontFamily: 'Gluten', fontWeight: FontWeight.bold, color: AppColors.purpleDarkest),
+              ),
+              activeColor: AppColors.purpleDarkest,
+              inactiveColor: AppColors.purpleDarkest,
             ),
-            activeColor: AppColors.purpleDarkest,
-            inactiveColor: AppColors.purpleDarkest,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

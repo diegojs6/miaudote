@@ -4,7 +4,7 @@ class AppStrings {
   static const hintEmail = 'Email';
   static const hintPassword = 'Senha';
   static const hintUsername = 'Nome de usuario';
-  static const genericErrorNetwork = 'Você esta sem conexão';
+  static const genericErrorNetwork = 'Verifique se vc esta com conexão';
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
   static const genericClose = 'Fechar';
@@ -45,4 +45,7 @@ class AppStrings {
   static const loginToRegister = 'Não tem conta?';
   static const loginToRegisterEnter = 'Registre-se';
   static const loginForgotPassword = 'Esqueceu sua senha?';
+
+  //! Ong Strings
+  static const ongLoading = 'Carregando as ONG`s';
 }
