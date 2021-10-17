@@ -48,4 +48,6 @@ class AppStrings {
 
   //! Ong Strings
   static const ongLoading = 'Carregando as ONG`s';
+  static const ongVerified = 'Ongs Verificadas';
+  static const ongNotVerified = 'Ongs não verificadas';
 }

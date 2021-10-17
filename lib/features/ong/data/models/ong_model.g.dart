@@ -18,6 +18,8 @@ OngModel _$OngModelFromJson(Map<String, dynamic> json) {
         ? null
         : SocialMediaModel.fromJson(
             json['socialMedia'] as Map<String, dynamic>),
+    ongImage: json['ongImage'] as String?,
+    isVerified: json['isVerified'] as bool?,
   );
 }
 
@@ -29,4 +31,6 @@ Map<String, dynamic> _$OngModelToJson(OngModel instance) => <String, dynamic>{
       'long': instance.long,
       'about': instance.about,
       'socialMedia': instance.socialMedia,
+      'ongImage': instance.ongImage,
+      'isVerified': instance.isVerified,
     };

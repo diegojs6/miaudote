@@ -6,9 +6,9 @@ import '../../../../core/utils/app_colors.dart';
 class OngCard extends StatelessWidget {
   final String? ongTitle;
   final String? ongUrl;
-  final bool isVerified;
+  final bool? isVerified;
   final VoidCallback? onTap;
-  const OngCard({Key? key, this.ongTitle, this.ongUrl, this.isVerified = false, this.onTap}) : super(key: key);
+  const OngCard({Key? key, this.ongTitle, this.ongUrl, this.isVerified, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class OngCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 170,
-        width: 134,
+        width: 140,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: AppColors.lightest, boxShadow: [
           BoxShadow(color: AppColors.boxShadowColor1),
         ]),
         child: Column(
           children: [
             Container(
-              width: 134,
+              width: 140,
               height: 133,
               child: Image.network(
                 ongUrl ?? '',
@@ -36,19 +36,23 @@ class OngCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 2),
-                    child: Text(
-                      ongTitle ?? '',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'Gluten',
-                        color: AppColors.darkest,
+                  Flexible(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 2),
+                      child: Text(
+                        ongTitle ?? '',
+                        overflow: TextOverflow.clip,
+                        maxLines: 2,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Gluten',
+                          color: AppColors.darkest,
+                        ),
                       ),
                     ),
                   ),
-                  isVerified
+                  isVerified ?? false
                       ? Icon(
                           MdiIcons.checkDecagram,
                           color: AppColors.sucess,

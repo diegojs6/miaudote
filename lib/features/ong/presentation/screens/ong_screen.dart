@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/styled_loading.dart';
 import '../bloc/ong_bloc.dart';
@@ -49,14 +50,65 @@ class _OngScreenState extends State<OngScreen> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 40),
+          Text(
+            AppStrings.ongVerified,
+            style: TextStyle(
+              fontFamily: 'Gluten',
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: AppColors.darkest,
+            ),
+          ),
           SizedBox(height: 20),
-          OngCard(
-            ongTitle: 'João sem braço',
-            ongUrl:
-                'https://scontent-gru1-2.xx.fbcdn.net/v/t1.6435-9/243186889_6283836911689621_2359317676413947986_n.png?_nc_cat=103&_nc_rgb565=1&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeENoAGOTw8cfZDCK4kvlvtx4WqC8aYiXtvhaoLxpiJe29PvSpNb1_YFnkobGZsQXE6T1TBL8DwSLaWt9Mkh7t2t&_nc_ohc=bIbjUGAoo5UAX9x8i3F&_nc_ht=scontent-gru1-2.xx&oh=bd2992cfcfeb8458138881af3a918f08&oe=6192AB5D',
-            isVerified: true,
-            onTap: () {},
+          Container(
+            height: 170,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.ong?.length,
+              itemBuilder: (context, position) {
+                var ong = state.ong?[position];
+                return ong?.isVerified == true
+                    ? OngCard(
+                        ongTitle: ong?.name,
+                        ongUrl: ong?.ongImage,
+                        isVerified: ong?.isVerified,
+                        onTap: () {},
+                      )
+                    : SizedBox();
+              },
+            ),
+          ),
+          SizedBox(height: 40),
+          Text(
+            AppStrings.ongNotVerified,
+            style: TextStyle(
+              fontFamily: 'Gluten',
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: AppColors.darkest,
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: 170,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.ong?.length,
+              itemBuilder: (context, position) {
+                var ong = state.ong?[position];
+                return ong?.isVerified == false
+                    ? OngCard(
+                        ongTitle: ong?.name,
+                        ongUrl: ong?.ongImage,
+                        isVerified: ong?.isVerified,
+                        onTap: () {},
+                      )
+                    : SizedBox();
+              },
+            ),
           )
         ],
       ),

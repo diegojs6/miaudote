@@ -10,11 +10,33 @@ class Ong extends Equatable {
   final String? long;
   final String? about;
   final SocialMedia? socialMedia;
+  final String? ongImage;
+  final bool? isVerified;
 
-  Ong({this.name, this.address, this.contact, this.lat, this.long, this.about, this.socialMedia});
+  Ong({
+    this.name,
+    this.address,
+    this.contact,
+    this.lat,
+    this.long,
+    this.about,
+    this.socialMedia,
+    this.ongImage,
+    this.isVerified,
+  });
 
   @override
   List<Object?> get props {
-    return [name, address, contact, lat, long, about, socialMedia];
+    return [
+      name,
+      address,
+      contact,
+      lat,
+      long,
+      about,
+      socialMedia,
+      ongImage,
+      isVerified,
+    ];
   }
 }

@@ -19,12 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         body: PageView(
+          physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
             Container(color: Colors.blue),
             Container(color: Colors.red),
-            OngScreen(),
             Container(color: Colors.orange),
+            OngScreen(),
             Container(color: AppColors.purpleDarkest),
           ],
           onPageChanged: (index) {

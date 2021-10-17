@@ -15,12 +15,24 @@ class OngModel extends Equatable {
   final String? long;
   final String? about;
   final SocialMediaModel? socialMedia;
+  final String? ongImage;
+  final bool? isVerified;
 
-  OngModel({this.name, this.address, this.contact, this.lat, this.long, this.about, this.socialMedia});
+  OngModel({
+    this.name,
+    this.address,
+    this.contact,
+    this.lat,
+    this.long,
+    this.about,
+    this.socialMedia,
+    this.ongImage,
+    this.isVerified,
+  });
 
   @override
   List<Object?> get props {
-    return [name, address, contact, lat, long, about, socialMedia];
+    return [name, address, contact, lat, long, about, socialMedia, ongImage, isVerified];
   }
 
   factory OngModel.fromJson(Map<String, dynamic> json) => _$OngModelFromJson(json);
@@ -36,6 +48,8 @@ class OngModel extends Equatable {
       long: entity.long,
       about: entity.about,
       socialMedia: socialMedia != null ? SocialMediaModel.fromEntity(socialMedia) : null,
+      ongImage: entity.ongImage,
+      isVerified: entity.isVerified,
     );
   }
 
@@ -47,5 +61,7 @@ class OngModel extends Equatable {
         long: long,
         about: about,
         socialMedia: socialMedia?.toEntity(),
+        ongImage: ongImage,
+        isVerified: isVerified,
       );
 }
