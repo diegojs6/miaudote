@@ -8,4 +8,7 @@ class Failure with _$Failure {
   const factory Failure.serverFailure() = ServerFailure;
   const factory Failure.networkFailure() = NetworkFailure;
   const factory Failure.invalidInputFailure() = InvalidInputFailure;
+  const factory Failure.accountAsUsedFailure() = AccountAsUsedFailure;
+  const factory Failure.conflictFailure() = ConflictFailure;
+  const factory Failure.cacheException() = CacheFailure;
 }

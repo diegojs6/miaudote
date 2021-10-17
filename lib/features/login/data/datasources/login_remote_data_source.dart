@@ -5,11 +5,21 @@ import 'package:miaudote/core/api/endpoints.dart';
 import 'package:miaudote/core/api/url_creator.dart';
 import 'package:miaudote/core/device/network_info.dart';
 import 'package:miaudote/core/errors/exceptions.dart';
-import 'package:miaudote/features/login/data/models/login_model.dart';
 
 abstract class ILoginRemoteDataSource {
-  Future<LoginModel> getLogin({required String username, required String password});
-  Future<LoginModel> getToken({required String sessionToken});
+  Future<String> getLogin({required String username, required String password});
+  Future<String> getToken({String? sessionToken});
+  Future<String> userRegister({
+    required String username,
+    String? email,
+    String? address,
+    String? fullName,
+    String? lat,
+    String? long,
+    num? contact,
+    String? birthDate,
+    required String password,
+  });
 }
 
 class LoginRemoteDataSource implements ILoginRemoteDataSource {
@@ -20,7 +30,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
   LoginRemoteDataSource(this.client, this.networkInfo, this.urlCreator);
 
   @override
-  Future<LoginModel> getLogin({required String username, required String password}) async {
+  Future<String> getLogin({required String username, required String password}) async {
     if (await networkInfo.isConnected) {
       final response = await client.get(
           urlCreator.create(endpoint: Endpoints.login, queryParameters: {
@@ -31,7 +41,7 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
 
       switch (response.statusCode) {
         case 200:
-          return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+          return utf8.decode(response.bodyBytes);
         case 404:
         case 101:
           throw InvalidInputException();
@@ -44,16 +54,56 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource {
   }
 
   @override
-  Future<LoginModel> getToken({required String sessionToken}) async {
+  Future<String> getToken({String? sessionToken}) async {
     if (await networkInfo.isConnected) {
       final response = await client
           .get(urlCreator.create(endpoint: Endpoints.getCurrentUser), headers: {'X-Parse-Session-Token': sessionToken});
       switch (response.statusCode) {
         case 200:
-          return LoginModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+          return jsonDecode(utf8.decode(response.bodyBytes));
         case 404:
         case 101:
           throw InvalidInputException();
+        default:
+          throw ServerException();
+      }
+    } else {
+      throw NetworkException();
+    }
+  }
+
+  @override
+  Future<String> userRegister({
+    required String username,
+    String? email,
+    String? address,
+    String? fullName,
+    String? lat,
+    String? long,
+    num? contact,
+    String? birthDate,
+    required String password,
+  }) async {
+    final isConnected = await networkInfo.isConnected;
+    if (isConnected) {
+      var body = {
+        'username': username,
+        'email': email,
+        'address': address,
+        'fullName': fullName,
+        'lat': lat,
+        'long': long,
+        'contact': contact,
+        'birthDate': birthDate,
+        'password': password,
+        'type': 'customer'
+      };
+      final response = await client.post(urlCreator.create(endpoint: Endpoints.register), jsonEncode(body));
+      switch (response.statusCode) {
+        case 201:
+          return utf8.decode(response.bodyBytes);
+        case 208:
+          throw AccountAsUsedException();
         default:
           throw ServerException();
       }

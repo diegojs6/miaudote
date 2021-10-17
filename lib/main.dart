@@ -31,7 +31,7 @@ class _AppState extends State<App> {
       title: AppStrings.appTitle,
       themeMode: ThemeMode.dark,
       onGenerateRoute: _router.generateRoutes,
-      initialRoute: Routes.loginPage,
+      initialRoute: Routes.splashScreen,
       navigatorObservers: [HeroController()],
     );
   }

@@ -1,9 +1,11 @@
 class Routes {
-  static const loginPage = 'loginPage';
-  static const homePage = 'homePage';
-  static const dogPage = 'dogPage';
-  static const catsPage = 'catsPage';
-  static const morePetsPage = 'morePetsPage';
-  static const ongPage = 'ongPage';
-  static const accountPage = 'accountPage';
+  static const loginScreen = 'loginScreen';
+  static const homeScreen = 'homeScreen';
+  static const dogScreen = 'dogScreen';
+  static const catsScreen = 'catsScreen';
+  static const morePetsScreen = 'morePetsScreen';
+  static const ongScreen = 'ongScreen';
+  static const accountScreen = 'accountScreen';
+  static const registerScreen = 'registerScreen';
+  static const splashScreen = '';
 }
