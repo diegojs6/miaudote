@@ -2,9 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:miaudote/core/navigation/routes.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
+
 import 'core/navigation/router.dart';
+import 'core/navigation/routes.dart';
+import 'core/utils/app_colors.dart';
+import 'core/utils/app_strings.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -32,6 +34,9 @@ class _AppState extends State<App> {
       themeMode: ThemeMode.dark,
       onGenerateRoute: _router.generateRoutes,
       initialRoute: Routes.splashScreen,
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.lightest,
+      ),
       navigatorObservers: [HeroController()],
     );
   }
