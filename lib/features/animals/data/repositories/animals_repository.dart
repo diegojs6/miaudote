@@ -5,7 +5,6 @@ import '../../../../core/errors/failures.dart';
 import '../../domain/entities/animals.dart';
 import '../../domain/repositories/i_animals_repository.dart';
 import '../datasources/animals_remote_data_source.dart';
-import '../models/characteristics_model.dart';
 
 class AnimalsRepository implements IAnimalsRepository {
   final IAnimalsRemoteDataSource remoteDataSource;
@@ -13,38 +12,11 @@ class AnimalsRepository implements IAnimalsRepository {
   AnimalsRepository(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, Animals>> getAnimals({
-    String? objectId,
-    DateTime? createAt,
-    DateTime? updatedAt,
-    String? size,
-    String? gender,
-    num? heigth,
-    String? ong,
-    String? name,
-    bool? adopted,
-    CharacteristicsModel? characteristicsModel,
-    bool? verify,
-    String? description,
-    String? age,
-    String? animalType,
-  }) async {
+  Future<Either<Failure, List<Animals>>> getAnimals() async {
     try {
-      final response = await remoteDataSource.getAnimals(
-        objectId: objectId,
-        createAt: createAt,
-        updateAt: updatedAt,
-        size: size,
-        gender: gender,
-        heigth: heigth,
-        characteristicsModel: characteristicsModel,
-        verify: verify,
-        description: description,
-        age: age,
-        animalType: animalType,
-      );
-      final entity = response.toEntity();
-      return Right(entity);
+      final response = await remoteDataSource.getAnimals();
+      final animalsList = response.map((e) => e.toEntity()).toList();
+      return Right(animalsList);
     } on ServerException {
       return Left(NetworkFailure());
     } on NetworkException {

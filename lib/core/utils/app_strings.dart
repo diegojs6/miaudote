@@ -10,11 +10,14 @@ class AppStrings {
   static const genericClose = 'Fechar';
 
   //! Navigation Strings
+  static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
   static const dog = 'Cachorros';
   static const cat = 'Gatos';
   static const morePets = '+ Pets';
   static const ong = 'Ong';
   static const account = 'Conta';
+  static const recommended = 'Recomendados';
+  static const dogsLoading = 'Os doguinhos estão se arrumando';
 
   //! Login && Register Strings
   static const loginErrorInvalidInput = 'Nome de usuario ou senha invalidos\n Tente Novamente!';

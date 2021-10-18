@@ -2,11 +2,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:miaudote/features/ong/data/datasources/ong_remote_data_source.dart';
-import 'package:miaudote/features/ong/data/repositories/ong_repository.dart';
-import 'package:miaudote/features/ong/domain/repositories/i_ong_repository.dart';
-import 'package:miaudote/features/ong/domain/usecases/get_ongs.dart';
-import 'package:miaudote/features/ong/presentation/bloc/ong_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,6 +9,11 @@ import 'core/api/api_interceptor.dart';
 import 'core/api/url_creator.dart';
 import 'core/device/network_info.dart';
 import 'core/device/secure_storage.dart';
+import 'features/animals/data/datasources/animals_remote_data_source.dart';
+import 'features/animals/data/repositories/animals_repository.dart';
+import 'features/animals/domain/repositories/i_animals_repository.dart';
+import 'features/animals/domain/usecases/get_animals.dart';
+import 'features/animals/presentation/bloc/animals_bloc.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/customer/data/datasources/customer_local_data_source.dart';
 import 'features/customer/data/datasources/customer_remote_data_source.dart';
@@ -32,6 +32,11 @@ import 'features/login/domain/usecases/get_refresh_token.dart';
 import 'features/login/domain/usecases/get_sign_out.dart';
 import 'features/login/domain/usecases/user_register.dart';
 import 'features/login/presentation/bloc/login_bloc.dart';
+import 'features/ong/data/datasources/ong_remote_data_source.dart';
+import 'features/ong/data/repositories/ong_repository.dart';
+import 'features/ong/domain/repositories/i_ong_repository.dart';
+import 'features/ong/domain/usecases/get_ongs.dart';
+import 'features/ong/presentation/bloc/ong_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -116,6 +121,19 @@ Future<void> init() async {
 
   //* Data source
   sl.registerLazySingleton<IOngRemoteDataSource>(() => OngRemoteDataSource(sl(), sl(), sl()));
+
+  //! Dogs
+  //* Bloc
+  sl.registerLazySingleton(() => AnimalsBloc(sl()));
+
+  //* Use case
+  sl.registerLazySingleton(() => GetAnimals(sl()));
+
+  //* Repository
+  sl.registerLazySingleton<IAnimalsRepository>(() => AnimalsRepository(sl()));
+
+  //* Data source
+  sl.registerLazySingleton<IAnimalsRemoteDataSource>(() => AnimalsRemoteDataSource(sl(), sl(), sl()));
 
   await sl.allReady();
 }

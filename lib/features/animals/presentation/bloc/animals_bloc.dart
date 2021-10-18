@@ -17,6 +17,30 @@ class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
   AnimalsBloc(this.getAnimals) : super(AnimalsState.inital());
 
   @override
+  void onTransition(Transition<AnimalsEvent, AnimalsState> transition) {
+    print('Transition from ${transition.currentState} to ${transition.nextState}');
+    super.onTransition(transition);
+  }
+
+  @override
+  void onEvent(AnimalsEvent event) {
+    print(event);
+    super.onEvent(event);
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    print(error);
+    super.onError(error, stackTrace);
+  }
+
+  @override
+  Future<void> close() async {
+    print('Login bloc closed');
+    super.close();
+  }
+
+  @override
   Stream<AnimalsState> mapEventToState(
     AnimalsEvent event,
   ) async* {

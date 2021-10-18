@@ -28,7 +28,7 @@ class StyledAnimalsCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 280,
+        width: 300,
         padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
