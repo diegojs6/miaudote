@@ -8,16 +8,15 @@ class AppStrings {
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
   static const genericClose = 'Fechar';
+  static const viewMore = 'Ver mais...';
 
-  //! Navigation Strings
-  static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
+  //! Navigation String
   static const dog = 'Cachorros';
   static const cat = 'Gatos';
   static const morePets = '+ Pets';
   static const ong = 'Ong';
   static const account = 'Conta';
   static const recommended = 'Recomendados';
-  static const dogsLoading = 'Os doguinhos estão se arrumando';
 
   //! Login && Register Strings
   static const loginErrorInvalidInput = 'Nome de usuario ou senha invalidos\n Tente Novamente!';
@@ -53,4 +52,10 @@ class AppStrings {
   static const ongLoading = 'Carregando as ONG`s';
   static const ongVerified = 'Ongs Verificadas';
   static const ongNotVerified = 'Ongs não verificadas';
+
+  //! Animals String
+  static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
+  static const dogsLoading = 'Os doguinhos estão se arrumando';
+  static const animalsMale = 'Macho';
+  static const animalsFemale = 'Fêmea';
 }

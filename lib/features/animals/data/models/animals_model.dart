@@ -18,23 +18,24 @@ class AnimalsModel extends Equatable {
   final String? description;
   final String? age;
   final String? animalType;
+  final List<dynamic>? imageList;
 
-  AnimalsModel({
-    this.objectId,
-    this.createAt,
-    this.updatedAt,
-    this.size,
-    this.gender,
-    this.heigth,
-    this.ong,
-    this.name,
-    this.adopted,
-    this.characteristicsModel,
-    this.verify,
-    this.description,
-    this.age,
-    this.animalType,
-  });
+  AnimalsModel(
+      {this.objectId,
+      this.createAt,
+      this.updatedAt,
+      this.size,
+      this.gender,
+      this.heigth,
+      this.ong,
+      this.name,
+      this.adopted,
+      this.characteristicsModel,
+      this.verify,
+      this.description,
+      this.age,
+      this.animalType,
+      this.imageList});
 
   @override
   List<Object?> get props {
@@ -53,6 +54,7 @@ class AnimalsModel extends Equatable {
       description,
       age,
       animalType,
+      imageList,
     ];
   }
 
@@ -71,6 +73,7 @@ class AnimalsModel extends Equatable {
         description: json['description'],
         age: json['age'],
         animalType: json['animalType'],
+        imageList: json['imageList'],
       );
 
   static Map<String, dynamic> toJson(AnimalsModel animalsModel) => {
@@ -88,6 +91,7 @@ class AnimalsModel extends Equatable {
         'description': animalsModel.description,
         'age': animalsModel.age,
         'animalType': animalsModel.animalType,
+        'imageList': animalsModel.imageList,
       };
 
   factory AnimalsModel.fromEntity(Animals entity) => AnimalsModel(
@@ -105,6 +109,7 @@ class AnimalsModel extends Equatable {
         description: entity.description,
         age: entity.age,
         animalType: entity.animalType,
+        imageList: entity.imageList,
       );
 
   Animals toEntity() => Animals(
@@ -122,5 +127,6 @@ class AnimalsModel extends Equatable {
         description: description,
         age: age,
         animalType: animalType,
+        imageList: imageList,
       );
 }

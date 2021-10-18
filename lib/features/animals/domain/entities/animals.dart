@@ -17,6 +17,7 @@ class Animals extends Equatable {
   final String? description;
   final String? age;
   final String? animalType;
+  final List<dynamic>? imageList;
 
   Animals({
     this.objectId,
@@ -33,6 +34,7 @@ class Animals extends Equatable {
     this.description,
     this.age,
     this.animalType,
+    this.imageList,
   });
 
   @override
@@ -52,6 +54,7 @@ class Animals extends Equatable {
       description,
       age,
       animalType,
+      imageList,
     ];
   }
 }
