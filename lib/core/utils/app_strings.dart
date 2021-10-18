@@ -9,6 +9,7 @@ class AppStrings {
   static const genericError = 'Erro desconhecido tente novamente';
   static const genericClose = 'Fechar';
   static const viewMore = 'Ver mais...';
+  static const viewMoreDog = 'Ver Mais aúmigos';
 
   //! Navigation String
   static const dog = 'Cachorros';
