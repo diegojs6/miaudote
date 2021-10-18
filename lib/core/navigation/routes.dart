@@ -7,5 +7,6 @@ class Routes {
   static const ongScreen = 'ongScreen';
   static const accountScreen = 'accountScreen';
   static const registerScreen = 'registerScreen';
+  static const ongDetailsScreen = 'ongDetailsScreen';
   static const splashScreen = '';
 }

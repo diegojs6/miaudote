@@ -8,6 +8,7 @@ class AppStrings {
   static const genericErrorServer = 'Erro ao conectar com servidor';
   static const genericError = 'Erro desconhecido tente novamente';
   static const genericClose = 'Fechar';
+  static const genericNonInformed = 'Não informado';
 
   //! Navigation Strings
   static const dog = 'Cachorros';
@@ -50,4 +51,9 @@ class AppStrings {
   static const ongLoading = 'Carregando as ONG`s';
   static const ongVerified = 'Ongs Verificadas';
   static const ongNotVerified = 'Ongs não verificadas';
+  static const ongInformations = 'Informações';
+  static const ongContact = 'Contato';
+  static const ongAbout = 'Sobre';
+  static const ongAddress = 'Endereço';
+  static const ongSocialMedia = 'Redes Sociais';
 }
