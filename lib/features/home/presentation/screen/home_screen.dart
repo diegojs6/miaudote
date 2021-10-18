@@ -1,6 +1,7 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:miaudote/features/animals/presentation/screen/dog_screen.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-            Container(color: Colors.blue),
+            DogScreen(),
             Container(color: Colors.red),
             Container(color: Colors.orange),
             OngScreen(),

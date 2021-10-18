@@ -10,13 +10,16 @@ class AppStrings {
   static const genericClose = 'Fechar';
   static const genericNonInformed = 'Não informado';
   static const appBarBack = 'Voltar';
+  static const viewMore = 'Ver mais...';
+  static const viewMoreDog = 'Ver Mais aúmigos';
 
-  //! Navigation Strings
+  //! Navigation String
   static const dog = 'Cachorros';
   static const cat = 'Gatos';
   static const morePets = '+ Pets';
   static const ong = 'Ong';
   static const account = 'Conta';
+  static const recommended = 'Recomendados';
 
   //! Login && Register Strings
   static const loginErrorInvalidInput = 'Nome de usuario ou senha invalidos\n Tente Novamente!';
@@ -57,4 +60,10 @@ class AppStrings {
   static const ongAbout = 'Sobre';
   static const ongAddress = 'Endereço';
   static const ongSocialMedia = 'Redes Sociais';
+
+  //! Animals String
+  static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
+  static const dogsLoading = 'Os doguinhos estão se arrumando';
+  static const animalsMale = 'Macho';
+  static const animalsFemale = 'Fêmea';
 }
