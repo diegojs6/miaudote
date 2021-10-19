@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:miaudote/core/widgets/styled_animals_card.dart';
+import 'package:miaudote/features/animals/presentation/screen/animals_details.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -18,9 +19,13 @@ class DogScreen extends StatefulWidget {
 class _DogScreenState extends State<DogScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
-      return _homeScreenBuilder(state);
-    });
+    return SafeArea(
+      child: Scaffold(
+        body: BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
+          return _homeScreenBuilder(state);
+        }),
+      ),
+    );
   }
 
   Widget _homeScreenBuilder(AnimalsState state) {
@@ -85,10 +90,16 @@ class _DogScreenState extends State<DogScreen> {
               itemBuilder: (context, position) {
                 var animals = state.getAnimals?[position];
                 return StyledAnimalsCard(
-                  onTap: () {},
-                  animalName: animals?.name ?? '',
-                  isVerified: animals?.verify ?? false,
-                  animalAge: animals?.age ?? '',
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => AnimailsDetail(
+                        animals: animals,
+                      ),
+                    ),
+                  ),
+                  animalName: animals?.name,
+                  isVerified: animals?.verify,
+                  animalAge: animals?.age,
                   gender: animals?.gender,
                   imgUrl: animals?.imageList?[0],
                 );
