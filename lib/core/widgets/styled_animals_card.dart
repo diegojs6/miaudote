@@ -28,6 +28,7 @@ class StyledAnimalsCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 300,
+        margin: EdgeInsets.symmetric(vertical: 6),
         padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

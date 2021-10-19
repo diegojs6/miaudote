@@ -17,13 +17,27 @@ class DogScreen extends StatefulWidget {
 }
 
 class _DogScreenState extends State<DogScreen> {
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
-          return _homeScreenBuilder(state);
-        }),
+        body: ScrollConfiguration(
+          behavior: ScrollBehavior()
+            ..buildOverscrollIndicator(
+              context,
+              SizedBox(),
+              ScrollableDetails(
+                direction: AxisDirection.down,
+                controller: _scrollController,
+              ),
+            ),
+          child: SingleChildScrollView(
+            child: BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
+              return _homeScreenBuilder(state);
+            }),
+          ),
+        ),
       ),
     );
   }
@@ -45,6 +59,7 @@ class _DogScreenState extends State<DogScreen> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 30),
@@ -82,10 +97,12 @@ class _DogScreenState extends State<DogScreen> {
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 400,
             width: 300,
             child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               itemCount: state.getAnimals?.length,
               itemBuilder: (context, position) {
                 var animals = state.getAnimals?[position];
@@ -93,7 +110,7 @@ class _DogScreenState extends State<DogScreen> {
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => AnimailsDetail(
-                        animals: animals,
+                        animal: animals,
                       ),
                     ),
                   ),
