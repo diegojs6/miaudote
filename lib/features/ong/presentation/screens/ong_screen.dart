@@ -19,11 +19,13 @@ class OngScreen extends StatefulWidget {
 class _OngScreenState extends State<OngScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<OngBloc, OngState>(
-        builder: (context, state) {
-          return _builder(state);
-        },
+    return SafeArea(
+      child: Scaffold(
+        body: BlocBuilder<OngBloc, OngState>(
+          builder: (context, state) {
+            return _builder(state);
+          },
+        ),
       ),
     );
   }
@@ -109,6 +111,7 @@ class _OngScreenState extends State<OngScreen> {
                           MaterialPageRoute(
                             builder: (_) => OngDetailsScreen(
                               ong: ong,
+                              animalList: state.animalsList,
                             ),
                           ),
                         ),

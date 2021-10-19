@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/utils/app_colors.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
-import 'package:miaudote/core/widgets/styled_app_bar.dart';
-import 'package:miaudote/features/ong/domain/entities/ong.dart';
+import 'package:miaudote/core/widgets/styled_animals_card.dart';
+import 'package:miaudote/features/animals/domain/entities/animals.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/styled_app_bar.dart';
+import '../../domain/entities/ong.dart';
 
 class OngDetailsScreen extends StatelessWidget {
   final Ong? ong;
-  const OngDetailsScreen({Key? key, this.ong}) : super(key: key);
+  final List<Animals>? animalList;
+  const OngDetailsScreen({Key? key, this.ong, this.animalList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StyledAppBar.appBar(context, ong?.name),
+      appBar: StyledAppBar.appBar(context, ong?.name, showCupertinoShadow: true),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 24),
@@ -98,6 +102,32 @@ class OngDetailsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
+              Text(
+                'Aumigos que estão na ${ong?.name}',
+                style: TextStyle(fontFamily: 'Gluten', fontSize: 20),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: animalList?.length,
+                    itemBuilder: (context, position) {
+                      var animal = animalList?[position];
+                      return ong?.name == animal?.ong
+                          ? StyledAnimalsCard(
+                              onTap: () {},
+                              animalName: animal?.name ?? '',
+                              isVerified: animal?.verify ?? false,
+                              animalAge: animal?.age ?? '',
+                              gender: animal?.gender,
+                              imgUrl: animal?.imageList?[0],
+                            )
+                          : SizedBox();
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
         ),

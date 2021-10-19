@@ -111,7 +111,7 @@ Future<void> init() async {
 
   //! Ong
   //* Bloc
-  sl.registerLazySingleton(() => OngBloc(sl()));
+  sl.registerLazySingleton(() => OngBloc(sl(), sl()));
 
   //* Use case
   sl.registerLazySingleton(() => GetOngs(sl()));
