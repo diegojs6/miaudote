@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:miaudote/core/widgets/styled_app_bar.dart';
+import 'package:miaudote/core/utils/app_colors.dart';
 
 import 'package:miaudote/features/animals/domain/entities/animals.dart';
 
@@ -24,20 +25,57 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
     final CarouselController _controller = CarouselController();
     return SafeArea(
       child: Scaffold(
-        appBar: StyledAppBar.appBar(context, 'Informaçoes de ${animal?.name}', transparentBackground: false),
-        body: Column(
-          children: [
-            //TODO: Dih arrumar esse cara para ser no lugar ai da sua imagem unica,
-            CarouselSlider(
-              carouselController: _controller,
-              options: CarouselOptions(
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 7),
+        appBar: StyledAppBar.appBar(context, ''),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              CarouselSlider(
+                carouselController: _controller,
+                options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 7),
+                ),
+                items: imgCarousel(),
               ),
-              items: imgCarousel(),
-            ),
-            //TODO: Dih arrumar esse cara para ser no lugar ai da sua imagem unica,
-          ],
+              Positioned(
+                top: 210,
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: AppColors.lightest,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            width: 24,
+                          ),
+                          Text(
+                            animal?.name ?? '',
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              color: AppColors.darkest,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 36,
+                            ),
+                          ),
+                          GestureDetector()
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
