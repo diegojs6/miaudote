@@ -27,6 +27,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
         appBar: StyledAppBar.appBar(context, 'Informaçoes de ${animal?.name}', transparentBackground: false),
         body: Column(
           children: [
+            //TODO: Dih arrumar esse cara para ser no lugar ai da sua imagem unica,
             CarouselSlider(
               carouselController: _controller,
               options: CarouselOptions(
@@ -35,38 +36,22 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
               ),
               items: imgCarousel(),
             ),
+            //TODO: Dih arrumar esse cara para ser no lugar ai da sua imagem unica,
           ],
         ),
       ),
     );
   }
 
+  //TODO: retornar depois para ser um gesture detector que vai abrir a img em tela cheia
   List<Widget>? imgCarousel() => animal?.imageList
       ?.map((e) => Container(
             child: Container(
               margin: EdgeInsets.all(2.0),
               child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  child: Stack(
-                    children: <Widget>[
-                      Image.network(e, fit: BoxFit.cover, width: 1000.0),
-                      Positioned(
-                        bottom: 0.0,
-                        left: 0.0,
-                        right: 0.0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color.fromARGB(200, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                        ),
-                      ),
-                    ],
-                  )),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                child: Image.network(e, fit: BoxFit.cover, width: 1000.0),
+              ),
             ),
           ))
       .toList();
