@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:miaudote/features/animals/domain/usecases/get_animals.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -13,7 +14,8 @@ part 'ong_event.dart';
 
 class OngBloc extends Bloc<OngEvent, OngState> {
   final GetOngs getOngs;
-  OngBloc(this.getOngs) : super(OngState.initial());
+  final GetAnimals getAnimals;
+  OngBloc(this.getOngs, this.getAnimals) : super(OngState.initial());
 
   @override
   void onTransition(Transition<OngEvent, OngState> transition) {
@@ -49,7 +51,14 @@ class OngBloc extends Bloc<OngEvent, OngState> {
         var fold = await getOngs();
         yield await fold.fold(
           (failure) => state.error(_mapOngFailureToString(failure)),
-          (ong) => state.ready(ong),
+          (ong) async {
+            var fold = await getAnimals();
+            var nextState = fold.fold(
+              (failure) => state.error(_mapOngFailureToString(failure)),
+              (animals) => state.ready(ong, animals),
+            );
+            return nextState;
+          },
         );
       },
     );

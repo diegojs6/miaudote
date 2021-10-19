@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:miaudote/features/ong/presentation/screens/ong_details_screen.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -18,11 +19,13 @@ class OngScreen extends StatefulWidget {
 class _OngScreenState extends State<OngScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<OngBloc, OngState>(
-        builder: (context, state) {
-          return _builder(state);
-        },
+    return SafeArea(
+      child: Scaffold(
+        body: BlocBuilder<OngBloc, OngState>(
+          builder: (context, state) {
+            return _builder(state);
+          },
+        ),
       ),
     );
   }
@@ -104,7 +107,14 @@ class _OngScreenState extends State<OngScreen> {
                         ongTitle: ong?.name,
                         ongUrl: ong?.ongImage,
                         isVerified: ong?.isVerified,
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => OngDetailsScreen(
+                              ong: ong,
+                              animalList: state.animalsList,
+                            ),
+                          ),
+                        ),
                       )
                     : SizedBox();
               },
