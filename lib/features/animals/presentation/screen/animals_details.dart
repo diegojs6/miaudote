@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:miaudote/core/utils/app_strings.dart';
 import 'package:miaudote/core/widgets/styled_app_bar.dart';
 import 'package:miaudote/core/utils/app_colors.dart';
 
@@ -41,6 +43,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
               Positioned(
                 top: 210,
                 child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -56,7 +59,6 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                         children: [
                           SizedBox(
                             height: 100,
-                            width: 24,
                           ),
                           Text(
                             animal?.name ?? '',
@@ -67,7 +69,58 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                               fontSize: 36,
                             ),
                           ),
-                          GestureDetector()
+                          GestureDetector(
+                            child: Icon(
+                              MdiIcons.cardsHeart,
+                              size: 30,
+                            ),
+                          ),
+                          SizedBox(width: 180),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Icon(
+                                    animal?.verify ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
+                                    size: 22,
+                                  ),
+                                  SizedBox(height: 17),
+                                  Icon(
+                                    animal?.adopted ?? false ? MdiIcons.pawOff : MdiIcons.paw,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            animal?.gender ?? '',
+                            style: TextStyle(
+                                fontFamily: 'Gluten',
+                                color: AppColors.darkest,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 24),
+                          ),
+                          SizedBox(width: 13),
+                          Icon(
+                            animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
+                          ),
+                          SizedBox(width: 9),
+                          Icon(MdiIcons.circleSmall, size: 24),
+                          SizedBox(width: 9),
+                          Text(
+                            animal?.age ?? '',
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              color: AppColors.darkest,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 24,
+                            ),
+                          ),
                         ],
                       ),
                     ],
