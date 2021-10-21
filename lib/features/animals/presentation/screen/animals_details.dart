@@ -4,6 +4,7 @@ import 'package:miaudote/core/widgets/styled_app_bar.dart';
 import 'package:miaudote/core/utils/app_colors.dart';
 
 import 'package:miaudote/features/animals/domain/entities/animals.dart';
+import 'package:miaudote/features/animals/presentation/widgets/details_card.dart';
 
 class AnimailsDetail extends StatefulWidget {
   final Animals? animal;
@@ -41,6 +42,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
               Positioned(
                 top: 210,
                 child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -52,12 +54,9 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                   ),
                   child: Column(
                     children: [
+                      SizedBox(height: 20),
                       Row(
                         children: [
-                          SizedBox(
-                            height: 100,
-                            width: 24,
-                          ),
                           Text(
                             animal?.name ?? '',
                             style: TextStyle(
@@ -67,7 +66,20 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                               fontSize: 36,
                             ),
                           ),
-                          GestureDetector()
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: animal?.characteristics?.length,
+                            itemBuilder: (context, position) {
+                              var characteristic = animal?.characteristics?[position];
+                              return DetailsCard(
+                                characteristics: characteristic,
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ],

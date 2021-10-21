@@ -14,4 +14,12 @@ class AppColors {
 
   //! BoxShadows
   static const boxShadowColor1 = Color(0xFF494B5B);
+
+  //! Details card colors
+  static const sociableColor = Color(0xFFD4471E);
+  static const conductColor = Color(0xFF583FE5);
+  static const barkColor = Color(0xFF01786C);
+  static const vaccinatedColor = Color(0xFF577CFF);
+  static const castratedColor = Color(0xFF8A29A3);
+  static const sizeColor = Color(0xFF356DFF);
 }

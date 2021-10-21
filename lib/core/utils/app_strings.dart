@@ -66,4 +66,20 @@ class AppStrings {
   static const animalsMale = 'Macho';
   static const animalsFemale = 'Fêmea';
   static const viewMoreDog = 'Ver Mais aúmigos';
+  static const detailsCardConduct = 'Conduta';
+  static const detailsCardSociable = 'Comportamento';
+  static const detailsCardBark = 'Latido';
+  static const detailsCardSize = 'Porte';
+  static const detailsCardCastrated = 'Castração';
+  static const detailsCardVaccinated = 'Vacinas';
+  static const detailsCardNonInformed = 'Não informado';
+  static const detailsCardSociableType1 = 'Calmo';
+  static const detailsCardSociableType2 = 'Agitado';
+  static const detailsCardBarkType1 = 'Pouco';
+  static const detailsCardBarkType2 = 'Moderado';
+  static const detailsCardBarkType3 = 'Muito';
+  static const detailsCardCastratedType1 = 'Castrado';
+  static const detailsCardCastratedType2 = 'Não castrado';
+  static const detailsCardVaccinatedType1 = 'Vacinado';
+  static const detailsCardVaccinatedType2 = 'Não vacinado';
 }
