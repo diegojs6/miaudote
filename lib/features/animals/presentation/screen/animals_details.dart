@@ -1,12 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
-import 'package:miaudote/core/widgets/styled_app_bar.dart';
-import 'package:miaudote/core/utils/app_colors.dart';
 
-import 'package:miaudote/features/animals/domain/entities/animals.dart';
-import 'package:miaudote/features/animals/presentation/widgets/details_card.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/styled_app_bar.dart';
+import '../../domain/entities/animals.dart';
+import '../widgets/details_card.dart';
 
 class AnimailsDetail extends StatefulWidget {
   final Animals? animal;
@@ -58,35 +57,46 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                     children: [
                       SizedBox(height: 20),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            height: 100,
-                          ),
-                          Text(
-                            animal?.name ?? '',
-                            style: TextStyle(
-                              fontFamily: 'Gluten',
-                              color: AppColors.darkest,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 36,
-                            ),
-                          ),
-                          GestureDetector(
-                            child: Icon(
-                              MdiIcons.cardsHeart,
-                              size: 30,
-                            ),
-                          ),
-                          SizedBox(width: 180),
                           Row(
                             children: [
-                              Column(
+                              Text(
+                                animal?.name ?? '',
+                                style: TextStyle(
+                                  fontFamily: 'Gluten',
+                                  color: AppColors.darkest,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 36,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              GestureDetector(
+                                child: Icon(
+                                  MdiIcons.cardsHeart,
+                                  size: 30,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
                                 children: [
+                                  Text('Verificado'),
+                                  SizedBox(width: 5),
                                   Icon(
                                     animal?.verify ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
                                     size: 22,
                                   ),
-                                  SizedBox(height: 17),
+                                ],
+                              ),
+                              SizedBox(height: 15),
+                              Row(
+                                children: [
+                                  Text('Castrado'),
+                                  SizedBox(width: 5),
                                   Icon(
                                     animal?.adopted ?? false ? MdiIcons.pawOff : MdiIcons.paw,
                                     size: 20,
@@ -125,6 +135,21 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 20),
+                      Container(
+                        height: 150,
+                        width: 150,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: animal?.characteristics?.length,
+                          itemBuilder: (context, position) {
+                            var charac = animal?.characteristics?[position];
+                            return DetailsCard(
+                              characteristics: charac,
+                            );
+                          },
+                        ),
+                      )
                     ],
                   ),
                 ),
