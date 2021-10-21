@@ -16,6 +16,7 @@ class DetailsCard extends StatelessWidget {
       height: 110,
       width: 110,
       padding: EdgeInsets.only(top: 16, left: 14),
+      margin: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: _switchColor().withOpacity(0.1),
@@ -60,7 +61,7 @@ class DetailsCard extends StatelessWidget {
       return AppColors.castratedColor;
     } else if (characteristics?.conduct != null) {
       return AppColors.conductColor;
-    } else if (characteristics?.vaccineted != null) {
+    } else if (characteristics?.vaccinated != null) {
       return AppColors.vaccinatedColor;
     } else {
       return AppColors.darkest;
@@ -78,7 +79,7 @@ class DetailsCard extends StatelessWidget {
       return AppStrings.detailsCardCastrated;
     } else if (characteristics?.conduct != null) {
       return AppStrings.detailsCardConduct;
-    } else if (characteristics?.vaccineted != null) {
+    } else if (characteristics?.vaccinated != null) {
       return AppStrings.detailsCardVaccinated;
     } else {
       return '';
@@ -103,8 +104,8 @@ class DetailsCard extends StatelessWidget {
           : AppStrings.detailsCardCastratedType2;
     } else if (characteristics?.conduct != null) {
       return AppStrings.detailsCardConduct;
-    } else if (characteristics?.vaccineted != null) {
-      return characteristics?.vaccineted == true
+    } else if (characteristics?.vaccinated != null) {
+      return characteristics?.vaccinated == true
           ? AppStrings.detailsCardVaccinatedType1
           : AppStrings.detailsCardVaccinatedType2;
     } else {
@@ -123,7 +124,7 @@ class DetailsCard extends StatelessWidget {
       return MdiIcons.scissorsCutting;
     } else if (characteristics?.conduct != null) {
       return MdiIcons.moonWaningGibbous;
-    } else if (characteristics?.vaccineted != null) {
+    } else if (characteristics?.vaccinated != null) {
       return MdiIcons.needle;
     } else {
       return MdiIcons.dog;

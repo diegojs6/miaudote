@@ -4,7 +4,7 @@ class Characteristics extends Equatable {
   final bool? sociable;
   final bool? conduct;
   final num? bark;
-  final bool? vaccineted;
+  final bool? vaccinated;
   final bool? castrated;
   final String? size;
 
@@ -12,7 +12,7 @@ class Characteristics extends Equatable {
     this.sociable,
     this.conduct,
     this.bark,
-    this.vaccineted,
+    this.vaccinated,
     this.castrated,
     this.size,
   });
@@ -23,7 +23,7 @@ class Characteristics extends Equatable {
       sociable,
       conduct,
       bark,
-      vaccineted,
+      vaccinated,
       castrated,
       size,
     ];

@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import 'characteristics.dart';
+
 class Animals extends Equatable {
   final String? objectId;
   final DateTime? createAt;
@@ -10,7 +12,7 @@ class Animals extends Equatable {
   final String? ong;
   final String? name;
   final bool? adopted;
-  final List<dynamic>? characteristics;
+  final List<Characteristics>? characteristics;
   final bool? verify;
   final String? description;
   final String? age;

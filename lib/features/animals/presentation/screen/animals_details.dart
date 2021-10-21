@@ -137,16 +137,14 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                       ),
                       SizedBox(height: 20),
                       Container(
-                        height: 150,
-                        width: 150,
+                        height: 110,
+                        width: MediaQuery.of(context).size.width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: animal?.characteristics?.length,
                           itemBuilder: (context, position) {
                             var charac = animal?.characteristics?[position];
-                            return DetailsCard(
-                              characteristics: charac,
-                            );
+                            return DetailsCard(characteristics: charac);
                           },
                         ),
                       )

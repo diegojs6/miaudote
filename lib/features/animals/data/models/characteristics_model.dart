@@ -6,7 +6,7 @@ class CharacteristicsModel extends Equatable {
   final bool? sociable;
   final bool? conduct;
   final num? bark;
-  final bool? vaccineted;
+  final bool? vaccinated;
   final bool? castrated;
   final String? size;
 
@@ -14,7 +14,7 @@ class CharacteristicsModel extends Equatable {
     this.sociable,
     this.conduct,
     this.bark,
-    this.vaccineted,
+    this.vaccinated,
     this.castrated,
     this.size,
   });
@@ -25,7 +25,7 @@ class CharacteristicsModel extends Equatable {
       sociable,
       conduct,
       bark,
-      vaccineted,
+      vaccinated,
       castrated,
       size,
     ];
@@ -35,7 +35,7 @@ class CharacteristicsModel extends Equatable {
         sociable: json['sociable'],
         conduct: json['conduct'],
         bark: json['bark'],
-        vaccineted: json['vaccineted'],
+        vaccinated: json['vaccinated'],
         castrated: json['castrated'],
         size: json['size'],
       );
@@ -44,7 +44,7 @@ class CharacteristicsModel extends Equatable {
         'sociable': characteristics?.sociable,
         'conduct': characteristics?.conduct,
         'bark': characteristics?.bark,
-        'vaccineted': characteristics?.vaccineted,
+        'vaccinated': characteristics?.vaccinated,
         'castrated': characteristics?.castrated,
         'size': characteristics?.size,
       };
@@ -53,7 +53,7 @@ class CharacteristicsModel extends Equatable {
         sociable: entity?.sociable,
         conduct: entity?.conduct,
         bark: entity?.bark,
-        vaccineted: entity?.vaccineted,
+        vaccinated: entity?.vaccinated,
         castrated: entity?.castrated,
         size: entity?.size,
       );
@@ -62,7 +62,7 @@ class CharacteristicsModel extends Equatable {
         sociable: sociable,
         conduct: conduct,
         bark: bark,
-        vaccineted: vaccineted,
+        vaccinated: vaccinated,
         castrated: castrated,
         size: size,
       );

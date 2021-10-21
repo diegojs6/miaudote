@@ -13,7 +13,7 @@ class AnimalsModel extends Equatable {
   final String? ong;
   final String? name;
   final bool? adopted;
-  final List<dynamic>? characteristicsModel;
+  final List<CharacteristicsModel>? characteristicsModel;
   final bool? verify;
   final String? description;
   final String? age;
