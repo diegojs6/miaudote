@@ -21,6 +21,7 @@ class _OngScreenState extends State<OngScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.lightest,
         body: BlocBuilder<OngBloc, OngState>(
           builder: (context, state) {
             return _builder(state);

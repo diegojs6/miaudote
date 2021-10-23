@@ -82,4 +82,7 @@ class AppStrings {
   static const detailsCardCastratedType2 = 'Não castrado';
   static const detailsCardVaccinatedType1 = 'Vacinado';
   static const detailsCardVaccinatedType2 = 'Não vacinado';
+  static const animalIsVerified = 'Verificado';
+  static const animalIsNotVerified = 'Não verificado';
+  static const animalDetailsCharacteristics = 'Caracteristicas';
 }
