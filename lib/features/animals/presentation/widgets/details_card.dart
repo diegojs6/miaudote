@@ -103,7 +103,7 @@ class DetailsCard extends StatelessWidget {
           ? AppStrings.detailsCardCastratedType1
           : AppStrings.detailsCardCastratedType2;
     } else if (characteristics?.conduct != null) {
-      return AppStrings.detailsCardConduct;
+      return characteristics?.conduct == true ? AppStrings.detailsCardConductType1 : AppStrings.detailsCardConductType2;
     } else if (characteristics?.vaccinated != null) {
       return characteristics?.vaccinated == true
           ? AppStrings.detailsCardVaccinatedType1

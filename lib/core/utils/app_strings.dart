@@ -73,8 +73,8 @@ class AppStrings {
   static const detailsCardCastrated = 'Castração';
   static const detailsCardVaccinated = 'Vacinas';
   static const detailsCardNonInformed = 'Não informado';
-  static const detailsCardSociableType1 = 'Calmo';
-  static const detailsCardSociableType2 = 'Agitado';
+  static const detailsCardSociableType1 = 'Amigo';
+  static const detailsCardSociableType2 = 'Na dele';
   static const detailsCardBarkType1 = 'Pouco';
   static const detailsCardBarkType2 = 'Moderado';
   static const detailsCardBarkType3 = 'Muito';
@@ -85,4 +85,6 @@ class AppStrings {
   static const animalIsVerified = 'Verificado';
   static const animalIsNotVerified = 'Não verificado';
   static const animalDetailsCharacteristics = 'Caracteristicas';
+  static const detailsCardConductType1 = 'Calmo';
+  static const detailsCardConductType2 = 'Agitado';
 }

@@ -136,7 +136,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                           style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () => _characteristicsDialog(),
                           child: Container(
                             padding: EdgeInsets.all(8),
                             decoration: BoxDecoration(
@@ -189,4 +189,36 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
             ),
           ))
       .toList();
+
+  Future<void> _characteristicsDialog() async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Guia de caracteristicas'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  Text('Nesta lista temos os seguintes caracteristicas para os pets sendo elas:'),
+                  SizedBox(height: 5),
+                  Text(
+                      '1: Comportamento: Amigo(otima companhia e para crianças) ou Na dele(devido a algum trauma ele quer ficar na dele).'),
+                  SizedBox(height: 2),
+                  Text('2: Conduta: Define se o animal é Calmo ou Agitado.'),
+                  SizedBox(height: 2),
+                  Text('3: Latido: Temos 3 niveis, sendo 1 para pouco latido, 2 para médio e 3 para muito.'),
+                  SizedBox(height: 2),
+                  Text('4: Vacinado: Em alguns casos o animal ja pode estar com a carteira de vacinas em dia.'),
+                  SizedBox(height: 2),
+                  Text('5: Castração: Em alguns casos o animal ja pode estar com castrado.'),
+                  SizedBox(height: 2),
+                  Text(
+                      '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.'),
+                  SizedBox(height: 2),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 }
