@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/styled_app_bar.dart';
 import '../../domain/entities/animals.dart';
 import '../widgets/details_card.dart';
@@ -195,25 +195,23 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Guia de caracteristicas'),
+            title: const Text(AppStrings.characteristicsDialogHeader),
             content: SingleChildScrollView(
               child: ListBody(
                 children: [
-                  Text('Nesta lista temos os seguintes caracteristicas para os pets sendo elas:'),
+                  Text(AppStrings.characteristicsDialogTitle),
                   SizedBox(height: 5),
-                  Text(
-                      '1: Comportamento: Amigo(otima companhia e para crianças) ou Na dele(devido a algum trauma ele quer ficar na dele).'),
+                  Text(AppStrings.characteristicsDialogText2),
                   SizedBox(height: 2),
-                  Text('2: Conduta: Define se o animal é Calmo ou Agitado.'),
+                  Text(AppStrings.characteristicsDialogText2),
                   SizedBox(height: 2),
-                  Text('3: Latido: Temos 3 niveis, sendo 1 para pouco latido, 2 para médio e 3 para muito.'),
+                  Text(AppStrings.characteristicsDialogText3),
                   SizedBox(height: 2),
-                  Text('4: Vacinado: Em alguns casos o animal ja pode estar com a carteira de vacinas em dia.'),
+                  Text(AppStrings.characteristicsDialogText4),
                   SizedBox(height: 2),
-                  Text('5: Castração: Em alguns casos o animal ja pode estar com castrado.'),
+                  Text(AppStrings.characteristicsDialogText5),
                   SizedBox(height: 2),
-                  Text(
-                      '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.'),
+                  Text(AppStrings.characteristicsDialogText6),
                   SizedBox(height: 2),
                 ],
               ),
