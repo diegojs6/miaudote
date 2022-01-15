@@ -42,8 +42,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider.value(value: _ongBLoc..add(OngEvent.load())),
-              BlocProvider.value(value: _animalsBloc..add(AnimalsEvent.load())),
+              BlocProvider.value(value: _ongBLoc..add(LoadOngs())),
+              BlocProvider.value(value: _animalsBloc..add(LoadAnimals())),
             ],
             child: HomeScreen(),
           ),

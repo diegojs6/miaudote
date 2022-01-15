@@ -13,7 +13,7 @@ class AnimalsModel extends Equatable {
   final String? ong;
   final String? name;
   final bool? adopted;
-  final CharacteristicsModel? characteristicsModel;
+  final List<CharacteristicsModel>? characteristicsModel;
   final bool? verify;
   final String? description;
   final String? age;
@@ -68,7 +68,7 @@ class AnimalsModel extends Equatable {
         ong: json['ong'],
         name: json['name'],
         adopted: json['adopted'],
-        characteristicsModel: CharacteristicsModel.fromJson(json['characteristics']),
+        characteristicsModel: (json['characteristics'] as List).map((e) => CharacteristicsModel.fromJson(e)).toList(),
         verify: json['verify'],
         description: json['description'],
         age: json['age'],
@@ -86,7 +86,7 @@ class AnimalsModel extends Equatable {
         'ong': animalsModel.ong,
         'name': animalsModel.name,
         'adopted': animalsModel.adopted,
-        'characteristics': CharacteristicsModel.toJson(animalsModel.characteristicsModel),
+        'characteristics': animalsModel.characteristicsModel?.map((e) => CharacteristicsModel.toJson(e)).toList(),
         'verify': animalsModel.verify,
         'description': animalsModel.description,
         'age': animalsModel.age,
@@ -104,7 +104,7 @@ class AnimalsModel extends Equatable {
         ong: entity.ong,
         name: entity.name,
         adopted: entity.adopted,
-        characteristicsModel: CharacteristicsModel.fromEntity(entity.characteristics),
+        characteristicsModel: entity.characteristics?.map((e) => CharacteristicsModel.fromEntity(e)).toList(),
         verify: entity.verify,
         description: entity.description,
         age: entity.age,
@@ -122,7 +122,7 @@ class AnimalsModel extends Equatable {
         ong: ong,
         name: name,
         adopted: adopted,
-        characteristics: characteristicsModel?.toEntity(),
+        characteristics: characteristicsModel?.map((e) => e.toEntity()).toList(),
         verify: verify,
         description: description,
         age: age,
