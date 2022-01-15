@@ -1,6 +1,5 @@
 part of 'ong_bloc.dart';
 
-@freezed
-class OngEvent with _$OngEvent {
-  factory OngEvent.load() = _Load;
-}
+abstract class OngEvent {}
+
+class LoadOngs extends OngEvent {}

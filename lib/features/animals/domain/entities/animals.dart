@@ -12,7 +12,7 @@ class Animals extends Equatable {
   final String? ong;
   final String? name;
   final bool? adopted;
-  final Characteristics? characteristics;
+  final List<Characteristics>? characteristics;
   final bool? verify;
   final String? description;
   final String? age;

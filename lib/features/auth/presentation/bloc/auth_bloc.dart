@@ -1,19 +1,16 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:miaudote/features/login/domain/usecases/get_auth_info.dart';
-import 'package:miaudote/features/login/domain/usecases/get_current_user.dart';
-import 'package:miaudote/features/login/domain/usecases/get_refresh_token.dart';
-import 'package:miaudote/features/login/domain/usecases/get_sign_out.dart';
 
-import '../../../customer/domain/entities/customer.dart';
 import '../../../customer/domain/usecases/delete_customer.dart';
 import '../../../customer/domain/usecases/get_customer.dart';
+import '../../../login/domain/usecases/get_auth_info.dart';
+import '../../../login/domain/usecases/get_current_user.dart';
+import '../../../login/domain/usecases/get_refresh_token.dart';
+import '../../../login/domain/usecases/get_sign_out.dart';
+import 'auth_state.dart';
 
-part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
-part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final GetCustomer getCustomer;
@@ -30,7 +27,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     this.getRefreshToken,
     this.signOut,
     this.getAuthInfo,
-  ) : super(_Initial());
+  ) : super(AuthState.initial()) {
+    on<Started>((event, emit) async {
+      emit(state.loading());
+      emit(await _verifyLoginConditions());
+    });
+
+    on<LoggedIn>((event, emit) async {
+      emit(state.loading());
+      emit(await _verifyLoginConditions());
+    });
+
+    on<Registered>((event, emit) async {
+      emit(state.loading());
+      var authInfo = await getAuthInfo();
+      await getCurrentUser(forceRefresh: true);
+      emit(await _setCustomerInfo(authInfo?.objectId));
+    });
+
+    on<LoggedOut>((event, emit) async {
+      await deleteCustomer();
+      await signOut();
+      emit(state.unauthenticated());
+    });
+  }
 
   @override
   void onTransition(Transition<AuthEvent, AuthState> transition) {
@@ -56,42 +76,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     super.close();
   }
 
-  @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
-    yield* event.when(
-      started: () async* {
-        yield const AuthState.loading();
-        yield await _verifyLoginConditions();
-      },
-      loggedIn: () async* {
-        yield const AuthState.loading();
-        yield await _verifyLoginConditions();
-      },
-      registered: () async* {
-        yield const AuthState.loading();
-        var authInfo = await getAuthInfo();
-        await getCurrentUser(forceRefresh: true);
-        yield await _setCustomerInfo(authInfo?.objectId);
-      },
-      loggedOut: () async* {
-        await deleteCustomer();
-        await signOut();
-        yield const AuthState.unauthenticated();
-      },
-    );
-  }
-
   Future<AuthState> _setCustomerInfo(String? uid) async {
     if (uid != null) {
       var fold = await getCustomer(uid);
       return fold.fold(
-        (failure) => const AuthState.unauthenticated(),
-        (customer) => AuthState.authenticated(customer),
+        (failure) => state.unauthenticated(),
+        (customer) => state.authenticated(customer),
       );
     } else {
-      return const AuthState.unauthenticated();
+      return state.unauthenticated();
     }
   }
 
@@ -99,7 +92,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     var authInfo = await getAuthInfo();
     final uid = authInfo?.objectId;
     if (authInfo == null || uid == null) {
-      return const AuthState.unauthenticated();
+      return state.unauthenticated();
     } else {
       return await _setCustomerInfo(authInfo.objectId);
     }
