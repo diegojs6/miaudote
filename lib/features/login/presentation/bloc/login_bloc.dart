@@ -57,6 +57,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginError>((event, emit) async {
       emit(state.loginError(event.message));
     });
+
+    on<LoginRegister>((event, emit) async {
+      emit(state.loading());
+      var result = await userRegister(
+          username: event.username,
+          email: event.email,
+          address: event.address,
+          fullName: event.fullName,
+          lat: event.lat,
+          long: event.long,
+          contact: event.contact,
+          birthDate: event.birthDate,
+          password: event.password);
+      emit(result.fold(
+        (failure) => state.loginError(_mapLoginFailureToString(failure)),
+        (register) {
+          authBloc.add(LoggedIn());
+          return state.completed(register);
+        },
+      ));
+    });
   }
 
   String _mapLoginFailureToString(Failure failure) {

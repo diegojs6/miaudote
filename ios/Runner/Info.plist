@@ -40,8 +40,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>the app uses the location to search and show the distance of an animal to be adopted by the user.</string>
+	<string>Mi-au-dote! Requer acesso a sua localização para conectar a amigos proximos!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Mi-au-dote! Requer acesso a sua localização para conectar a amigos proximos!</string>
 </dict>
 </plist>

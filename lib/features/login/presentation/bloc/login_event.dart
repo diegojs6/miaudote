@@ -25,15 +25,15 @@ class LoginError extends LoginEvent {
 }
 
 class LoginRegister extends LoginEvent {
-  late String username;
-  late String? email;
+  String username;
+  String? email;
   String? address;
   String? fullName;
   String? lat;
   String? long;
   num? contact;
   String? birthDate;
-  late String password;
+  String password;
 
   LoginRegister({
     required this.username,
