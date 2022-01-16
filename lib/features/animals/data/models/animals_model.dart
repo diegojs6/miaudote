@@ -19,23 +19,28 @@ class AnimalsModel extends Equatable {
   final String? age;
   final String? animalType;
   final List<dynamic>? imageList;
+  final num? lat;
+  final num? long;
 
-  AnimalsModel(
-      {this.objectId,
-      this.createAt,
-      this.updatedAt,
-      this.size,
-      this.gender,
-      this.heigth,
-      this.ong,
-      this.name,
-      this.adopted,
-      this.characteristicsModel,
-      this.verify,
-      this.description,
-      this.age,
-      this.animalType,
-      this.imageList});
+  AnimalsModel({
+    this.objectId,
+    this.createAt,
+    this.updatedAt,
+    this.size,
+    this.gender,
+    this.heigth,
+    this.ong,
+    this.name,
+    this.adopted,
+    this.characteristicsModel,
+    this.verify,
+    this.description,
+    this.age,
+    this.animalType,
+    this.imageList,
+    this.lat,
+    this.long,
+  });
 
   @override
   List<Object?> get props {
@@ -55,6 +60,8 @@ class AnimalsModel extends Equatable {
       age,
       animalType,
       imageList,
+      lat,
+      long,
     ];
   }
 
@@ -74,6 +81,8 @@ class AnimalsModel extends Equatable {
         age: json['age'],
         animalType: json['animalType'],
         imageList: json['imageList'],
+        lat: json['lat'],
+        long: json['long'],
       );
 
   static Map<String, dynamic> toJson(AnimalsModel animalsModel) => {
@@ -92,6 +101,8 @@ class AnimalsModel extends Equatable {
         'age': animalsModel.age,
         'animalType': animalsModel.animalType,
         'imageList': animalsModel.imageList,
+        'lat': animalsModel.lat,
+        'long': animalsModel.long,
       };
 
   factory AnimalsModel.fromEntity(Animals entity) => AnimalsModel(
@@ -110,6 +121,8 @@ class AnimalsModel extends Equatable {
         age: entity.age,
         animalType: entity.animalType,
         imageList: entity.imageList,
+        lat: entity.lat,
+        long: entity.long,
       );
 
   Animals toEntity() => Animals(
@@ -128,5 +141,7 @@ class AnimalsModel extends Equatable {
         age: age,
         animalType: animalType,
         imageList: imageList,
+        lat: lat,
+        long: long,
       );
 }

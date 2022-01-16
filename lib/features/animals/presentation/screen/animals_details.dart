@@ -1,11 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:miaudote/core/device/geolocator_info.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/styled_animal_characteristics_dialog.dart';
 import '../../../../core/widgets/styled_app_bar.dart';
+import '../../../../injection_container.dart';
 import '../../domain/entities/animals.dart';
 import '../widgets/details_card.dart';
 import 'animal_image_full_screen.dart';
@@ -23,6 +26,8 @@ class AnimailsDetail extends StatefulWidget {
 
 class _AnimailsDetailState extends State<AnimailsDetail> {
   final Animals? animal;
+  final IGeolocatorInfo locator = sl<IGeolocatorInfo>();
+  final Distance distance = Distance();
 
   _AnimailsDetailState(this.animal);
   @override
@@ -176,10 +181,68 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                         children: [
                           Text(
                             "Sobre",
+                            style: TextStyle(),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24),
+                      Row(
+                        children: [
+                          Text(
+                            animal?.gender == 'male' ? AppStrings.animalsMale : AppStrings.animalsFemale,
                             style: TextStyle(
                               fontFamily: 'Gluten',
                               fontSize: 22,
                               fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(width: 13),
+                          Icon(
+                            animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
+                          ),
+                          SizedBox(width: 9),
+                          Icon(MdiIcons.circleSmall, size: 24),
+                          SizedBox(width: 9),
+                          Text(
+                            animal?.age ?? '',
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              color: AppColors.darkest,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 24,
+                            ),
+                          ),
+                          SizedBox(width: 9),
+                          Icon(MdiIcons.mapMarker),
+                          SizedBox(width: 9),
+                          FutureBuilder(
+                            future: _calculateKm(),
+                            builder: (context, AsyncSnapshot<String> snapshot) {
+                              return Text(
+                                '${snapshot.data ?? ''}',
+                                style: TextStyle(fontFamily: 'Gluten', fontSize: 22),
+                              );
+                            },
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            AppStrings.animalDetailsCharacteristics,
+                            style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
+                          GestureDetector(
+                            onTap: () => StyledAnimalCharacteristicsDialog(context).dialog(),
+                            child: Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.darkest),
+                                color: Colors.transparent,
+                                shape: BoxShape.circle,
+                              ),
                             ),
                           ),
                         ],
@@ -217,6 +280,34 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
         ),
       ),
     );
+  }
+
+  Future<String> _calculateKm() async {
+    var location = await locator.currentPosition();
+    final double km = distance.as(
+      LengthUnit.Kilometer,
+      new LatLng(location.latitude, location.longitude),
+      new LatLng(animal?.lat?.toDouble() ?? 0.0, animal?.long?.toDouble() ?? 0.0),
+    );
+    if (km == 0.0) {
+      final double meter = distance.as(
+        LengthUnit.Meter,
+        new LatLng(location.latitude, location.longitude),
+        new LatLng(animal?.lat?.toDouble() ?? 0.0, animal?.long?.toDouble() ?? 0.0),
+      );
+      return '${meter.toString().substring(0, 3)} M';
+    }
+    return '$km KM';
+  }
+
+  Future<double> getLatitude() async {
+    var location = await locator.currentPosition();
+    return location.latitude;
+  }
+
+  Future<double> getLongitude() async {
+    var location = await locator.currentPosition();
+    return location.longitude;
   }
 
   List<Widget>? imgCarousel() => animal?.imageList

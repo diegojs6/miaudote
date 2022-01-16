@@ -11,7 +11,9 @@ import '../../../../core/widgets/styled_button.dart';
 import '../../../../core/widgets/styled_snackbar.dart';
 import '../../../../core/widgets/styled_text_form_field.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../../auth/presentation/bloc/auth_state.dart';
 import '../bloc/login_bloc.dart';
+import '../bloc/login_state.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -49,10 +51,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final ScrollController _scrollController = ScrollController();
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.maybeWhen(
-          authenticated: (customer) => Navigator.pushReplacementNamed(context, Routes.homeScreen),
-          orElse: () {},
-        );
+        switch (state.status) {
+          case AuthStatus.authenticated:
+            Navigator.pushReplacementNamed(context, Routes.homeScreen);
+            break;
+          default:
+            break;
+        }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
@@ -151,12 +156,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           StyledButton(
                             usesInfinityWidth: true,
                             text: AppStrings.registerButton,
-                            enabled: state != LoginState.loading(),
+                            enabled: state != state.loading(),
                             backgroundColor: AppColors.primaryBlue,
                             textColor: AppColors.lightest,
                             action: () {
                               if (_formKey.currentState?.validate() == true && agree == true) {
-                                _loginBloc.add(LoginEvent.register(
+                                _loginBloc.add(LoginRegister(
                                   username: _usernameController.text,
                                   password: _passwordController.text,
                                   email: _emailController.text,

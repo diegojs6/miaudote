@@ -28,7 +28,6 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     initializeDateFormatting('pt_BR', null);
     return MaterialApp(
       title: AppStrings.appTitle,

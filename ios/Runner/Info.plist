@@ -40,6 +40,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Mi-au-dote! Requer acesso a sua localização para conectar a amigos proximos!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Mi-au-dote! Requer acesso a sua localização para conectar a amigos proximos!</string>
 </dict>
 </plist>

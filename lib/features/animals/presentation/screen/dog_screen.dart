@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/widgets/styled_animals_card.dart';
-import 'package:miaudote/features/animals/presentation/screen/animals_details.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/styled_animals_card.dart';
 import '../../../../core/widgets/styled_loading.dart';
 import '../bloc/animals_bloc.dart';
 import '../bloc/animals_state.dart';
+import 'animals_details.dart';
 
 class DogScreen extends StatefulWidget {
   @override
