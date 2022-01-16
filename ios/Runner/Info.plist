@@ -41,5 +41,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>the app uses the location to search and show the distance of an animal to be adopted by the user.</string>
 </dict>
 </plist>
