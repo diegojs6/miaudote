@@ -33,6 +33,7 @@ dependencies:
   flutter_secure_storage: ^4.2.0
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.5
+  geolocator: ^8.0.3
 
 
 dev_dependencies:

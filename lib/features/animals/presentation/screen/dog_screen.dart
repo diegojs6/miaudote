@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/widgets/styled_animals_card.dart';
 
+import '../../../../core/device/geolocator_info.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/styled_animals_card.dart';
 import '../../../../core/widgets/styled_loading.dart';
+import '../../../../injection_container.dart';
 import '../bloc/animals_bloc.dart';
 import '../bloc/animals_state.dart';
 
@@ -16,6 +18,8 @@ class DogScreen extends StatefulWidget {
 }
 
 class _DogScreenState extends State<DogScreen> {
+  final IGeolocatorInfo locator = sl<IGeolocatorInfo>();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
@@ -116,6 +120,18 @@ class _DogScreenState extends State<DogScreen> {
               ],
             ),
           ),
+          FutureBuilder(
+            future: getLatitude(),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              return Text(snapshot.data ?? '');
+            },
+          ),
+          FutureBuilder(
+            future: getLongitude(),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              return Text(snapshot.data ?? '');
+            },
+          ),
         ],
       ),
     );
@@ -127,5 +143,15 @@ class _DogScreenState extends State<DogScreen> {
         child: Text(msg ?? ''),
       ),
     );
+  }
+
+  Future<String> getLatitude() async {
+    var location = await locator.currentPosition();
+    return '${location.latitude}';
+  }
+
+  Future<String> getLongitude() async {
+    var location = await locator.currentPosition();
+    return '${location.longitude}';
   }
 }

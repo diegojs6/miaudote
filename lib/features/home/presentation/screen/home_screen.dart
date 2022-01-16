@@ -1,10 +1,12 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:miaudote/core/device/geolocator_info.dart';
 import 'package:miaudote/features/animals/presentation/screen/dog_screen.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../injection_container.dart';
 import '../../../ong/presentation/screens/ong_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +17,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentPage = 0;
   final _pageController = PageController();
+  final IGeolocatorInfo locator = sl<IGeolocatorInfo>();
+
+  @override
+  void initState() {
+    locator.handlePermission();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
