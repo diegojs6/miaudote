@@ -27,7 +27,8 @@ class GeolocatorInfo implements IGeolocatorInfo {
   @override
   Future<Position> currentPosition() async {
     final hasPermission = await handlePermission();
-    final position = await _geolocatorPlatform.getCurrentPosition();
+    final gec = LocationSettings(accuracy: LocationAccuracy.high);
+    final position = await _geolocatorPlatform.getCurrentPosition(locationSettings: gec);
 
     if (!hasPermission) {
       return position;
