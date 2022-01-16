@@ -35,7 +35,7 @@ class StyledButton extends StatelessWidget {
               : MediaQuery.of(context).size.height * 1 - 64,
       child: TextButton(
         onPressed: _buttonAction() as void Function()?,
-        child: Text(text!),
+        child: Text(text ?? ''),
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 16),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),

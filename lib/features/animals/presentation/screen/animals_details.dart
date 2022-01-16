@@ -111,84 +111,6 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                       Row(
                         children: [
                           Text(
-                            animal?.gender ?? '',
-                            style: TextStyle(
-                                fontFamily: 'Gluten',
-                                color: AppColors.darkest,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 24),
-                          ),
-                          SizedBox(width: 13),
-                          Icon(
-                            animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
-                          ),
-                          SizedBox(width: 9),
-                          Icon(MdiIcons.circleSmall, size: 24),
-                          SizedBox(width: 9),
-                          Text(
-                            animal?.age ?? '',
-                            style: TextStyle(
-                              fontFamily: 'Gluten',
-                              color: AppColors.darkest,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 24),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            AppStrings.animalDetailsCharacteristics,
-                            style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
-                          ),
-                          GestureDetector(
-                            onTap: () => StyledAnimalCharacteristicsDialog(context).dialog(),
-                            child: Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: AppColors.darkest),
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '?',
-                                  style: TextStyle(fontSize: 14),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 110,
-                        width: MediaQuery.of(context).size.width,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: animal?.characteristics?.length,
-                          itemBuilder: (context, position) {
-                            var charac = animal?.characteristics?[position];
-                            return DetailsCard(characteristics: charac);
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 24),
-                      Row(
-                        children: [
-                          Text(
-                            "Sobre",
-                            style: TextStyle(),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 24),
-                      Row(
-                        children: [
-                          Text(
                             animal?.gender == 'male' ? AppStrings.animalsMale : AppStrings.animalsFemale,
                             style: TextStyle(
                               fontFamily: 'Gluten',
@@ -243,6 +165,40 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
                               ),
+                              child: Center(
+                                child: Text(
+                                  '?',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        height: 110,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: animal?.characteristics?.length,
+                          itemBuilder: (context, position) {
+                            var charac = animal?.characteristics?[position];
+                            return DetailsCard(characteristics: charac);
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 24),
+                      SizedBox(height: 24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            AppStrings.ongAbout,
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -260,7 +216,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 34),
+                      SizedBox(height: 44),
                       Row(
                         children: [
                           GestureDetector(
