@@ -1,5 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -7,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/api/api_interceptor.dart';
 import 'core/api/url_creator.dart';
+import 'core/device/geolocator_info.dart';
 import 'core/device/network_info.dart';
 import 'core/device/secure_storage.dart';
 import 'features/animals/data/datasources/animals_remote_data_source.dart';
@@ -52,6 +54,7 @@ Future<void> init() async {
 
   sl.registerLazySingleton(() => http.Client);
   sl.registerLazySingleton(() => Connectivity());
+  sl.registerLazySingleton(() => Geolocator());
   sl.registerLazySingleton<INetworkInfo>(() => NetworkInfo(sl()));
   sl.registerLazySingleton<IUrlCreator>(() => UrlCreator());
   sl.registerLazySingleton<IHttpClient>(() => HttpClient());
@@ -59,6 +62,9 @@ Future<void> init() async {
   sl.registerLazySingleton(() => const FlutterSecureStorage());
   final sharedPrefs = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPrefs);
+  final geolocatorPlat = GeolocatorPlatform.instance;
+  sl.registerLazySingleton(() => geolocatorPlat);
+  sl.registerFactory<IGeolocatorInfo>(() => GeolocatorInfo(sl()));
 
   //! Feature login
   //* Bloc
