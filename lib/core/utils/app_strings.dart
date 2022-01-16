@@ -61,6 +61,7 @@ class AppStrings {
   static const ongSocialMedia = 'Redes Sociais';
 
   //! Animals String
+
   static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
   static const dogsLoading = 'Os doguinhos estão se arrumando';
   static const animalsMale = 'Macho';
@@ -99,4 +100,5 @@ class AppStrings {
   static const characteristicsDialogText5 = '5: Castração: Em alguns casos o animal ja pode estar com castrado.';
   static const characteristicsDialogText6 =
       '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.';
+  static const animalsDetails = 'Adotar';
 }

@@ -30,150 +30,190 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
     final CarouselController _controller = CarouselController();
     return Scaffold(
       appBar: StyledAppBar.appBar(context, 'Informações sobre ${animal?.name}', isDark: true),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
-          children: [
-            CarouselSlider(
-              carouselController: _controller,
-              options: CarouselOptions(
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 7),
-              ),
-              items: imgCarousel(),
-            ),
-            Positioned(
-              top: 210,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: AppColors.lightest,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    topRight: Radius.circular(24),
-                  ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              CarouselSlider(
+                carouselController: _controller,
+                options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 7),
                 ),
-                child: Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              animal?.name ?? '',
-                              style: TextStyle(
+                items: imgCarousel(),
+              ),
+              Positioned(
+                top: 210,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: AppColors.lightest,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                animal?.name ?? '',
+                                style: TextStyle(
+                                  fontFamily: 'Gluten',
+                                  color: AppColors.darkest,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 36,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              GestureDetector(
+                                child: Icon(
+                                  MdiIcons.cardsHeart,
+                                  size: 30,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(animal?.verify ?? false
+                                      ? AppStrings.animalIsVerified
+                                      : AppStrings.animalIsNotVerified),
+                                  SizedBox(width: 5),
+                                  Icon(
+                                    animal?.verify ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
+                                    size: 22,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24),
+                      Row(
+                        children: [
+                          Text(
+                            animal?.gender ?? '',
+                            style: TextStyle(
                                 fontFamily: 'Gluten',
                                 color: AppColors.darkest,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 36,
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            GestureDetector(
-                              child: Icon(
-                                MdiIcons.cardsHeart,
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Text(animal?.verify ?? false
-                                    ? AppStrings.animalIsVerified
-                                    : AppStrings.animalIsNotVerified),
-                                SizedBox(width: 5),
-                                Icon(
-                                  animal?.verify ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
-                                  size: 22,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24),
-                    Row(
-                      children: [
-                        Text(
-                          animal?.gender ?? '',
-                          style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 24),
+                          ),
+                          SizedBox(width: 13),
+                          Icon(
+                            animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
+                          ),
+                          SizedBox(width: 9),
+                          Icon(MdiIcons.circleSmall, size: 24),
+                          SizedBox(width: 9),
+                          Text(
+                            animal?.age ?? '',
+                            style: TextStyle(
                               fontFamily: 'Gluten',
                               color: AppColors.darkest,
                               fontWeight: FontWeight.w400,
-                              fontSize: 24),
-                        ),
-                        SizedBox(width: 13),
-                        Icon(
-                          animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
-                        ),
-                        SizedBox(width: 9),
-                        Icon(MdiIcons.circleSmall, size: 24),
-                        SizedBox(width: 9),
-                        Text(
-                          animal?.age ?? '',
-                          style: TextStyle(
-                            fontFamily: 'Gluten',
-                            color: AppColors.darkest,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          AppStrings.animalDetailsCharacteristics,
-                          style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
-                        ),
-                        GestureDetector(
-                          onTap: () => StyledAnimalCharacteristicsDialog(context).dialog(),
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.darkest),
-                              color: Colors.transparent,
-                              shape: BoxShape.circle,
+                              fontSize: 24,
                             ),
-                            child: Center(
-                              child: Text(
-                                '?',
-                                style: TextStyle(fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            AppStrings.animalDetailsCharacteristics,
+                            style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
+                          GestureDetector(
+                            onTap: () => StyledAnimalCharacteristicsDialog(context).dialog(),
+                            child: Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.darkest),
+                                color: Colors.transparent,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '?',
+                                  style: TextStyle(fontSize: 14),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      height: 110,
-                      width: MediaQuery.of(context).size.width,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: animal?.characteristics?.length,
-                        itemBuilder: (context, position) {
-                          var charac = animal?.characteristics?[position];
-                          return DetailsCard(characteristics: charac);
-                        },
+                        ],
                       ),
-                    )
-                  ],
+                      SizedBox(height: 10),
+                      Container(
+                        height: 110,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: animal?.characteristics?.length,
+                          itemBuilder: (context, position) {
+                            var charac = animal?.characteristics?[position];
+                            return DetailsCard(characteristics: charac);
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 24),
+                      Row(
+                        children: [
+                          Text(
+                            "Sobre",
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              fontSize: 22,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Column(
+                        children: [
+                          Text(
+                            animal?.description ?? "",
+                            style: TextStyle(
+                              fontFamily: 'Gluten',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 34),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              AppStrings.animalsDetails,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
