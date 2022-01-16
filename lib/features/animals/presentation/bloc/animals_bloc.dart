@@ -1,20 +1,27 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../domain/usecases/get_animals.dart';
 import 'animals_state.dart';
 
-part 'animals_bloc.freezed.dart';
 part 'animals_event.dart';
 
 class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
   final GetAnimals getAnimals;
 
-  AnimalsBloc(this.getAnimals) : super(AnimalsState.inital());
+  AnimalsBloc(this.getAnimals) : super(AnimalsState.inital()) {
+    on<LoadAnimals>((event, emit) async {
+      emit(state.loading());
+      var fold = await getAnimals();
+      emit(await fold.fold(
+        (failure) => state.error(_mapAnimalsFailureToString(failure)),
+        (animals) => state.ready(animals),
+      ));
+    });
+  }
 
   @override
   void onTransition(Transition<AnimalsEvent, AnimalsState> transition) {
@@ -38,20 +45,6 @@ class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
   Future<void> close() async {
     print('Login bloc closed');
     super.close();
-  }
-
-  @override
-  Stream<AnimalsState> mapEventToState(
-    AnimalsEvent event,
-  ) async* {
-    yield* event.when(load: () async* {
-      yield state.loading();
-      var fold = await getAnimals();
-      yield await fold.fold(
-        (failure) => state.error(_mapAnimalsFailureToString(failure)),
-        (animals) => state.ready(animals),
-      );
-    });
   }
 
   String _mapAnimalsFailureToString(Failure failure) {

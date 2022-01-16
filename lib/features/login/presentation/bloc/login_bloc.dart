@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -11,10 +8,9 @@ import '../../domain/usecases/get_auth_info.dart';
 import '../../domain/usecases/get_login.dart';
 import '../../domain/usecases/get_sign_out.dart';
 import '../../domain/usecases/user_register.dart';
+import 'login_state.dart';
 
-part 'login_bloc.freezed.dart';
 part 'login_event.dart';
-part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final GetLogin getLogin;
@@ -23,78 +19,44 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final GetAuthInfo getAuthInfo;
   final UserRegister userRegister;
 
-  LoginBloc(this.getLogin, this.authBloc, this.signOut, this.getAuthInfo, this.userRegister) : super(_Initial());
+  LoginBloc(this.getLogin, this.authBloc, this.signOut, this.getAuthInfo, this.userRegister)
+      : super(LoginState.initial()) {
+    on<LoginStarted>((event, emit) async {
+      emit(LoginState.initial());
+    });
 
-  @override
-  Stream<LoginState> mapEventToState(
-    LoginEvent event,
-  ) async* {
-    yield* event.when(
-      started: () async* {
-        yield const LoginState.initial();
-      },
-      load: (username, password) async* {
-        yield const LoginState.loading();
-        var fold = await getLogin(username, password);
-        yield await fold.fold(
-          (failure) {
-            if (username.isEmpty || password.isEmpty) {
-              return LoginState.loginError(message: AppStrings.loginErrorInvalidInput);
-            }
-            return LoginState.loginError(message: _mapLoginFailureToString(failure));
-          },
-          (login) {
-            authBloc.add(AuthEvent.loggedIn());
-            return LoginState.completed(customer: login);
-          },
-        );
-      },
-      loginComplete: (authInfo) async* {
-        yield LoginState.completed(customer: authInfo);
-        authBloc.add(const AuthEvent.loggedIn());
-      },
-      logout: () async* {
-        yield const LoginState.loading();
-        await signOut.call();
-        authBloc.add(const AuthEvent.loggedOut());
-        yield const LoginState.initial();
-      },
-      error: (error) async* {
-        yield LoginState.loginError(message: error);
-      },
-      register: (
-        username,
-        email,
-        address,
-        fullName,
-        lat,
-        long,
-        contact,
-        birthDate,
-        password,
-      ) async* {
-        yield const LoginState.loading();
-        var result = await userRegister(
-          username: username,
-          email: email,
-          address: address,
-          fullName: fullName,
-          lat: lat,
-          long: long,
-          contact: contact,
-          birthDate: birthDate,
-          password: password,
-        );
-        final nextState = result.fold(
-          (failure) => LoginState.loginError(message: _mapLoginFailureToString(failure)),
-          (register) {
-            authBloc.add(const AuthEvent.loggedIn());
-            return LoginState.completed(customer: register);
-          },
-        );
-        yield nextState;
-      },
-    );
+    on<LoginLoad>((event, emit) async {
+      emit(state.loading());
+      var fold = await getLogin(event.username, event.password);
+      emit(await fold.fold(
+        (failure) {
+          if (event.username.isEmpty || event.password.isEmpty) {
+            return state.loginError(AppStrings.loginErrorInvalidInput);
+          }
+          return state.loginError(_mapLoginFailureToString(failure));
+        },
+        (login) {
+          authBloc.add(LoggedIn());
+          return state.completed(login);
+        },
+      ));
+    });
+
+    on<LoginComplete>((event, emit) async {
+      emit(state.completed(event.user));
+      authBloc.add(LoggedIn());
+    });
+
+    on<LoginLogout>((event, emit) async {
+      emit(state.loading());
+      await signOut.call();
+      authBloc.add(LoggedOut());
+      emit(LoginState.initial());
+    });
+
+    on<LoginError>((event, emit) async {
+      emit(state.loginError(event.message));
+    });
   }
 
   String _mapLoginFailureToString(Failure failure) {

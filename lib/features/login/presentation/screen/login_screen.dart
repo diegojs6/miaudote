@@ -10,7 +10,9 @@ import '../../../../core/widgets/styled_button.dart';
 import '../../../../core/widgets/styled_snackbar.dart';
 import '../../../../core/widgets/styled_text_form_field.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../../auth/presentation/bloc/auth_state.dart';
 import '../bloc/login_bloc.dart';
+import '../bloc/login_state.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -45,21 +47,26 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.maybeWhen(
-          authenticated: (customer) => Navigator.pushReplacementNamed(
-            context,
-            Routes.homeScreen,
-            arguments: customer,
-          ),
-          orElse: () {},
-        );
+        switch (state.status) {
+          case AuthStatus.authenticated:
+            Navigator.pushReplacementNamed(
+              context,
+              Routes.homeScreen,
+              arguments: state.customer,
+            );
+            break;
+          default:
+            break;
+        }
       },
       child: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
-          state.maybeWhen(
-            loginError: (message) => StyledSnackbar(context).showError(message ?? ''),
-            orElse: () {},
-          );
+          switch (state.status) {
+            case LoginStatus.loginError:
+              return StyledSnackbar(context).showError(state.message ?? '');
+            default:
+              break;
+          }
         },
         builder: (context, state) {
           return Scaffold(
@@ -120,18 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 8),
                     StyledButton(
-                      text: state == LoginState.loading()
-                          ? AppStrings.loginTextButtonLoading
-                          : AppStrings.loginTextButton,
+                      text: state == state.loading() ? AppStrings.loginTextButtonLoading : AppStrings.loginTextButton,
                       backgroundColor: AppColors.primaryBlue,
                       usesInfinityWidth: true,
                       action: () async {
                         if (_formKey.currentState?.validate() == true) {
                           _loginBloc
                             ..add(
-                              LoginEvent.load(
-                                username: _usernameController.text,
-                                password: _passwordController.text,
+                              LoginLoad(
+                                _usernameController.text,
+                                _passwordController.text,
                               ),
                             );
                         }

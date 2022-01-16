@@ -1,10 +1,23 @@
-part of 'auth_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-class AuthState with _$AuthState {
-  const AuthState._();
-  const factory AuthState.initial() = _Initial;
-  const factory AuthState.unauthenticated() = _Unauthenticated;
-  const factory AuthState.authenticated(Customer customer) = _Authenticated;
-  const factory AuthState.loading() = _Loading;
+import 'package:miaudote/features/customer/domain/entities/customer.dart';
+
+enum AuthStatus { initial, unauthenticated, authenticated, loading }
+
+class AuthState extends Equatable {
+  final AuthStatus status;
+  final Customer? customer;
+
+  AuthState._(this.status, this.customer);
+
+  @override
+  List<Object?> get props => [status, customer];
+
+  AuthState.initial() : this._(AuthStatus.initial, null);
+
+  AuthState loading() => AuthState._(AuthStatus.loading, customer);
+
+  AuthState unauthenticated() => AuthState._(AuthStatus.unauthenticated, customer);
+
+  AuthState authenticated(Customer? customer) => AuthState._(AuthStatus.authenticated, customer);
 }
