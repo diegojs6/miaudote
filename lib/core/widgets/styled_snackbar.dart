@@ -70,18 +70,18 @@ class StyledSnackbar {
             context: context,
             flushbar: Flushbar(
               margin: EdgeInsets.all(8),
-               borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8),
               flushbarPosition: FlushbarPosition.TOP,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.checkCircleOutline, color: AppColors.sucess),
+              icon: Icon(MdiIcons.checkCircleOutline, color: AppColors.success),
               boxShadows: boxShadow,
               duration: Duration(seconds: durationSeconds),
               messageText: Text(
                 message,
-                style:  GoogleFonts.lato(
+                style: GoogleFonts.lato(
                   fontWeight: FontWeight.w700,
-                  color: AppColors.sucess,
+                  color: AppColors.success,
                 ),
               ),
             ),
@@ -115,10 +115,7 @@ class StyledSnackbar {
               boxShadows: boxShadow,
               messageText: Text(
                 message,
-                style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.neutralDarkest
-                ),
+                style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: AppColors.neutralDarkest),
               ),
             ),
           ),
@@ -146,15 +143,15 @@ class StyledSnackbar {
               flushbarPosition: FlushbarPosition.TOP,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               backgroundColor: AppColors.lightest,
-              icon: Icon(MdiIcons.checkCircleOutline, color: AppColors.neutralDarkest,),
+              icon: Icon(
+                MdiIcons.checkCircleOutline,
+                color: AppColors.neutralDarkest,
+              ),
               duration: Duration(seconds: durationSeconds),
               boxShadows: boxShadow,
               messageText: Text(
                 message,
-                style:  GoogleFonts.lato(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.neutralDarkest
-                ),
+                style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: AppColors.neutralDarkest),
               ),
             ),
           ),
@@ -170,5 +167,4 @@ class StyledSnackbar {
           ),
         );
   }
-
 }

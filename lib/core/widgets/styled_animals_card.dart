@@ -55,10 +55,13 @@ class StyledAnimalsCard extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Icon(
-                        isVerified ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
-                        size: 24,
-                      ),
+                      isVerified ?? false
+                          ? Icon(
+                              MdiIcons.checkDecagram,
+                              color: AppColors.success,
+                              size: 24,
+                            )
+                          : Icon(MdiIcons.checkDecagramOutline, size: 24),
                     ],
                   ),
                   SizedBox(height: 10),

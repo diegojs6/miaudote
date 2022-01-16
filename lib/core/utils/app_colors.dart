@@ -6,7 +6,7 @@ class AppColors {
   static const lightest = Color(0xFFFFFFFF);
   static const primaryBlue = Color(0xFF40BFFF);
   static const error = Color(0xFFD0434F);
-  static const sucess = Color(0xFF138647);
+  static const success = Color(0xFF138647);
   static const neutralDarkest = Color(0xFF2F334B);
   static const purpleDarkest = Color(0xFF171232);
   static const dogCardGrey = Color(0xFFF2F3FB);

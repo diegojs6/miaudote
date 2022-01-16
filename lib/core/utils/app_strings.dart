@@ -73,8 +73,8 @@ class AppStrings {
   static const detailsCardCastrated = 'Castração';
   static const detailsCardVaccinated = 'Vacinas';
   static const detailsCardNonInformed = 'Não informado';
-  static const detailsCardSociableType1 = 'Calmo';
-  static const detailsCardSociableType2 = 'Agitado';
+  static const detailsCardSociableType1 = 'Amigo';
+  static const detailsCardSociableType2 = 'Na dele';
   static const detailsCardBarkType1 = 'Pouco';
   static const detailsCardBarkType2 = 'Moderado';
   static const detailsCardBarkType3 = 'Muito';
@@ -85,4 +85,18 @@ class AppStrings {
   static const animalIsVerified = 'Verificado';
   static const animalIsNotVerified = 'Não verificado';
   static const animalDetailsCharacteristics = 'Caracteristicas';
+  static const detailsCardConductType1 = 'Calmo';
+  static const detailsCardConductType2 = 'Agitado';
+  static const characteristicsDialogHeader = 'Guia de caracteristicas';
+  static const characteristicsDialogTitle = 'Nesta lista temos os seguintes caracteristicas para os pets sendo elas:';
+  static const characteristicsDialogText1 =
+      '1: Comportamento: Amigo(otima companhia e para crianças) ou Na dele(devido a algum trauma ele quer ficar na dele).';
+  static const characteristicsDialogText2 = '2: Conduta: Define se o animal é Calmo ou Agitado.';
+  static const characteristicsDialogText3 =
+      '3: Latido: Temos 3 niveis, sendo 1 para pouco latido, 2 para médio e 3 para muito.';
+  static const characteristicsDialogText4 =
+      '4: Vacinado: Em alguns casos o animal ja pode estar com a carteira de vacinas em dia.';
+  static const characteristicsDialogText5 = '5: Castração: Em alguns casos o animal ja pode estar com castrado.';
+  static const characteristicsDialogText6 =
+      '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.';
 }

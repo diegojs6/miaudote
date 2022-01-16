@@ -1,12 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/utils/app_strings.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/styled_animal_characteristics_dialog.dart';
 import '../../../../core/widgets/styled_app_bar.dart';
 import '../../domain/entities/animals.dart';
 import '../widgets/details_card.dart';
+import 'animal_image_full_screen.dart';
 
 class AnimailsDetail extends StatefulWidget {
   final Animals? animal;
@@ -136,7 +138,7 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                           style: TextStyle(fontFamily: 'Gluten', fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () => StyledAnimalCharacteristicsDialog(context).dialog(),
                           child: Container(
                             padding: EdgeInsets.all(8),
                             decoration: BoxDecoration(
@@ -177,9 +179,10 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
     );
   }
 
-  //TODO: retornar depois para ser um gesture detector que vai abrir a img em tela cheia
   List<Widget>? imgCarousel() => animal?.imageList
-      ?.map((e) => Container(
+      ?.map((e) => GestureDetector(
+            onTap: () =>
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnimalImageFullScreen(imgUrl: e))),
             child: Container(
               margin: EdgeInsets.all(2.0),
               child: ClipRRect(
