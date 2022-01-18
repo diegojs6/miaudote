@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:miaudote/core/device/geolocator_info.dart';
+import 'package:miaudote/core/widgets/styled_button.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -114,35 +115,35 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                             animal?.gender == 'male' ? AppStrings.animalsMale : AppStrings.animalsFemale,
                             style: TextStyle(
                               fontFamily: 'Gluten',
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(width: 13),
+                          SizedBox(width: 10),
                           Icon(
                             animal?.gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
                           ),
-                          SizedBox(width: 9),
-                          Icon(MdiIcons.circleSmall, size: 24),
-                          SizedBox(width: 9),
+                          SizedBox(width: 5),
+                          Icon(MdiIcons.circleSmall, size: 20),
+                          SizedBox(width: 5),
                           Text(
                             animal?.age ?? '',
                             style: TextStyle(
                               fontFamily: 'Gluten',
                               color: AppColors.darkest,
                               fontWeight: FontWeight.w400,
-                              fontSize: 24,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(width: 9),
                           Icon(MdiIcons.mapMarker),
-                          SizedBox(width: 9),
+                          SizedBox(width: 3),
                           FutureBuilder(
                             future: _calculateKm(),
                             builder: (context, AsyncSnapshot<String> snapshot) {
                               return Text(
                                 '${snapshot.data ?? ''}',
-                                style: TextStyle(fontFamily: 'Gluten', fontSize: 22),
+                                style: TextStyle(fontFamily: 'Gluten', fontSize: 20),
                               );
                             },
                           )
@@ -189,7 +190,6 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                         ),
                       ),
                       SizedBox(height: 24),
-                      SizedBox(height: 24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -216,17 +216,15 @@ class _AnimailsDetailState extends State<AnimailsDetail> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 44),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              AppStrings.animalsDetails,
-                            ),
-                          ),
-                        ],
-                      )
+                      SizedBox(height: 40),
+                      StyledButton(
+                        text: AppStrings.animalsDetails,
+                        textColor: AppColors.lightest,
+                        outlineColor: AppColors.purpleDarkest,
+                        backgroundColor: AppColors.purpleDarkest,
+                        action: () {},
+                      ),
+                      SizedBox(height: 10),
                     ],
                   ),
                 ),
