@@ -9,6 +9,7 @@ import '../../../../core/widgets/styled_animals_card.dart';
 import '../../../../core/widgets/styled_loading.dart';
 import '../bloc/animals_bloc.dart';
 import '../bloc/animals_state.dart';
+import 'animals_details.dart';
 
 class DogScreen extends StatefulWidget {
   @override
@@ -16,11 +17,29 @@ class DogScreen extends StatefulWidget {
 }
 
 class _DogScreenState extends State<DogScreen> {
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
-      return _homeScreenBuilder(state);
-    });
+    return SafeArea(
+      child: Scaffold(
+        body: ScrollConfiguration(
+          behavior: ScrollBehavior()
+            ..buildOverscrollIndicator(
+              context,
+              SizedBox(),
+              ScrollableDetails(
+                direction: AxisDirection.down,
+                controller: _scrollController,
+              ),
+            ),
+          child: SingleChildScrollView(
+            child: BlocBuilder<AnimalsBloc, AnimalsState>(builder: (context, state) {
+              return _homeScreenBuilder(state);
+            }),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _homeScreenBuilder(AnimalsState state) {
@@ -40,6 +59,7 @@ class _DogScreenState extends State<DogScreen> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 30),
@@ -77,18 +97,26 @@ class _DogScreenState extends State<DogScreen> {
               ),
             ),
           ),
+          SizedBox(height: 10),
           Container(
             height: 400,
             width: 300,
             child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               itemCount: state.getAnimals?.length,
               itemBuilder: (context, position) {
                 var animals = state.getAnimals?[position];
                 return StyledAnimalsCard(
-                  onTap: () {},
-                  animalName: animals?.name ?? '',
-                  isVerified: animals?.verify ?? false,
-                  animalAge: animals?.age ?? '',
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => AnimailsDetail(
+                        animal: animals,
+                      ),
+                    ),
+                  ),
+                  animalName: animals?.name,
+                  isVerified: animals?.verify,
+                  animalAge: animals?.age,
                   gender: animals?.gender,
                   imgUrl: animals?.imageList?[0],
                 );

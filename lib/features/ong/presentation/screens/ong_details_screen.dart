@@ -18,7 +18,7 @@ class OngDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StyledAppBar.appBar(context, ong?.name, showCupertinoShadow: true),
+      appBar: StyledAppBar.appBar(context, ong?.name, showCupertinoShadow: true, isDark: true),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 24),

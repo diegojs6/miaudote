@@ -27,7 +27,7 @@ class StyledAnimalsCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 300,
+        margin: EdgeInsets.symmetric(vertical: 6),
         padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -36,57 +36,65 @@ class StyledAnimalsCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      animalName ?? '',
-                      style: TextStyle(
-                        fontFamily: 'Gluten',
-                        color: AppColors.darkest,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
+            Container(
+              width: MediaQuery.of(context).size.width / 3.2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        animalName ?? '',
+                        style: TextStyle(
+                          fontFamily: 'Gluten',
+                          color: AppColors.darkest,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 16),
-                    Icon(
-                      isVerified ?? false ? MdiIcons.checkDecagram : MdiIcons.checkDecagramOutline,
-                      size: 24,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Text(
-                  animalAge ?? '',
-                  style: TextStyle(
-                    fontFamily: 'Gluten',
-                    color: AppColors.darkest,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                      isVerified ?? false
+                          ? Icon(
+                              MdiIcons.checkDecagram,
+                              color: AppColors.success,
+                              size: 24,
+                            )
+                          : Icon(MdiIcons.checkDecagramOutline, size: 24),
+                    ],
                   ),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      gender == 'male' ? AppStrings.animalsMale : AppStrings.animalsFemale,
-                      style: TextStyle(
-                        fontFamily: 'Gluten',
-                        color: AppColors.darkest,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                  SizedBox(height: 10),
+                  Text(
+                    animalAge ?? '',
+                    style: TextStyle(
+                      fontFamily: 'Gluten',
+                      color: AppColors.darkest,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        gender == 'male' ? AppStrings.animalsMale : AppStrings.animalsFemale,
+                        style: TextStyle(
+                          fontFamily: 'Gluten',
+                          color: AppColors.darkest,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 13),
-                    Icon(
-                      gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
-                      size: 24,
-                    ),
-                  ],
-                ),
-              ],
+                      Icon(
+                        gender == 'male' ? MdiIcons.genderMale : MdiIcons.genderFemale,
+                        size: 24,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Container(
               margin: EdgeInsets.symmetric(

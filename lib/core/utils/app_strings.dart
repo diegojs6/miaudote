@@ -11,7 +11,6 @@ class AppStrings {
   static const genericNonInformed = 'Não informado';
   static const appBarBack = 'Voltar';
   static const viewMore = 'Ver mais...';
-  static const viewMoreDog = 'Ver Mais aúmigos';
 
   //! Navigation String
   static const dog = 'Cachorros';
@@ -62,8 +61,44 @@ class AppStrings {
   static const ongSocialMedia = 'Redes Sociais';
 
   //! Animals String
+
   static const dogFriends = 'Seu novo aúmigo pode estar aqui         🐶 ';
   static const dogsLoading = 'Os doguinhos estão se arrumando';
   static const animalsMale = 'Macho';
   static const animalsFemale = 'Fêmea';
+  static const viewMoreDog = 'Ver Mais aúmigos';
+  static const detailsCardConduct = 'Conduta';
+  static const detailsCardSociable = 'Comportamento';
+  static const detailsCardBark = 'Latido';
+  static const detailsCardSize = 'Porte';
+  static const detailsCardCastrated = 'Castração';
+  static const detailsCardVaccinated = 'Vacinas';
+  static const detailsCardNonInformed = 'Não informado';
+  static const detailsCardSociableType1 = 'Amigo';
+  static const detailsCardSociableType2 = 'Na dele';
+  static const detailsCardBarkType1 = 'Pouco';
+  static const detailsCardBarkType2 = 'Moderado';
+  static const detailsCardBarkType3 = 'Muito';
+  static const detailsCardCastratedType1 = 'Castrado';
+  static const detailsCardCastratedType2 = 'Não castrado';
+  static const detailsCardVaccinatedType1 = 'Vacinado';
+  static const detailsCardVaccinatedType2 = 'Não vacinado';
+  static const animalIsVerified = 'Verificado';
+  static const animalIsNotVerified = 'Não verificado';
+  static const animalDetailsCharacteristics = 'Caracteristicas';
+  static const detailsCardConductType1 = 'Calmo';
+  static const detailsCardConductType2 = 'Agitado';
+  static const characteristicsDialogHeader = 'Guia de caracteristicas';
+  static const characteristicsDialogTitle = 'Nesta lista temos os seguintes caracteristicas para os pets sendo elas:';
+  static const characteristicsDialogText1 =
+      '1: Comportamento: Amigo(otima companhia e para crianças) ou Na dele(devido a algum trauma ele quer ficar na dele).';
+  static const characteristicsDialogText2 = '2: Conduta: Define se o animal é Calmo ou Agitado.';
+  static const characteristicsDialogText3 =
+      '3: Latido: Temos 3 niveis, sendo 1 para pouco latido, 2 para médio e 3 para muito.';
+  static const characteristicsDialogText4 =
+      '4: Vacinado: Em alguns casos o animal ja pode estar com a carteira de vacinas em dia.';
+  static const characteristicsDialogText5 = '5: Castração: Em alguns casos o animal ja pode estar com castrado.';
+  static const characteristicsDialogText6 =
+      '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.';
+  static const animalsDetails = 'Adotar';
 }

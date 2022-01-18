@@ -6,21 +6,17 @@ class CharacteristicsModel extends Equatable {
   final bool? sociable;
   final bool? conduct;
   final num? bark;
-  final bool? kids;
-  final bool? vaccineted;
+  final bool? vaccinated;
   final bool? castrated;
   final String? size;
-  final String? lack;
 
   CharacteristicsModel({
     this.sociable,
     this.conduct,
     this.bark,
-    this.kids,
-    this.vaccineted,
+    this.vaccinated,
     this.castrated,
     this.size,
-    this.lack,
   });
 
   @override
@@ -29,11 +25,9 @@ class CharacteristicsModel extends Equatable {
       sociable,
       conduct,
       bark,
-      kids,
-      vaccineted,
+      vaccinated,
       castrated,
       size,
-      lack,
     ];
   }
 
@@ -41,43 +35,35 @@ class CharacteristicsModel extends Equatable {
         sociable: json['sociable'],
         conduct: json['conduct'],
         bark: json['bark'],
-        kids: json['kids'],
-        vaccineted: json['vaccineted'],
+        vaccinated: json['vaccinated'],
         castrated: json['castrated'],
         size: json['size'],
-        lack: json['lack'],
       );
 
   static Map<String, dynamic> toJson(CharacteristicsModel? characteristics) => {
         'sociable': characteristics?.sociable,
         'conduct': characteristics?.conduct,
         'bark': characteristics?.bark,
-        'kids': characteristics?.kids,
-        'vaccineted': characteristics?.vaccineted,
+        'vaccinated': characteristics?.vaccinated,
         'castrated': characteristics?.castrated,
         'size': characteristics?.size,
-        'lack': characteristics?.lack,
       };
 
   factory CharacteristicsModel.fromEntity(Characteristics? entity) => CharacteristicsModel(
         sociable: entity?.sociable,
         conduct: entity?.conduct,
         bark: entity?.bark,
-        kids: entity?.kids,
-        vaccineted: entity?.vaccineted,
+        vaccinated: entity?.vaccinated,
         castrated: entity?.castrated,
         size: entity?.size,
-        lack: entity?.lack,
       );
 
   Characteristics toEntity() => Characteristics(
         sociable: sociable,
         conduct: conduct,
         bark: bark,
-        kids: kids,
-        vaccineted: vaccineted,
+        vaccinated: vaccinated,
         castrated: castrated,
         size: size,
-        lack: lack,
       );
 }

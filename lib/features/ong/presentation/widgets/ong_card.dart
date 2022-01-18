@@ -55,7 +55,7 @@ class OngCard extends StatelessWidget {
                   isVerified ?? false
                       ? Icon(
                           MdiIcons.checkDecagram,
-                          color: AppColors.sucess,
+                          color: AppColors.success,
                         )
                       : Icon(MdiIcons.checkDecagramOutline),
                   SizedBox(width: 1),

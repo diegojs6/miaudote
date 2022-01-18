@@ -48,6 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController _scrollController = ScrollController();
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         switch (state.status) {
@@ -65,8 +66,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
               resizeToAvoidBottomInset: false,
               backgroundColor: AppColors.lightest,
               body: ScrollConfiguration(
-                // ignore: deprecated_member_use
-                behavior: ScrollBehavior()..buildViewportChrome(context, SizedBox(), AxisDirection.down),
+                behavior: ScrollBehavior()
+                  ..buildOverscrollIndicator(
+                    context,
+                    SizedBox(),
+                    ScrollableDetails(
+                      direction: AxisDirection.down,
+                      controller: _scrollController,
+                    ),
+                  ),
                 child: SingleChildScrollView(
                   child: Form(
                     key: _formKey,
