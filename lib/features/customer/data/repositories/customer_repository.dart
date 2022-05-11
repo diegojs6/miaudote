@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
+import '../../../../core/errors/exceptionE.dart';
+import '../../../../core/errors/failuresE.dart';
 import '../../domain/entities/customer.dart';
 import '../../domain/repositories/I_customer_repository.dart';
 import '../datasources/customer_local_data_source.dart';
@@ -33,9 +33,9 @@ class CustomerRepository implements ICustomerRepository {
       await localDataSource.setCachedCustomer(customerModelRemote);
       return Right(customerModelRemote.toEntity());
     } on InvalidInputException {
-      return const Left(Failure.invalidInputFailure());
+      return Left(InvalidInputFailure());
     } on ServerException {
-      return const Left(Failure.serverFailure());
+      return Left(ServerFailure());
     }
   }
 
