@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../../../../core/device/secure_storage.dart';
-import '../../../../core/errors/exceptions.dart';
+import '../../../../core/errors/exceptionE.dart';
 import '../customer_api_consts.dart';
 import '../models/customer_model.dart';
 
@@ -20,7 +20,7 @@ class CustomerLocalDataSource implements ICustomerLocalDataSource {
   Future<CustomerModel> getCachedCustomer() async {
     var customerModelString = await storage.read(CustomerApiConsts.customerLocalDataSource);
     if (customerModelString == null) {
-      throw const CustomException.cacheException();
+      throw CacheException();
     } else {
       return Future.value(CustomerModel.fromJson(jsonDecode(customerModelString)));
     }

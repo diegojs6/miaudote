@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:miaudote/core/utils/app_colors.dart';
@@ -63,20 +64,19 @@ abstract class StyledAppBar {
       title: title,
       material: (context, target) {
         return MaterialAppBarData(
-          elevation: 0,
-          iconTheme: IconThemeData(color: actionsColor),
-          titleSpacing: materialTitleSpacing,
-          leading: Navigator.canPop(context)
-              ? IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    useCloseButton ? MdiIcons.close : MdiIcons.arrowLeft,
-                    color: actionsColor,
-                  ),
-                )
-              : null,
-          brightness: brightness,
-        );
+            elevation: 0,
+            iconTheme: IconThemeData(color: actionsColor),
+            titleSpacing: materialTitleSpacing,
+            leading: Navigator.canPop(context)
+                ? IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: Icon(
+                      useCloseButton ? MdiIcons.close : MdiIcons.arrowLeft,
+                      color: actionsColor,
+                    ),
+                  )
+                : null,
+            systemOverlayStyle: SystemUiOverlayStyle(systemNavigationBarIconBrightness: brightness));
       },
       cupertino: (context, target) {
         return CupertinoNavigationBarData(

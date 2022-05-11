@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../../core/errors/failures.dart';
+import '../../../../core/errors/failuresE.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../customer/domain/entities/customer.dart';
@@ -81,11 +81,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   String _mapLoginFailureToString(Failure failure) {
-    return failure.maybeWhen(
-      networkFailure: () => AppStrings.genericErrorNetwork,
-      serverFailure: () => AppStrings.genericErrorServer,
-      invalidInputFailure: () => AppStrings.loginErrorInvalidInput,
-      orElse: () => AppStrings.genericError,
-    );
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return 'Erro ao conectar ao servidor';
+      default:
+        return 'Erro tente novamente';
+    }
   }
 }

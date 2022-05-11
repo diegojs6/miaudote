@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:miaudote/core/api/api_interceptor.dart';
-import 'package:miaudote/core/api/endpoints.dart';
-import 'package:miaudote/core/api/url_creator.dart';
-import 'package:miaudote/core/device/network_info.dart';
-import 'package:miaudote/core/errors/exceptions.dart';
+import '../../../../core/api/api_interceptor.dart';
+import '../../../../core/api/endpoints.dart';
+import '../../../../core/api/url_creator.dart';
+import '../../../../core/device/network_info.dart';
+import '../../../../core/errors/exceptionE.dart';
 
 abstract class ILoginRemoteDataSource {
   Future<String> getLogin({required String username, required String password});

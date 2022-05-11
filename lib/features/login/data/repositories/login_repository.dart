@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
+import '../../../../core/errors/exceptionE.dart';
+import '../../../../core/errors/failuresE.dart';
 import '../../../customer/data/models/customer_model.dart';
 import '../../../customer/domain/entities/customer.dart';
 import '../../domain/repositories/i_login_repository.dart';
@@ -45,11 +45,11 @@ class LoginRepository implements ILoginRepository {
         return Right(token);
       }
     } on InvalidInputException {
-      return const Left(InvalidInputFailure());
+      return Left(InvalidInputFailure());
     } on ServerException {
-      return const Left(ServerFailure());
+      return Left(ServerFailure());
     } on NetworkException {
-      return const Left(ServerFailure());
+      return Left(ServerFailure());
     }
   }
 

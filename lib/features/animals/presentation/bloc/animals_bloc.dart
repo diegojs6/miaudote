@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../core/errors/failuresE.dart';
 import '../../domain/usecases/get_animals.dart';
 import 'animals_state.dart';
 
@@ -48,10 +47,11 @@ class AnimalsBloc extends Bloc<AnimalsEvent, AnimalsState> {
   }
 
   String _mapAnimalsFailureToString(Failure failure) {
-    return failure.maybeWhen(
-      networkFailure: () => AppStrings.genericErrorNetwork,
-      serverFailure: () => AppStrings.genericErrorServer,
-      orElse: () => AppStrings.genericError,
-    );
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return 'Erro ao conectar ao servidor';
+      default:
+        return 'Erro tente novamente';
+    }
   }
 }
