@@ -44,6 +44,7 @@ class AppRouter {
             providers: [
               BlocProvider.value(value: _ongBLoc..add(LoadOngs())),
               BlocProvider.value(value: _animalsBloc..add(LoadAnimals())),
+              BlocProvider.value(value: _authBloc),
             ],
             child: HomeScreen(),
           ),
@@ -58,6 +59,15 @@ class AppRouter {
             child: RegisterScreen(),
           ),
         );
+      // case Routes.accountScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => MultiBlocProvider(
+      //       providers: [
+      //         BlocProvider.value(value: _authBloc),
+      //       ],
+      //       child: AccountScreen(),
+      //     ),
+      //   );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

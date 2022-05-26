@@ -1,12 +1,13 @@
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:miaudote/core/device/geolocator_info.dart';
-import 'package:miaudote/features/animals/presentation/screen/dog_screen.dart';
 
+import '../../../../core/device/geolocator_info.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../injection_container.dart';
+import '../../../account/presentation/pages/account_screen.dart';
+import '../../../animals/presentation/screen/dog_screen.dart';
 import '../../../ong/presentation/screens/ong_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(color: Colors.red),
             Container(color: Colors.orange),
             OngScreen(),
-            Container(color: AppColors.purpleDarkest),
+            AccountScreen(),
           ],
           onPageChanged: (index) {
             setState(() => _currentPage = index);
