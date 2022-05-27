@@ -6,7 +6,7 @@ import '../../../../core/device/geolocator_info.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../injection_container.dart';
-import '../../../account/presentation/pages/account_screen.dart';
+import '../../../account/presentation/screen/account_screen.dart';
 import '../../../animals/presentation/screen/dog_screen.dart';
 import '../../../ong/presentation/screens/ong_screen.dart';
 

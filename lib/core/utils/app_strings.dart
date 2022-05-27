@@ -101,4 +101,7 @@ class AppStrings {
   static const characteristicsDialogText6 =
       '6: Porte: Temos 3 niveis, sendo 1 para porte pequeno, 2 para porte médio e 3 para porte grande.';
   static const animalsDetails = 'Adotar';
+  static const accountHello = 'Olá ';
+  static const accountTileTitle = 'Meus dados';
+  static const accountOngTitle = 'Sou uma ong';
 }
